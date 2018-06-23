@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\
+D:\class_study\usicMusic\usicMusic\obj\Debug\
 usicMusic
 none
 false
 DEBUG;TRACE
-C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\App.xaml
-11151548125
+D:\class_study\usicMusic\usicMusic\App.xaml
+32138049226
 
-9-1795376616
-131569487696
-MainWindow.xaml;
+8-1055587564
+14-1596387786
+MainWindow.xaml;Record.xaml;RecordOrLoad.xaml;
 
-True
+False
 
