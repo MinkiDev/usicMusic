@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+usicMusic/bin/Debug/NAudio.xml
+usicMusic/bin/Debug/usicMusic.exe
+usicMusic/bin/Debug/usicMusic.exe.config
+usicMusic/bin/Debug/NAudio.dll
+usicMusic/bin/Debug/usicMusic.pdb
