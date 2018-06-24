@@ -26,7 +26,8 @@ namespace usicMusic
             MessageBox.Show(str);
             try
             {
-                mciSendString(str, "", 0, 0);
+                mciSendString("save recsound D:\\hello.wav", "", 0, 0);
+                //mciSendString(str, "", 0, 0);
                 //mciSendString("save recsound " + path, "", 0, 0);
                 return true;
             }

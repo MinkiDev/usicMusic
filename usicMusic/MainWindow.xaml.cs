@@ -15,6 +15,12 @@ namespace usicMusic
         public MainWindow()
         {
             InitializeComponent();
+            MouseLeftButtonDown += delegate { DragMove(); };
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -41,8 +47,8 @@ namespace usicMusic
             else
             {
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.FileName = "오디오 녹음 " + DateTime.Now.ToShortDateString() + " "
-                    + DateTime.Now.ToShortTimeString();
+                sfd.FileName = DateTime.Now.ToShortDateString() + " "
+                    + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
                 if (!string.IsNullOrEmpty(sfd.FileName))
