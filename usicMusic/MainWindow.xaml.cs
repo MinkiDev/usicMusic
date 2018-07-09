@@ -9,7 +9,7 @@ namespace usicMusic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Record rc = new Record();
+        RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
         public MainWindow()
@@ -41,7 +41,7 @@ namespace usicMusic
             state = !state;
             if (state)
             {
-                rc.StartRecord();
+                wave.StartRecord("ex01");
                 StartAndStop.Content = "stop";
             }
             else
@@ -51,17 +51,7 @@ namespace usicMusic
                     + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
-                if (!string.IsNullOrEmpty(sfd.FileName))
-                {
-                    if (rc.SaveRecord(sfd.FileName))
-                    {
-                        MessageBox.Show("파일이 저장되었습니다");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("저장 실패");
-                }
+
                 StartAndStop.Content = "start";
             }
         }

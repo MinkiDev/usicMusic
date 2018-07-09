@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="RecordOrLoad" Height="450" Width="800">
     <Grid>
-        <Button Content="녹음하기" HorizontalAlignment="Left" Height="113" Margin="96,156,0,0" VerticalAlignment="Top" Width="235" Click="Button_Click"/>
-        <Button Content="불러오기" HorizontalAlignment="Left" Height="113" Margin="470,156,0,0" VerticalAlignment="Top" Width="235"/>
+        <Button Content="녹음하기" HorizontalAlignment="Left" Height="113" Margin="96,156,0,0" VerticalAlignment="Top" Width="235" Click="LetsRecord"/>
+        <Button Content="불러오기" HorizontalAlignment="Left" Height="113" Margin="470,156,0,0" VerticalAlignment="Top" Width="235" Click="LetsLoad"/>
 
     </Grid>
 </Window>

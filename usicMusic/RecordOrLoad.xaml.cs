@@ -30,5 +30,17 @@ namespace usicMusic
         {
             MessageBox.Show(str);
         }
+
+        private void LetsRecord(object sender, RoutedEventArgs e)
+        {
+            //Record.xaml 창 열기
+            Recorder rcer = new Recorder(str);
+            rcer.Show();
+        }
+
+        private void LetsLoad(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("d");
+        }
     }
 }

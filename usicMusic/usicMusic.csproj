@@ -57,13 +57,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Record.cs" />
     <Compile Include="Record.xaml.cs">
       <DependentUpon>Record.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecordOrLoad.xaml.cs">
       <DependentUpon>RecordOrLoad.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecordWithWaveIn.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

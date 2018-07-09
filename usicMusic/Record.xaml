@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="Recorder" Height="370.824" Width="418.151">
     <Grid Margin="0,0,4,37">
-        <Button Content="start" HorizontalAlignment="Left" Height="124" Margin="61,30,0,0" VerticalAlignment="Top" Width="278" Click="Button_Click"/>
-        <Button Content="stop" HorizontalAlignment="Left" Height="87" Margin="61,213,0,0" VerticalAlignment="Top" Width="278" Click="Button_Click_1"/>
+        <Button x:Name="startOrStop" Content="start" HorizontalAlignment="Left" Height="32" Margin="172,161,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click"/>
 
     </Grid>
 </Window>
