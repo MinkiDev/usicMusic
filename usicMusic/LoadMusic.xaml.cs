@@ -35,6 +35,15 @@ namespace usicMusic
             ofd.ShowDialog();
             string loadFile = ofd.FileName;
             MessageBox.Show(loadFile);
+            //파일 이동
+            /*
+                https://www.google.co.kr/search?q=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&oq=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&aqs=chrome..69i57j69i58j0l4.3677j0j7&sourceid=chrome&ie=UTF-8
+                https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders         
+             */
+            //만약 .wav 가 아니라면 변경
+            /*
+                https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md
+             */
         }
 
         private void LoadOnlie_Click(object sender, RoutedEventArgs e) //온라인에서 불러오기
