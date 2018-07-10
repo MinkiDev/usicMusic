@@ -35,6 +35,14 @@ namespace usicMusic
             ofd.ShowDialog();
             string loadFile = ofd.FileName;
             MessageBox.Show(loadFile);
+
+            string sourceFile = @loadFile;
+            string result_fileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1);
+            MessageBox.Show(result_fileName);
+      
+            string destinationFile = @MainWindow.GetPath() + result_fileName;
+
+            System.IO.File.Copy(sourceFile, destinationFile);
             //파일 이동
             /*
                 https://www.google.co.kr/search?q=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&oq=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&aqs=chrome..69i57j69i58j0l4.3677j0j7&sourceid=chrome&ie=UTF-8
