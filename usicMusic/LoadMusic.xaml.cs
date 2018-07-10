@@ -37,17 +37,30 @@ namespace usicMusic
             MessageBox.Show(loadFile);
 
             string sourceFile = @loadFile;
-            string result_fileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1);
-            MessageBox.Show(result_fileName);
+            string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
+            MessageBox.Show(realFileName);
       
-            string destinationFile = @MainWindow.GetPath() + result_fileName;
+            string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
-            System.IO.File.Copy(sourceFile, destinationFile);
-            //파일 이동
-            /*
-                https://www.google.co.kr/search?q=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&oq=c%23+%ED%8C%8C%EC%9D%BC+%EC%9D%B4%EB%8F%99&aqs=chrome..69i57j69i58j0l4.3677j0j7&sourceid=chrome&ie=UTF-8
-                https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/file-system/how-to-copy-delete-and-move-files-and-folders         
-             */
+            System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
+            string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
+            if(notInExtension == "wav")
+            {
+                //아무것도할게없음
+            }
+            else if (notInExtension == "mp3")
+            {
+                MessageBox.Show(notInExtension);
+            } 
+            else if(notInExtension == "mp4")
+            {
+                //https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md mp3변환법
+                //클래스 파서 작업해야할듯 mp3,mp4묶어서
+            }
+            else
+            {
+                MessageBox.Show("잘못된 확장자!");
+            }
             //만약 .wav 가 아니라면 변경
             /*
                 https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md
