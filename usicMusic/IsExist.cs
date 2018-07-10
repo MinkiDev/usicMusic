@@ -14,7 +14,7 @@ namespace usicMusic
             string path = MainWindow.GetPath();
             System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(@path);
             int FileCnt = di.GetFiles().Length;
-            if(FileCnt == 5)
+            if(FileCnt >= 5)
             {
                 return false; //5개여야 정상. if에서 거를거기때문에 false 반환
             }

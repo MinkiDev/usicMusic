@@ -42,3 +42,5 @@ D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CopyComplete
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.exe
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.pdb
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache
+D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.g.cs
+D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.baml

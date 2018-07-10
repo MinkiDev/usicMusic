@@ -26,21 +26,23 @@ namespace usicMusic
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(str);
-        }
-
         private void LetsRecord(object sender, RoutedEventArgs e)
         {
             //Record.xaml 창 열기
+            var myWindow = Window.GetWindow(this); 
+            myWindow.Close(); // 현재 창 닫기
             Recorder rcer = new Recorder(str);
             rcer.Show();
         }
 
         private void LetsLoad(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("d");
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close(); // 현재 창 닫기
+            LoadMusic loadMusic = new LoadMusic();
+            loadMusic.Show();
+
+            //음악 불러오기
         }
     }
 }

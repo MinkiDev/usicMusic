@@ -52,8 +52,6 @@ namespace usicMusic
                 waveFile.Dispose();
                 waveFile = null;
             }
-
-
         }
     }
 }
