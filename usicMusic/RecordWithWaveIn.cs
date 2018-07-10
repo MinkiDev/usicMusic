@@ -25,9 +25,8 @@ namespace usicMusic
 
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
-
-            waveFile = new WaveFileWriter(@"D:\class_study\temp"+str+".wav", waveSource.WaveFormat);
-
+            string path = MainWindow.GetPath(); //파일경로 받아오기
+            waveFile = new WaveFileWriter(@path + "temp" + str+".wav", waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
             waveSource.StartRecording();
         }
 

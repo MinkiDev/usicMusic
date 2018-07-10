@@ -12,6 +12,13 @@ namespace usicMusic
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
+        public static string GetPath()
+        {
+            // 컴터마다 파일경로 다를거같아서 일단만들어놓음
+            string path = @"D:\class_study\usicMusic\usicMusic\resources\musicTemp\";
+            return path;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +39,8 @@ namespace usicMusic
             }
             else
             {
+                StartMusic startMusic = new StartMusic(str);
+                startMusic.MusicStart();
                 // 노래틀어야됨 여기서 str 값에 따라서
             }
         }
@@ -41,6 +50,8 @@ namespace usicMusic
             state = !state;
             if (state)
             {
+                IsExist Exist = new IsExist();
+                if(Exist.FiveExists()) // 파일개수가 5개가 아니면.
                 wave.StartRecord("ex01");
                 StartAndStop.Content = "stop";
             }

@@ -64,6 +64,7 @@
       <DependentUpon>RecordOrLoad.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecordWithWaveIn.cs" />
+    <Compile Include="StartMusic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
