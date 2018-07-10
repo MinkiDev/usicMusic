@@ -51,7 +51,13 @@ namespace usicMusic
             if (state)
             {
                 IsExist Exist = new IsExist();
+                    
                 if(Exist.FiveExists()) // 파일개수가 5개가 아니면.
+                {
+                    state = !state;
+                    MessageBox.Show("파일 부족함.");
+                    return;
+                }
                 wave.StartRecord("ex01");
                 StartAndStop.Content = "stop";
             }
