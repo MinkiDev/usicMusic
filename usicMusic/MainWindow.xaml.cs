@@ -113,8 +113,8 @@ namespace usicMusic
         private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             btnLetsFeel.Opacity = 1;
-            LoadMusic lm = new LoadMusic("test");
-            lm.ShowDialog();
+            LoopStation ls = new LoopStation();
+            ls.ShowDialog();
         }
     }
 }
