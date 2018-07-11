@@ -11,6 +11,7 @@ namespace usicMusic
 {
     class LoopStationCode
     {
+        StartAndStopMusic startMusic;
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
@@ -28,9 +29,8 @@ namespace usicMusic
             }
             else
             {
-                StartMusic startMusic = new StartMusic(str);
+                startMusic = new StartAndStopMusic(str);
                 startMusic.MusicStart();
-                // 노래틀어야됨 여기서 str 값에 따라서
             }
         }
 
@@ -52,6 +52,7 @@ namespace usicMusic
             }
             else
             {
+                startMusic.MusicStop(); // 여기코드 테스트해봐야됨@@@@@@
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.FileName = DateTime.Now.ToShortDateString() + " "
                     + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";

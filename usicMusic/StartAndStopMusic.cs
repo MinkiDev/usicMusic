@@ -8,12 +8,12 @@ using System.Windows;
 
 namespace usicMusic
 {
-    class StartMusic
+    class StartAndStopMusic
     {
         private WaveOutEvent OutputDevice;
         private AudioFileReader AudioFile;
 
-        public StartMusic(string MusicPath)
+        public StartAndStopMusic(string MusicPath)
         {
             string path = MainWindow.GetPath();
             AudioFile = new AudioFileReader(@path + "temp" + MusicPath + ".wav");
@@ -23,6 +23,11 @@ namespace usicMusic
         public void IsLoop(string str) //반복재생?
         {
 
+        }
+
+        public void MusicStop()
+        {
+            OutputDevice.Stop();
         }
 
         public void MusicStart()
