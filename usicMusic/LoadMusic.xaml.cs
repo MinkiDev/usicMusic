@@ -44,16 +44,13 @@ namespace usicMusic
 
             string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
-            if (File.Exists(destinationFile))
-            {
-                File.Delete(destinationFile);
-            }
+            MainWindow.FileExist(destinationFile);
 
             try
             {
                 System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
             }
-            catch (Exception exception) // 이미 있는 파일이면 예외처리
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -62,16 +59,20 @@ namespace usicMusic
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
 
             
-            destinationFile = Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
-            MessageBox.Show("aaa " + destinationFile);
+            string tempFile= Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
+
+            MainWindow.FileExist(tempFile);
+            File.Move(destinationFile, tempFile);
             
+            //여기서 destinationFile 로 이름바꿔야되나?
+
             if (notInExtension == "wav")
             {
                 //아무것도할게없음
             }
             else
             {
-                Convert convert = new Convert(destinationFile);
+                Convert convert = new Convert(tempFile);
                 if (notInExtension == "mp3")
                 {
                     convert.Mp3toWav();
@@ -98,5 +99,6 @@ namespace usicMusic
         {
 
         }
+
     }
 }

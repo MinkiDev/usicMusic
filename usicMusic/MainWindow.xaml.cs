@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Windows;
 
 namespace usicMusic
@@ -11,6 +12,14 @@ namespace usicMusic
     {
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
+
+        public static void FileExist(string FilePath)
+        {
+            if (File.Exists(FilePath))
+            {
+                File.Delete(FilePath);
+            }
+        }
 
         public static string GetPath()
         {

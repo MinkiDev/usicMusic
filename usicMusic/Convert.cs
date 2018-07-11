@@ -28,10 +28,29 @@ namespace usicMusic
             //{
             //    WaveFileWriter.CreateWaveFile(OutPath, reader);
             //}
+            FileExist();
             using (var reader = new Mp3FileReader(InPath, wf => new Mp3FrameDecompressor(wf)))
             {
                 WaveFileWriter.CreateWaveFile(OutPath, reader);
             }
+            DeleteBeforeFile();
+        }
+        
+        public void Mp4toWav()
+        {
+
+        }
+
+        private void FileExist()
+        {
+            if (File.Exists(OutPath))
+            {
+                File.Delete(OutPath);
+            }
+        }
+
+        private void DeleteBeforeFile()
+        {
             try
             {
                 System.IO.File.Delete(@InPath);
@@ -41,16 +60,6 @@ namespace usicMusic
                 Console.WriteLine(e.Message);
                 return;
             }
-        }
-        
-        public void Mp4toWav()
-        {
-
-        }
-
-        public void DeleteBeforeFile()
-        {
-
         }
     }
 }
