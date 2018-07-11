@@ -68,6 +68,9 @@
     <Compile Include="LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoopStation.xaml.cs">
+      <DependentUpon>LoopStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Record.xaml.cs">
       <DependentUpon>Record.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
     <Compile Include="RecordWithWaveIn.cs" />
     <Compile Include="StartMusic.cs" />
     <Page Include="LoadMusic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoopStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

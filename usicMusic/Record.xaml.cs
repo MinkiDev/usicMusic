@@ -20,7 +20,7 @@ namespace usicMusic
     /// <summary>
     /// Recorder.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Recorder : Window
+    public partial class Record : Window
     {
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         private static Random rnd = new Random();
@@ -31,7 +31,7 @@ namespace usicMusic
         private static int BUFFER_SAMPLES = 1024;
 
         string str = "";
-        public Recorder(string str)
+        public Record(string str)
         {
             InitializeComponent();
             this.str = str;

@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+.vs/
+
+
 # User-specific files
 *.suo
 *.user
@@ -334,7 +337,6 @@ usicMusic/bin/Debug/usicMusic.exe.config
 usicMusic/bin/Debug/NAudio.dll
 usicMusic/bin/Debug/usicMusic.pdb
 .vs/usicMusic/v15/.suo
-.vs/usicMusic/v15/.suo
 .vs/usicMusic/v15/Server/sqlite3/storage.ide
 .vs/usicMusic/v15/Server/sqlite3/storage.ide-shm
 .vs/usicMusic/v15/Server/sqlite3/storage.ide-wal
@@ -349,4 +351,5 @@ usicMusic/obj/Debug/usicMusic.pdb
 usicMusic/obj/Debug/usicMusic_MarkupCompile.cache
 usicMusic/obj/Debug/usicMusic_MarkupCompile.i.cache
 usicMusic/obj/Debug/usicMusic_MarkupCompile.lref
-.vs/usicMusic/v15/.suo
+.vs/usicMusic/v15/Server/sqlite3/storage.ide-shm
+.vs/usicMusic/v15/Server/sqlite3/db.lock
