@@ -30,9 +30,6 @@ namespace usicMusic
         private void LoadComputer_Click(object sender, RoutedEventArgs e) //컴퓨터에서 불러오기
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            //sfd.FileName = DateTime.Now.ToShortDateString() + " "
-            //    + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
-            //sfd.Filter = "오디오 녹음|*.wav";
             ofd.InitialDirectory = "C:\\";
             ofd.ShowDialog();
             string loadFile = ofd.FileName;

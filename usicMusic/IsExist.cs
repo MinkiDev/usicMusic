@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +11,33 @@ namespace usicMusic
 {
     class IsExist
     {
-        public bool FiveExists()
+        private string currentPath = Environment.CurrentDirectory + @"\..\..\resources\musicTemp\temp";
+        public string FiveExists()
         {
-            string path = MainWindow.GetPath();
-            System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(@path);
-            int FileCnt = di.GetFiles().Length;
-            if(FileCnt >= 5)
+            //string path = MainWindow.GetPath();
+
+            string resultString = "없는 파일 : ";
+            for(int i = 1; i <= 5; i++)
             {
-                return false; //5개여야 정상. if에서 거를거기때문에 false 반환
+                resultString += FileExists(i.ToString()) + " ";
             }
-            return true;
+            if(resultString.Length == 8)
+            {
+                return null;
+            }
+            return resultString;
+        }
+
+        private string FileExists(string fileName)
+        {
+            try
+            {
+                new AudioFileReader(currentPath + fileName + ".wav");
+            } catch (Exception exception)
+            {
+                return fileName;
+            }
+            return null;
         }
     }
 }

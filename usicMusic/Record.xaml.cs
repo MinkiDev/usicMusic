@@ -41,36 +41,19 @@ namespace usicMusic
         RecordWithWaveIn rwa = new RecordWithWaveIn();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (isStart)
             {
-                startOrStop.Content = "stop";
-                //record.StartRecord();
-                rwa.StartRecord(str);
-
-                var waveIn = new WaveInEvent();
-                waveIn.DeviceNumber = 0;
-                waveIn.WaveFormat = new NAudio.Wave.WaveFormat(RATE, 1);
-                waveIn.DataAvailable += OnDataAvailable;
-                waveIn.BufferMilliseconds = (int)((double)BUFFER_SAMPLES / (double)RATE * 1000.0);
-                waveIn.StartRecording();
                 Start();
             }
             else
             {
-                startOrStop.Content = "start";
-                //record.StopRecord();
-                rwa.StopRecord();
                 Stop();
             }
             isStart = !isStart;
-
         }
 
         private void OnDataAvailable(object sender, WaveInEventArgs args)
         {
-            
             float max = 0;
 
             // interpret as 16 bit audio
@@ -94,6 +77,15 @@ namespace usicMusic
 
         private void Start()
         {
+            startOrStop.Content = "stop";
+            rwa.StartRecord(str);
+
+            var waveIn = new WaveInEvent();
+            waveIn.DeviceNumber = 0;
+            waveIn.WaveFormat = new NAudio.Wave.WaveFormat(RATE, 1);
+            waveIn.DataAvailable += OnDataAvailable;
+            waveIn.BufferMilliseconds = (int)((double)BUFFER_SAMPLES / (double)RATE * 1000.0);
+            waveIn.StartRecording();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
@@ -101,20 +93,18 @@ namespace usicMusic
 
         private void Stop()
         {
+            rwa.StopRecord();
             dispatcherTimer.Stop();
             progressBar.Value = 0;
+
+            startOrStop.Content = "start";
             textbox.Content = "00.00% peak";
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             double frac = audioValueLast / audioValueMax;
-            //green.Width = (int)(frac * black.Width);
-            //textbox.Text = (frac*100).ToString();
-            //if ((int)(frac * Progress.) <= 100) progressBar.Value = (int)(frac * black.Width);
             progressBar.Value = 100 * frac;
-            //else progressBar.Value = 100;
-            //textbox.Text = (green.Width).ToString();
             textbox.Content = string.Format("{0:00.00}% peak", progressBar.Value);
         }
 

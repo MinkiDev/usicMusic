@@ -36,17 +36,17 @@ namespace usicMusic
 
         public string Button_Click_2()
         {
-            state = !state;
-            if (state)
+
+            if (!state) //false일때
             {
                 IsExist Exist = new IsExist();
-
-                if (Exist.FiveExists()) // 파일개수가 5개가 아니면.
+                string isExists = Exist.FiveExists();
+                if (isExists != null) // 파일개수가 5개가 아니면.
                 {
-                    state = !state;
-                    MessageBox.Show("파일 부족함.");
+                    MessageBox.Show(isExists);
                     return null;
                 }
+                state = !state;
                 wave.StartRecord("ex01");
                 return "stop";
             }

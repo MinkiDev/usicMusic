@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using NLayer.NAudioSupport;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,22 +19,17 @@ namespace usicMusic
             this.InPath = InPath;
             OutPath = Path.GetDirectoryName(InPath) + "\\" + Path.GetFileNameWithoutExtension(InPath) + ".wav";
             // Path.GetDirectoryName(filepath) 경로만 갖고오는거 + "\" + Path.GetFileNameWithoutExtension(filepath) 파일명만 갖고옴 + ".wav"
-            MessageBox.Show(OutPath);
         }
-        /*
+        
         public void Mp3toWav()
         {
-            //using (var reader = new Mp3FileReader(InPath))
-            //{
-            //    WaveFileWriter.CreateWaveFile(OutPath, reader);
-            //}
             FileExist();
             using (var reader = new Mp3FileReader(InPath, wf => new Mp3FrameDecompressor(wf)))
             {
                 WaveFileWriter.CreateWaveFile(OutPath, reader);
             }
             DeleteBeforeFile();
-        }*/
+        }
         
         public void Mp4toWav()
         {
