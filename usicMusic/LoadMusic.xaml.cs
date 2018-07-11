@@ -44,7 +44,7 @@ namespace usicMusic
 
             string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
-            MainWindow.FileExist(destinationFile);
+            //MainWindow.FileExist(destinationFile);
 
             try
             {
@@ -61,7 +61,7 @@ namespace usicMusic
             
             string tempFile= Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
 
-            MainWindow.FileExist(tempFile);
+            //MainWindow.FileExist(tempFile);
             File.Move(destinationFile, tempFile);
             
             //여기서 destinationFile 로 이름바꿔야되나?
@@ -75,7 +75,7 @@ namespace usicMusic
                 Convert convert = new Convert(tempFile);
                 if (notInExtension == "mp3")
                 {
-                    convert.Mp3toWav();
+                    //convert.Mp3toWav();
                 } 
                 else if(notInExtension == "mp4")
                 {
