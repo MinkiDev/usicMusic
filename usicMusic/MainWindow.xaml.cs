@@ -94,5 +94,27 @@ namespace usicMusic
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void btnLetsFeel_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnLetsFeel.Opacity = 0.8;
+        }
+
+        private void btnLetsFeel_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnLetsFeel.Opacity = 1;
+        }
+
+        private void btnLetsFeel_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnLetsFeel.Opacity = 0.5;
+        }
+
+        private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnLetsFeel.Opacity = 1;
+            LoadMusic lm = new LoadMusic("test");
+            lm.ShowDialog();
+        }
     }
 }

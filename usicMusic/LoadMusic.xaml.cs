@@ -54,16 +54,16 @@ namespace usicMusic
             {
                 MessageBox.Show(exception.Message);
             }
-            
+
 
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
 
-            
-            string tempFile= Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
+
+            string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
 
             //MainWindow.FileExist(tempFile);
             File.Move(destinationFile, tempFile);
-            
+
             //여기서 destinationFile 로 이름바꿔야되나?
 
             if (notInExtension == "wav")
@@ -76,8 +76,8 @@ namespace usicMusic
                 if (notInExtension == "mp3")
                 {
                     //convert.Mp3toWav();
-                } 
-                else if(notInExtension == "mp4")
+                }
+                else if (notInExtension == "mp4")
                 {
                     //https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md mp3변환법
                     //클래스 파서 작업해야할듯 mp3,mp4묶어서
@@ -88,7 +88,7 @@ namespace usicMusic
                     return;
                 }
             }
-            
+
             //만약 .wav 가 아니라면 변경
             /*
                 https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md
