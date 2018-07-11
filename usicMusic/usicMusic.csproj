@@ -125,5 +125,34 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\intro.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\main_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\ExitButton.png" />
+    <Resource Include="Resource\Buttons\ExitButtonDown.png" />
+    <Resource Include="Resource\Buttons\ExitButtonHover.png" />
+    <Resource Include="Resource\Buttons\MinButton.png" />
+    <Resource Include="Resource\Buttons\MinButtonDown.png" />
+    <Resource Include="Resource\Buttons\MinButtonHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\Let%27s Feel_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\black.png" />
+    <Resource Include="resources\green.png" />
+    <Resource Include="resources\musicTemp\agentlog.txt" />
+    <Content Include="resources\musicTemp\temp1.mp3" />
+    <Content Include="resources\musicTemp\temp2.mp3" />
+    <Content Include="resources\musicTemp\temp3.mp3" />
+    <Content Include="resources\musicTemp\temp4.mp3" />
+    <Content Include="resources\musicTemp\temp5.mp3" />
+    <Content Include="resources\musicTemp\tempex01.mp3" />
+    <Content Include="resources\musicTemp\tempex01.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
