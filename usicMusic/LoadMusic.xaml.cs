@@ -39,27 +39,32 @@ namespace usicMusic
             string sourceFile = @loadFile;
             string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
             MessageBox.Show(realFileName);
-      
+
             string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
             System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
-            if(notInExtension == "wav")
+            if (notInExtension == "wav")
             {
                 //아무것도할게없음
             }
-            else if (notInExtension == "mp3")
-            {
-                MessageBox.Show(notInExtension);
-            } 
-            else if(notInExtension == "mp4")
-            {
-                //https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md mp3변환법
-                //클래스 파서 작업해야할듯 mp3,mp4묶어서
-            }
             else
             {
-                MessageBox.Show("잘못된 확장자!");
+                Convert convert = new Convert(destinationFile);
+                if (notInExtension == "mp3")
+                {
+                    convert.Mp3toWav();
+                } 
+                else if(notInExtension == "mp4")
+                {
+                    //https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md mp3변환법
+                    //클래스 파서 작업해야할듯 mp3,mp4묶어서
+                }
+                else
+                {
+
+                    MessageBox.Show("잘못된 확장자!");
+                }
             }
             //만약 .wav 가 아니라면 변경
             /*
