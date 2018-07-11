@@ -21,7 +21,6 @@ namespace usicMusic
             // Path.GetDirectoryName(filepath) 경로만 갖고오는거 + "\" + Path.GetFileNameWithoutExtension(filepath) 파일명만 갖고옴 + ".wav"
             MessageBox.Show(OutPath);
         }
-        
 
         public void Mp3toWav()
         {
@@ -35,7 +34,7 @@ namespace usicMusic
             }
             try
             {
-                System.IO.File.Delete(InPath);
+                System.IO.File.Delete(@InPath);
             }
             catch (System.IO.IOException e)
             {

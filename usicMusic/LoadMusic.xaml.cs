@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace usicMusic
 {
@@ -20,9 +20,11 @@ namespace usicMusic
     /// </summary>
     public partial class LoadMusic : Window
     {
-        public LoadMusic()
+        string str = "";
+        public LoadMusic(string str)
         {
             InitializeComponent();
+            this.str = str;
         }
 
         private void LoadComputer_Click(object sender, RoutedEventArgs e) //컴퓨터에서 불러오기
@@ -38,12 +40,31 @@ namespace usicMusic
 
             string sourceFile = @loadFile;
             string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
-            MessageBox.Show(realFileName);
+            MessageBox.Show("Hello" + realFileName);
 
             string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
-            System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
+            if (File.Exists(destinationFile))
+            {
+                File.Delete(destinationFile);
+            }
+
+            try
+            {
+                System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
+            }
+            catch (Exception exception) // 이미 있는 파일이면 예외처리
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
+
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
+
+            
+            destinationFile = Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
+            MessageBox.Show("aaa " + destinationFile);
+            
             if (notInExtension == "wav")
             {
                 //아무것도할게없음
@@ -62,10 +83,11 @@ namespace usicMusic
                 }
                 else
                 {
-
                     MessageBox.Show("잘못된 확장자!");
+                    return;
                 }
             }
+            
             //만약 .wav 가 아니라면 변경
             /*
                 https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md

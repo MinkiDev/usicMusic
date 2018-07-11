@@ -45,3 +45,4 @@ D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.g.cs
 D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.baml
 D:\class_study\usicMusic\usicMusic\bin\Debug\NLayer.dll
 D:\class_study\usicMusic\usicMusic\bin\Debug\NLayer.NAudioSupport.dll
+D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache
