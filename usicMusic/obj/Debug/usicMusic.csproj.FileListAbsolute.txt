@@ -41,7 +41,6 @@ D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CoreCompileInputs.
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CopyComplete
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.exe
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.pdb
-D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache
 D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.g.cs
 D:\class_study\usicMusic\usicMusic\obj\Debug\LoadMusic.baml
 C:\Users\minki\Source\Repos\usicMusic\usicMusic\bin\Debug\usicMusic.exe.config
@@ -94,3 +93,9 @@ D:\OneDrive\Projects\usicMusic\usicMusic\obj\Debug\usicMusic.Properties.Resource
 D:\OneDrive\Projects\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.GenerateResource.cache
 D:\OneDrive\Projects\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CoreCompileInputs.cache
 D:\OneDrive\Projects\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CopyComplete
+D:\class_study\usicMusic\usicMusic\bin\Debug\NLayer.dll
+D:\class_study\usicMusic\usicMusic\bin\Debug\NLayer.NAudioSupport.dll
+D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic_Content.g.cs
+D:\class_study\usicMusic\usicMusic\obj\Debug\LoopStation.g.cs
+D:\class_study\usicMusic\usicMusic\obj\Debug\LoopStation.baml
+D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache

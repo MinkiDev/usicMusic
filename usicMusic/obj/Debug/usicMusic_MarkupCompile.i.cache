@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\class_study\usicMusic\usicMusic\App.xaml
-4-659756531
-
-16-1517822733
+5-1400894736
+7-1925695365
+17-1628600578
 16-195903049
-LoadMusic.xaml;MainWindow.xaml;Record.xaml;RecordOrLoad.xaml;
+LoadMusic.xaml;LoopStation.xaml;MainWindow.xaml;Record.xaml;RecordOrLoad.xaml;
 
-False
+True
 
