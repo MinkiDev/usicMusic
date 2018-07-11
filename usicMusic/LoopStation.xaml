@@ -18,7 +18,7 @@
                 <Border Background="YellowGreen" VerticalAlignment="Top" Height="50" CornerRadius="10,10,0,0">
                     <DockPanel x:Name="TitleBar" VerticalAlignment="Top" LastChildFill="False" Background="Transparent" Height="50">
                         <Label x:Name="labelTitle" Content="usicMusic" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,0,0,0" Foreground="White" FontSize="24" />
-                        <Button x:Name="btnExit" Content="Exit" Width="75" DockPanel.Dock="Right" Click="btnExit_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Red" FontSize="24" Margin="0,0,20,0"/>
+                        <Button x:Name="btnExit" Content="Exit" Width="75" DockPanel.Dock="Right" Click="BtnExit_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Red" FontSize="24" Margin="0,0,20,0"/>
                     </DockPanel>
 
                 </Border>

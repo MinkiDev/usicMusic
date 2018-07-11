@@ -41,8 +41,6 @@ namespace usicMusic
             myWindow.Close(); // 현재 창 닫기
             LoadMusic loadMusic = new LoadMusic(str);
             loadMusic.Show();
-
-            //음악 불러오기
         }
     }
 }

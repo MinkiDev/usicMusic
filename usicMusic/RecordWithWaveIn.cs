@@ -1,6 +1,7 @@
 ﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,6 +19,14 @@ namespace usicMusic
             waveSource.StopRecording();
         }
 
+        public void FileExist(string FilePath)
+        {
+            if (File.Exists(FilePath))
+            {
+                File.Delete(FilePath);
+            }
+        }
+
         public void StartRecord(string str)
         {
             waveSource = new WaveIn();
@@ -26,7 +35,9 @@ namespace usicMusic
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
             string path = MainWindow.GetPath(); //파일경로 받아오기
-            waveFile = new WaveFileWriter(@path + "temp" + str+".wav", waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
+            string savePath =  @path + "temp" + str + ".wav";
+            FileExist(savePath);
+            waveFile = new WaveFileWriter(savePath, waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
             waveSource.StartRecording();
         }
 

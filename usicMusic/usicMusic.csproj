@@ -71,6 +71,7 @@
     <Compile Include="LoopStation.xaml.cs">
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoopStationCode.cs" />
     <Compile Include="Record.xaml.cs">
       <DependentUpon>Record.xaml</DependentUpon>
     </Compile>
