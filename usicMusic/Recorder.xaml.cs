@@ -17,13 +17,13 @@ namespace usicMusic
         private static int RATE = 44100;
         private static int BUFFER_SAMPLES = 1024;
 
-        private string str = "";
+        private int musicNum;
 
-        public Recorder(string str)
+        public Recorder(int musicNum)
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
-            this.str = str;
+            this.musicNum = musicNum;
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -117,7 +117,7 @@ namespace usicMusic
         private void Start()
         {
             startOrStop.Content = "stop";
-            rwa.StartRecord(str);
+            rwa.StartRecord(musicNum);
 
             var waveIn = new WaveInEvent();
             waveIn.DeviceNumber = 0;

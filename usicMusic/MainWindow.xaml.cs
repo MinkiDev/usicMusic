@@ -9,13 +9,6 @@ namespace usicMusic
 {
     public partial class MainWindow : Window
     {
-        public static string GetPath()
-        {
-            // 컴터마다 파일경로 다를거같아서 일단만들어놓음
-            string path = @"D:\class_study\usicMusic\usicMusic\resources\musicTemp\";
-            return path;
-        }
-
         public MainWindow()
         {
             InitializeComponent();

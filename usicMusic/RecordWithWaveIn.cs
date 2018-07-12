@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace usicMusic
 {
@@ -21,21 +22,23 @@ namespace usicMusic
 
         public void FileExist(string FilePath)
         {
-            if (File.Exists(FilePath))
+            if (File.Exists(FilePath))  
             {
                 File.Delete(FilePath);
             }
         }
 
-        public void StartRecord(string str)
+        public void StartRecord(int musicNum)
         {
             waveSource = new WaveIn();
             waveSource.WaveFormat = new WaveFormat(44100, 1);
 
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
-            string path = MainWindow.GetPath(); //파일경로 받아오기
-            string savePath =  @path + "temp" + str + ".wav";
+            string path = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\temp";
+
+            string savePath =  @path + musicNum + ".wav";
+            MessageBox.Show("path\n" + savePath);
             FileExist(savePath);
             waveFile = new WaveFileWriter(savePath, waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
             waveSource.StartRecording();

@@ -13,10 +13,10 @@ namespace usicMusic
         private WaveOutEvent OutputDevice;
         private AudioFileReader AudioFile;
 
-        public StartAndStopMusic(string MusicPath)
+        public StartAndStopMusic(int musicNum)
         {
-            string path = MainWindow.GetPath();
-            AudioFile = new AudioFileReader(@path + "temp" + MusicPath + ".wav");
+            string path = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\temp";
+            AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }
 

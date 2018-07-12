@@ -11,7 +11,7 @@ namespace usicMusic
 {
     class IsExist
     {
-        private string currentPath = Environment.CurrentDirectory + @"\..\..\resources\musicTemp\temp";
+        private string currentPath = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\temp";
         public string FiveExists()
         {
             //string path = MainWindow.GetPath();
@@ -33,7 +33,7 @@ namespace usicMusic
             try
             {
                 new AudioFileReader(currentPath + fileName + ".wav");
-            } catch (Exception exception)
+            } catch (Exception)
             {
                 return fileName;
             }

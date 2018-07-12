@@ -19,10 +19,10 @@ namespace usicMusic
     /// </summary>
     public partial class RecordOrLoad : Window
     {
-        string str = "";
-        public RecordOrLoad(string str)
+        int musicNum;
+        public RecordOrLoad(int musicNum)
         {
-            this.str = str;
+            this.musicNum = musicNum;
             InitializeComponent();
         }
 
@@ -31,7 +31,7 @@ namespace usicMusic
             //Record.xaml 창 열기
             var myWindow = Window.GetWindow(this); 
             myWindow.Close(); // 현재 창 닫기
-            Recorder rcer = new Recorder(str);
+            Recorder rcer = new Recorder(musicNum);
             rcer.Show();
         }
 
@@ -39,7 +39,7 @@ namespace usicMusic
         {
             var myWindow = Window.GetWindow(this);
             myWindow.Close(); // 현재 창 닫기
-            LoadMusic loadMusic = new LoadMusic(str);
+            LoadMusic loadMusic = new LoadMusic(musicNum);
             loadMusic.Show();
         }
     }

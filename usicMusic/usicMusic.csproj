@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interface\" />
+    <Folder Include="Resource\musicTemp\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\intro.png" />

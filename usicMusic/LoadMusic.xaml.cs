@@ -20,11 +20,11 @@ namespace usicMusic
     /// </summary>
     public partial class LoadMusic : Window
     {
-        string str = "";
-        public LoadMusic(string str)
+        int musicNum;
+        public LoadMusic(int musicNum)
         {
             InitializeComponent();
-            this.str = str;
+            this.musicNum = musicNum;
         }
 
         private void LoadComputer_Click(object sender, RoutedEventArgs e) //컴퓨터에서 불러오기
@@ -33,16 +33,13 @@ namespace usicMusic
             ofd.InitialDirectory = "C:\\";
             ofd.ShowDialog();
             string loadFile = ofd.FileName;
-            MessageBox.Show(loadFile);
 
             string sourceFile = @loadFile;
             string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
-            MessageBox.Show("Hello" + realFileName);
-
-            string destinationFile = @MainWindow.GetPath() + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
+            string destinationFile = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\" + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
             //MainWindow.FileExist(destinationFile);
-            string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
+            string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + musicNum + Path.GetExtension(destinationFile);
 
             Convert convert = new Convert(tempFile);
             try

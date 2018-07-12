@@ -27,13 +27,11 @@ namespace usicMusic
 
         }
 
-        public void Button_Click_1(object sender)
+        public void BtnNumClick(int musicNum)
         {
-            string str = sender.ToString().Replace("System.Windows.Controls.Button: ", string.Empty);
-            int musicNum = Int32.Parse(str) - 1;
             if (!state)
             {
-                Button(str);
+                Button(musicNum+1); //파일은 1부터니까
             }
             else
             {
@@ -41,14 +39,13 @@ namespace usicMusic
                 {
                     Stop(musicNum);
                 }
-                startMusic[musicNum] = new StartAndStopMusic(str);
+                startMusic[musicNum] = new StartAndStopMusic(musicNum+1);
                 startMusic[musicNum].MusicStart();
             }
         }
 
-        public string Button_Click_2()
+        public string BtnStartClick()
         {
-
             if (!state) //false일때
             {
                 IsExist Exist = new IsExist();
@@ -59,7 +56,7 @@ namespace usicMusic
                     return null;
                 }
                 state = !state;
-                wave.StartRecord("ex01");
+                wave.StartRecord(6);
                 return "stop";
             }
             else
@@ -79,9 +76,9 @@ namespace usicMusic
             }
         }
 
-        private void Button(String str)
+        private void Button(int musicNum)
         {
-            RecordOrLoad rl = new RecordOrLoad(str);
+            RecordOrLoad rl = new RecordOrLoad(musicNum);
             rl.Show();
         }
 

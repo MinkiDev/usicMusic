@@ -9,10 +9,14 @@ namespace usicMusic
 {
     public partial class LoopStation : Window
     {
+
+        LoopStationCode lsc = new LoopStationCode();
+
         public LoopStation()
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
+            
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -110,8 +114,8 @@ namespace usicMusic
             ChangeSource(btnC1, (ImageSource)new ImageSourceConverter()
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c1_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
-
-            // 클릭시
+            
+            lsc.BtnNumClick(0); // 0부터시작이니까
         }
 
         private void btnC2_MouseEnter(object sender, MouseEventArgs e)
@@ -136,7 +140,7 @@ namespace usicMusic
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c2_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
-            // 클릭시
+            lsc.BtnNumClick(1); // 0부터시작이니까
         }
 
         private void btnC3_MouseEnter(object sender, MouseEventArgs e)
@@ -161,7 +165,7 @@ namespace usicMusic
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c3_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
-            // 클릭시
+            lsc.BtnNumClick(2); // 0부터시작이니까
         }
 
         private void btnC4_MouseEnter(object sender, MouseEventArgs e)
@@ -186,7 +190,7 @@ namespace usicMusic
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c4_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
-            // 클릭시
+            lsc.BtnNumClick(3); // 0부터시작이니까
         }
 
         private void btnC5_MouseEnter(object sender, MouseEventArgs e)
@@ -211,7 +215,12 @@ namespace usicMusic
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c5_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
-            // 클릭시
+            lsc.BtnNumClick(4); // 0부터시작이니까
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            lsc.BtnStartClick();
         }
     }
 }

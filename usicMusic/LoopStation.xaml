@@ -18,6 +18,7 @@
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
+                <Button Content="Button" HorizontalAlignment="Left" Height="78" Margin="652,742,0,0" VerticalAlignment="Top" Width="273" Click="Button_Click"/>
             </Border>
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
