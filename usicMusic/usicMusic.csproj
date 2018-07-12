@@ -76,8 +76,8 @@
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoopStationCode.cs" />
-    <Compile Include="Record.xaml.cs">
-      <DependentUpon>Record.xaml</DependentUpon>
+    <Compile Include="Recorder.xaml.cs">
+      <DependentUpon>Recorder.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecordOrLoad.xaml.cs">
       <DependentUpon>RecordOrLoad.xaml</DependentUpon>
@@ -104,7 +104,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Record.xaml">
+    <Page Include="Recorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,9 +145,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\intro.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\main_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -162,11 +159,32 @@
     <Resource Include="Resource\Buttons\Let%27s Feel_btn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\black.png" />
-    <Resource Include="resources\green.png" />
+    <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="resources\musicTemp\" />
+    <Resource Include="Resource\intro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\c1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\c2.png" />
+    <Resource Include="Resource\Buttons\c3.png" />
+    <Resource Include="Resource\Buttons\c4.png" />
+    <Resource Include="Resource\Buttons\c5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\c1_down.png" />
+    <Resource Include="Resource\Buttons\c2_down.png" />
+    <Resource Include="Resource\Buttons\c3_down.png" />
+    <Resource Include="Resource\Buttons\c4_down.png" />
+    <Resource Include="Resource\Buttons\c5_down.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

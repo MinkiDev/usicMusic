@@ -31,7 +31,7 @@ namespace usicMusic
             //Record.xaml 창 열기
             var myWindow = Window.GetWindow(this); 
             myWindow.Close(); // 현재 창 닫기
-            Record rcer = new Record(str);
+            Recorder rcer = new Recorder(str);
             rcer.Show();
         }
 

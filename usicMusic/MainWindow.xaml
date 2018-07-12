@@ -13,28 +13,17 @@
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
             <Border BorderBrush="Transparent" CornerRadius="10" Margin="20">
                 <Border.Background>
-                    <ImageBrush ImageSource="Resource/intro.jpg" Stretch="None" />
+                    <ImageBrush ImageSource="Resource/intro.png" />
                 </Border.Background>
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
-                <DockPanel Height="300" LastChildFill="False" Margin="0,40,0,0" VerticalAlignment="Center" Width="680" HorizontalAlignment="Center" Background="White" Opacity="0.8">
-                    <Label x:Name="idLabel" Content="ID" Margin="40,60,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="130" HorizontalAlignment="Left" Height="50" FontSize="36" Foreground="#FF001FFF"/>
-                    <Label x:Name="pwLabel" Content="PW" Height="50" VerticalAlignment="Top" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="130" FontSize="36" Margin="-130,180,0,0" Foreground="#FF001FFF"/>
-                    <TextBox x:Name="idTextBox" Height="50" Margin="40,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="36"/>
-                    <PasswordBox x:Name="pwTextBox" Height="50" Margin="-400,180,0,0" VerticalAlignment="Top" Width="399" HorizontalAlignment="Left" FontSize="36"/>
-                </DockPanel>
             </Border>
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Image Name="btnMinimizeBack" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
         <Image Name="btnMinimize" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
-        <Image x:Name="imgMainLogo" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Source="Resource/main_logo.png" Width="700" Height="200" >
-            <Image.Effect>
-                <DropShadowEffect Opacity="0.25" Direction="0" ShadowDepth="10" BlurRadius="10"/>
-            </Image.Effect>
-        </Image>
-        <Image x:Name="btnLetsFeel" HorizontalAlignment="Center" Margin="0,650,0,0" VerticalAlignment="Top" Source="Resource/Buttons/Let's Feel_btn.png" Width="300" Height="100" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
+        <Image x:Name="btnLetsFeel" HorizontalAlignment="Center" Margin="0,675,0,0" VerticalAlignment="Top" Source="Resource/Buttons/Let's Feel_btn.png" Width="300" Height="100" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
     </Grid>
 </Window>
