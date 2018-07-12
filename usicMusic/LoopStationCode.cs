@@ -30,6 +30,10 @@ namespace usicMusic
             }
             else
             {
+                if(startMusic[musicNum] != null)
+                {
+                    Stop(musicNum);
+                }
                 startMusic[musicNum] = new StartAndStopMusic(str);
                 startMusic[musicNum].MusicStart();
             }
@@ -53,7 +57,7 @@ namespace usicMusic
             }
             else
             {
-                startMusic.MusicStop(); // 여기코드 테스트해봐야됨@@@@@@
+                Stop(0); Stop(1); Stop(2); Stop(3); Stop(4);
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.FileName = DateTime.Now.ToShortDateString() + " "
                     + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
@@ -69,6 +73,16 @@ namespace usicMusic
         {
             RecordOrLoad rl = new RecordOrLoad(str);
             rl.Show();
+        }
+
+        private void Stop(int i)
+        {
+            if(startMusic[i] != null)
+            {
+                startMusic[i].MusicStop();
+                return;
+            }
+            return;
         }
     }
 }
