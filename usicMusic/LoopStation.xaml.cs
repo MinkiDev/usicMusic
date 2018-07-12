@@ -9,14 +9,25 @@ namespace usicMusic
 {
     public partial class LoopStation : Window
     {
-
-        LoopStationCode lsc = new LoopStationCode();
+        private LoopStationCode lsc = new LoopStationCode();
 
         public LoopStation()
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
-            
+            for (int i = 1; i <= 10; i++)
+            {
+                loopDelaySecSelectionBox_1.Items.Add(i.ToString());
+                loopDelaySecSelectionBox_2.Items.Add(i.ToString());
+                loopDelaySecSelectionBox_3.Items.Add(i.ToString());
+                loopDelaySecSelectionBox_4.Items.Add(i.ToString());
+                loopDelaySecSelectionBox_5.Items.Add(i.ToString());
+            }
+            loopDelaySecSelectionBox_1.SelectedIndex = 0;
+            loopDelaySecSelectionBox_2.SelectedIndex = 0;
+            loopDelaySecSelectionBox_3.SelectedIndex = 0;
+            loopDelaySecSelectionBox_4.SelectedIndex = 0;
+            loopDelaySecSelectionBox_5.SelectedIndex = 0;
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -27,7 +38,7 @@ namespace usicMusic
             {
                 var fadeOutAnimation = new DoubleAnimation(0d, fadeOutTime);
 
-                fadeOutAnimation.Completed += (o, e) =>
+                fadeOutAnimation.Completed += (o, e) => 
                 {
                     image.Source = source;
                     image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);
@@ -114,7 +125,7 @@ namespace usicMusic
             ChangeSource(btnC1, (ImageSource)new ImageSourceConverter()
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c1_down.png")),
                new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
-            
+
             lsc.BtnNumClick(0); // 0부터시작이니까
         }
 
@@ -221,6 +232,18 @@ namespace usicMusic
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             lsc.BtnStartClick();
+        }
+
+        private void loopDelayBox_1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //for (int i = 0; i < e.Source.ToString().ToCharArray().Length-1; i++)
+            //{
+            //    var tmpChar = e.Source.ToString().ToCharArray()[i];
+            //    if (!(tmpChar >= 48 && tmpChar <= 57))
+            //    {
+            //        e
+            //    }
+            //}
         }
     }
 }
