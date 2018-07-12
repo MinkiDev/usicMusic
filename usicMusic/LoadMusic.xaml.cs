@@ -57,6 +57,8 @@ namespace usicMusic
 
 
             string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + str + Path.GetExtension(destinationFile);
+            
+            //확인을합시다.
 
             //MainWindow.FileExist(tempFile);
             File.Move(destinationFile, tempFile);
@@ -72,7 +74,7 @@ namespace usicMusic
                 Convert convert = new Convert(tempFile);
                 if (notInExtension == "mp3")
                 {
-                    //convert.Mp3toWav();
+                    convert.Mp3toWav();
                 }
                 else if (notInExtension == "mp4")
                 {

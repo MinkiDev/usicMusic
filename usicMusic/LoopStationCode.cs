@@ -11,7 +11,7 @@ namespace usicMusic
 {
     class LoopStationCode
     {
-        StartAndStopMusic startMusic;
+        StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
@@ -23,14 +23,15 @@ namespace usicMusic
         public void Button_Click_1(object sender)
         {
             string str = sender.ToString().Replace("System.Windows.Controls.Button: ", string.Empty);
+            int musicNum = Int32.Parse(str) - 1;
             if (!state)
             {
                 Button(str);
             }
             else
             {
-                startMusic = new StartAndStopMusic(str);
-                startMusic.MusicStart();
+                startMusic[musicNum] = new StartAndStopMusic(str);
+                startMusic[musicNum].MusicStart();
             }
         }
 

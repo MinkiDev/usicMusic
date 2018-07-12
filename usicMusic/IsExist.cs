@@ -21,7 +21,7 @@ namespace usicMusic
             {
                 resultString += FileExists(i.ToString()) + " ";
             }
-            if(resultString.Length == 8)
+            if(resultString.Length == 13)
             {
                 return null;
             }

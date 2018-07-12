@@ -160,14 +160,9 @@
   <ItemGroup>
     <Resource Include="resources\black.png" />
     <Resource Include="resources\green.png" />
-    <Resource Include="resources\musicTemp\agentlog.txt" />
-    <Content Include="resources\musicTemp\temp1.mp3" />
-    <Content Include="resources\musicTemp\temp2.mp3" />
-    <Content Include="resources\musicTemp\temp3.mp3" />
-    <Content Include="resources\musicTemp\temp4.mp3" />
-    <Content Include="resources\musicTemp\temp5.mp3" />
-    <Content Include="resources\musicTemp\tempex01.mp3" />
-    <Content Include="resources\musicTemp\tempex01.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\musicTemp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
