@@ -122,8 +122,6 @@ namespace usicMusic
             json.Add("password", password);
             if (http.HttpLogin(json.ToString()))
             {
-                var myWindow = Window.GetWindow(this);
-                myWindow.Close(); // 현재 창 닫기
                 MessageBox.Show(username + "님 환영합니다!");
                 LoopStation ls = new LoopStation();
                 ls.ShowDialog();

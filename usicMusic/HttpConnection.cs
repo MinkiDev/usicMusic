@@ -36,21 +36,27 @@ namespace usicMusic
             requestStream.Close();
 
             // grab te response and print it out to the console along with the status code
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string result;
-            using (StreamReader rdr = new StreamReader(response.GetResponseStream()))
+            try
             {
-                result = rdr.ReadToEnd();
-            }
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                string result;
+                using (StreamReader rdr = new StreamReader(response.GetResponseStream()))
+                {
+                    result = rdr.ReadToEnd();
+                }
+                var jsonResult = JObject.Parse(result);
 
-            var jsonResult = JObject.Parse(result);
-
-            if (jsonResult["status"].ToString() == "200")
+                if (jsonResult["status"].ToString() == "200")
+                {
+                    token = jsonResult["token"].ToString();
+                    return true;
+                }
+                return false;
+            } catch(Exception e)
             {
-                token = jsonResult["token"].ToString();
-                return true;
+                return false;
             }
-            return false;
+            
 
 
         }
