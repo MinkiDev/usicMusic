@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -113,8 +114,22 @@ namespace usicMusic
         private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             btnLetsFeel.Opacity = 1;
-            LoopStation ls = new LoopStation();
-            ls.ShowDialog();
+            HttpConnection http = new HttpConnection();
+            string username = idTextBox.Text;
+            string password = pwTextBox.Password;
+            var json = new JObject();
+            json.Add("username", username);
+            json.Add("password", password);
+            if (http.HttpLogin(json.ToString()))
+            {
+                var myWindow = Window.GetWindow(this);
+                myWindow.Close(); // 현재 창 닫기
+                MessageBox.Show(username + "님 환영합니다!");
+                LoopStation ls = new LoopStation();
+                ls.ShowDialog();
+            }
+            MessageBox.Show("로그인에 실패하였습니다.");
+            return;
         }
     }
 }

@@ -77,10 +77,6 @@ namespace usicMusic
                 {
                     convert.WavtoMp3();
                 }
-                else if (notInExtension == "mp4")
-                {
-                    convert.WavtoMp4();
-                }
                 else
                 {
                     MessageBox.Show("잘못된 확장자!");

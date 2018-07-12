@@ -12,10 +12,16 @@ namespace usicMusic
     class LoopStationCode
     {
         StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
+        private bool[] isLoop = new bool[5];
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
         public LoopStationCode()
+        {
+
+        }
+
+        public void Loop(object sender)
         {
 
         }

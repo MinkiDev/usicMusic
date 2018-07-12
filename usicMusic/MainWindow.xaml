@@ -18,6 +18,12 @@
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
+                <DockPanel Height="300" LastChildFill="False" Margin="0,40,0,0" VerticalAlignment="Center" Width="680" HorizontalAlignment="Center" Background="White" Opacity="0.8">
+                    <Label x:Name="idLabel" Content="ID" Margin="40,60,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="130" HorizontalAlignment="Left" Height="50" FontSize="36" Foreground="#FF001FFF"/>
+                    <Label x:Name="pwLabel" Content="PW" Height="50" VerticalAlignment="Top" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Width="130" FontSize="36" Margin="-130,180,0,0" Foreground="#FF001FFF"/>
+                    <TextBox x:Name="idTextBox" Height="50" Margin="40,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="36"/>
+                    <PasswordBox x:Name="pwTextBox" Height="50" Margin="-400,180,0,0" VerticalAlignment="Top" Width="399" HorizontalAlignment="Left" FontSize="36"/>
+                </DockPanel>
             </Border>
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />

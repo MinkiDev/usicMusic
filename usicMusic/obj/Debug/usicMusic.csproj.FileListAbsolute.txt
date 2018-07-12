@@ -98,3 +98,5 @@ D:\class_study\usicMusic\usicMusic\bin\Debug\NLayer.NAudioSupport.dll
 D:\class_study\usicMusic\usicMusic\obj\Debug\LoopStation.g.cs
 D:\class_study\usicMusic\usicMusic\obj\Debug\LoopStation.baml
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache
+D:\class_study\usicMusic\usicMusic\bin\Debug\Newtonsoft.Json.dll
+D:\class_study\usicMusic\usicMusic\bin\Debug\Newtonsoft.Json.xml

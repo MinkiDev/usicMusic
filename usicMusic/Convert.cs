@@ -31,44 +31,6 @@ namespace usicMusic
             }
             DeleteBeforeFile();
         }
-        
-        public void WavtoMp4()
-        {
-            var ffmpeg = new Process
-            {
-                StartInfo = { UseShellExecute = false, RedirectStandardError = true, FileName = OutPath }
-            };
-
-            var arguments =
-                String.Format(
-                    @"-i ""{0}"" -c:a flac ""{1}""",
-                    InPath, OutPath);
-
-            ffmpeg.StartInfo.Arguments = arguments;
-
-            try
-            {
-                if (!ffmpeg.Start())
-                {
-                    Debug.WriteLine("Error starting");
-                    return;
-                }
-                var reader = ffmpeg.StandardError;
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Debug.WriteLine(line);
-                }
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine(exception.ToString());
-                return;
-            }
-
-            ffmpeg.Close();
-            DeleteBeforeFile();
-        }
 
         private void FileExist()
         {
