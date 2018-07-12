@@ -64,7 +64,10 @@ namespace usicMusic
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
                 string savePath = sfd.FileName;
+
                 // 여기서 만든 음악 저장해야됨.
+
+                state = !state;
                 return "start";
             }
         }
