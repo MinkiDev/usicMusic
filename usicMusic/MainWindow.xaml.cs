@@ -13,6 +13,7 @@ namespace usicMusic
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
+            idTextBox.Focus();
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -107,7 +108,19 @@ namespace usicMusic
         private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             btnLetsFeel.Opacity = 1;
+            DoLogin();
+        }
 
+        private void pwTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                DoLogin();
+            }
+        }
+
+        private bool DoLogin()
+        {
             HttpConnection http = new HttpConnection();
             string username = idTextBox.Text;
             string password = pwTextBox.Password;
@@ -120,10 +133,10 @@ namespace usicMusic
                 MessageBox.Show(username + "님 환영합니다!");
                 LoopStation ls = new LoopStation();
                 ls.ShowDialog();
-                return;
+                return true;
             }
             MessageBox.Show("로그인에 실패하였습니다.");
-            return;
+            return false;
         }
     }
 }
