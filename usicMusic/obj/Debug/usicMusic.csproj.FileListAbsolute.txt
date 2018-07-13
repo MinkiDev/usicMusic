@@ -1,6 +1,5 @@
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\usicMusic.csprojAssemblyReference.cache
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\MainWindow.g.cs
-C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\Record.g.cs
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\RecordOrLoad.g.cs
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\App.g.cs
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\usicMusic_MarkupCompile.cache
@@ -13,7 +12,6 @@ C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\bin\Debug\usicMusic.pdb
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\bin\Debug\NAudio.dll
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\bin\Debug\NAudio.xml
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\MainWindow.baml
-C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\Record.baml
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\RecordOrLoad.baml
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\usicMusic.g.resources
 C:\Users\MINKIJU\source\repos\usicMusic\usicMusic\obj\Debug\usicMusic.Properties.Resources.resources
@@ -100,3 +98,13 @@ D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CoreCompileInputs.
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.csproj.CopyComplete
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.exe
 D:\class_study\usicMusic\usicMusic\obj\Debug\usicMusic.pdb
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\LoadMusic.g.cs
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\LoopStation.g.cs
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\Recorder.g.cs
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\bin\Debug\NLayer.dll
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\bin\Debug\NLayer.NAudioSupport.dll
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\LoadMusic.baml
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\LoopStation.baml
+C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\obj\Debug\Recorder.baml

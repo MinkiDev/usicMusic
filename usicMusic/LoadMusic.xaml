@@ -3,12 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        ShowInTaskbar="False"
         xmlns:local="clr-namespace:usicMusic"
         mc:Ignorable="d"
-        Title="LoadMusic" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="LoadComputer" Content="컴퓨터에서 불러오기" HorizontalAlignment="Left" Height="53" Margin="141,152,0,0" VerticalAlignment="Top" Width="133" Click="LoadComputer_Click"/>
-        <Button x:Name="LoadOnlie" Content="온라인에서 불러오기" HorizontalAlignment="Left" Height="53" Margin="419,152,0,0" VerticalAlignment="Top" Width="155" Click="LoadOnlie_Click"/>
-
+        Title="usicMusic" Width="400" Height="200"
+        WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Grid DataContext="{Binding ElementName=root}">
+        <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
+            <Border BorderBrush="Transparent" CornerRadius="10" Margin="20" Background="White">
+                <Border.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
+                </Border.BitmapEffect>
+            </Border>
+        </Border>
+        <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
+        <Image Name="btnExit" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
+        <Button x:Name="LoadComputer" Content="컴퓨터에서 불러오기" HorizontalAlignment="Left" Height="40" Margin="75,110,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16"/>
+        <Button x:Name="LoadOnline" Content="온라인에서 불러오기" HorizontalAlignment="Left" Height="40" Margin="75,60,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16"/>
     </Grid>
 </Window>

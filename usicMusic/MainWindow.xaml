@@ -18,8 +18,6 @@
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
-                <PasswordBox x:Name="pwTextBox" Background="Transparent" HorizontalAlignment="Right" Height="91" Margin="0,0,463,244" VerticalAlignment="Bottom" Width="611" FontSize="60"/>
-
             </Border>
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
@@ -27,7 +25,7 @@
         <Image Name="btnMinimizeBack" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
         <Image Name="btnMinimize" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
         <Image x:Name="btnLetsFeel" HorizontalAlignment="Center" Margin="0,675,0,0" VerticalAlignment="Top" Source="Resource/Buttons/Let's Feel_btn.png" Width="300" Height="100" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
-        <TextBox x:Name="idTextBox" Background="Transparent" Margin="0,0,483,431" TextWrapping="Wrap" FontSize="60" Height="91" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="611"/>
-
+        <TextBox x:Name="idTextBox" Background="Transparent" Margin="0,0,515,445" TextWrapping="Wrap" FontSize="36" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="550" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <PasswordBox x:Name="pwTextBox" Background="Transparent" HorizontalAlignment="Right" Height="60" Margin="0,0,515,280" VerticalAlignment="Bottom" Width="550" FontSize="36" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>

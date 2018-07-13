@@ -1,17 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 
 namespace usicMusic
 {
@@ -20,7 +13,8 @@ namespace usicMusic
     /// </summary>
     public partial class LoadMusic : Window
     {
-        int musicNum;
+        private int musicNum;
+
         public LoadMusic(int musicNum)
         {
             InitializeComponent();
@@ -52,14 +46,10 @@ namespace usicMusic
                 MessageBox.Show(exception.Message);
             }
 
-
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
-
-
 
             convert.FileExist(tempFile); //있으면 삭제
             File.Move(destinationFile, tempFile); // 이름바꾸기 temp로 확장자는 아직 그대로
-
 
             convert.DeleteBeforeFile(destinationFile);
 
@@ -69,7 +59,6 @@ namespace usicMusic
             }
             else
             {
-                
                 if (notInExtension == "mp3")
                 {
                     convert.WavtoMp3();
@@ -91,8 +80,55 @@ namespace usicMusic
 
         private void LoadOnlie_Click(object sender, RoutedEventArgs e) //온라인에서 불러오기
         {
-
         }
 
+        public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
+        {
+            var fadeInAnimation = new DoubleAnimation(1d, fadeInTime);
+
+            if (image.Source != null)
+            {
+                var fadeOutAnimation = new DoubleAnimation(0d, fadeOutTime);
+
+                fadeOutAnimation.Completed += (o, e) =>
+                {
+                    image.Source = source;
+                    image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);
+                };
+
+                image.BeginAnimation(Image.OpacityProperty, fadeOutAnimation);
+            }
+            else
+            {
+                image.Opacity = 0d;
+                image.Source = source;
+                image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);
+            }
+        }
+
+        private void btnExit_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
+                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/ExitButtonHover.png")),
+                new TimeSpan(0), new TimeSpan(0, 0, 0, 0, 150));
+        }
+
+        private void btnExit_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
+                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/ExitButton.png")),
+                new TimeSpan(0, 0, 0, 0, 150), new TimeSpan(0));
+        }
+
+        private void btnExit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnExit.Source = (ImageSource)new ImageSourceConverter()
+                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/ExitButtonDown.png"));
+        }
+
+        private void btnExit_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Close();
+        }
     }
 }
