@@ -4,13 +4,14 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using usicMusic.Core;
 
 namespace usicMusic
 {
     public partial class LoopStation : Window
     {
         private LoopStationCode lsc = new LoopStationCode();
-        LoopThread lt = new LoopThread();
+        private LoopThread lt = new LoopThread();
 
         public LoopStation()
         {
@@ -39,7 +40,7 @@ namespace usicMusic
             {
                 var fadeOutAnimation = new DoubleAnimation(0d, fadeOutTime);
 
-                fadeOutAnimation.Completed += (o, e) => 
+                fadeOutAnimation.Completed += (o, e) =>
                 {
                     image.Source = source;
                     image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);

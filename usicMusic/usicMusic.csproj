@@ -67,25 +67,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Convert.cs" />
-    <Compile Include="HttpConnection.cs" />
-    <Compile Include="IsExist.cs" />
+    <Compile Include="Core\Converter.cs" />
+    <Compile Include="Connection\HttpConnection.cs" />
+    <Compile Include="Core\IsExist.cs" />
     <Compile Include="LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoopStation.xaml.cs">
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoopStationCode.cs" />
-    <Compile Include="LoopThread.cs" />
+    <Compile Include="Core\LoopStationCode.cs" />
+    <Compile Include="Core\LoopThread.cs" />
     <Compile Include="Recorder.xaml.cs">
       <DependentUpon>Recorder.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecordOrLoad.xaml.cs">
       <DependentUpon>RecordOrLoad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecordWithWaveIn.cs" />
-    <Compile Include="StartAndStopMusic.cs" />
+    <Compile Include="Core\RecordWithWaveIn.cs" />
+    <Compile Include="Core\StartAndStopMusic.cs" />
     <Page Include="LoadMusic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,7 +159,6 @@
     <Resource Include="Resource\Buttons\Let%27s Feel_btn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interface\" />
     <Folder Include="Resource\musicTemp\" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +185,10 @@
     <Resource Include="Resource\Buttons\c3_down.png" />
     <Resource Include="Resource\Buttons\c4_down.png" />
     <Resource Include="Resource\Buttons\c5_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\RecordButton.png" />
+    <Resource Include="Resource\Buttons\LoadButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

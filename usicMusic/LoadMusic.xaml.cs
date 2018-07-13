@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using usicMusic.Core;
 
 namespace usicMusic
 {
@@ -32,10 +33,10 @@ namespace usicMusic
             //MainWindow.FileExist(destinationFile);
             string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + musicNum + Path.GetExtension(destinationFile);
 
-            Convert convert = new Convert(tempFile);
+            Converter converter = new Converter(tempFile);
             try
             {
-                convert.FileExist(destinationFile);
+                converter.FileExist(destinationFile);
                 System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
             }
             catch (Exception exception)
@@ -45,10 +46,10 @@ namespace usicMusic
 
             string notInExtension = realFileName.Substring(realFileName.LastIndexOf(".") + 1); // 확장자가 저장됨 ex> txt, mp3...
 
-            convert.FileExist(tempFile); //있으면 삭제
+            converter.FileExist(tempFile); //있으면 삭제
             File.Move(destinationFile, tempFile); // 이름바꾸기 temp로 확장자는 아직 그대로
 
-            convert.DeleteBeforeFile(destinationFile);
+            converter.DeleteBeforeFile(destinationFile);
 
             if (notInExtension == "wav")
             {
@@ -58,13 +59,13 @@ namespace usicMusic
             {
                 if (notInExtension == "mp3")
                 {
-                    convert.WavtoMp3();
+                    converter.WavtoMp3();
                 }
                 else
                 {
                     MessageBox.Show("잘못된 확장자!");
                     //옮긴 파일 삭제해줘야됨
-                    convert.DeleteBeforeFile();
+                    converter.DeleteBeforeFile();
                     return;
                 }
             }

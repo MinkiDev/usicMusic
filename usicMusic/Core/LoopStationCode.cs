@@ -10,7 +10,7 @@ using System.Windows;
 
 // x누를때 노래 다 스탑 해야됨
 
-namespace usicMusic
+namespace usicMusic.Core
 {
     class LoopStationCode
     {

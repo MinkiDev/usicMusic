@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -69,21 +68,38 @@ namespace usicMusic
             InitializeComponent();
         }
 
-        private void btnRecord_Click(object sender, RoutedEventArgs e)
-        {
-            //Record.xaml 창 열기
-            var myWindow = Window.GetWindow(this);
-            myWindow.Close(); // 현재 창 닫기
-            Recorder rcer = new Recorder(musicNum);
-            rcer.Show();
-        }
-
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
             var myWindow = Window.GetWindow(this);
             myWindow.Close(); // 현재 창 닫기
             LoadMusic loadMusic = new LoadMusic(musicNum);
             loadMusic.Show();
+        }
+
+        private void btnRecord_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnRecord.Opacity = 0.8;
+        }
+
+        private void btnRecord_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnRecord.Opacity = 1;
+        }
+
+        private void btnRecord_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnRecord.Opacity = 0.5;
+        }
+
+        private void btnRecord_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnRecord.Opacity = 1;
+
+            //Record.xaml 창 열기
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close(); // 현재 창 닫기
+            Recorder rcer = new Recorder(musicNum);
+            rcer.Show();
         }
     }
 }

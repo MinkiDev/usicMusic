@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace usicMusic
+namespace usicMusic.Core
 {
     class RecordWithWaveIn
     {

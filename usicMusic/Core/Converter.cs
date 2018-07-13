@@ -3,14 +3,14 @@ using NLayer.NAudioSupport;
 using System;
 using System.IO;
 
-namespace usicMusic
+namespace usicMusic.Core
 {
-    internal class Convert
+    internal class Converter
     {
         private string InPath = "";
         private string OutPath = "";
 
-        public Convert(string InPath)
+        public Converter(string InPath)
         {
             this.InPath = InPath;
             OutPath = Path.GetDirectoryName(InPath) + "\\" + Path.GetFileNameWithoutExtension(InPath) + ".wav";

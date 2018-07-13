@@ -1,26 +1,23 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace usicMusic
+namespace usicMusic.Connection
 {
-    class HttpConnection
+    internal class HttpConnection
     {
         private string url = "http://10.80.162.221:3000";
         private string token = "";
+
         public bool HttpLogin(string json)
         {
             string loginUrl = url + "/api/auth/login";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(loginUrl); request.KeepAlive = false;
             request.ProtocolVersion = HttpVersion.Version10;
             request.Method = "POST";
-
 
             // turn our request string into a byte stream
             byte[] postBytes = Encoding.UTF8.GetBytes(json);
@@ -44,6 +41,7 @@ namespace usicMusic
                 {
                     result = rdr.ReadToEnd();
                 }
+                MessageBox.Show(result);
                 var jsonResult = JObject.Parse(result);
 
                 if (jsonResult["status"].ToString() == "200")
@@ -52,13 +50,11 @@ namespace usicMusic
                     return true;
                 }
                 return false;
-            } catch(Exception)
+            }
+            catch (Exception)
             {
                 return false;
             }
-            
-
-
         }
 
         /* {
@@ -66,7 +62,5 @@ namespace usicMusic
                 "message": "로그인 되었습니다",
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQ0NTVhZGJmOTMyNzA1OWMyZGZhNzEiLCJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTUzMTM3MDk1NiwiZXhwIjoxNTMxOTc1NzU2LCJpc3MiOiJ1c2ljbXVzaWMuY29tIiwic3ViIjoidXNlckluZm8ifQ.g37yazmQQbWj7EU0-A3PWCUcggq_DFitxYpaVvCv5tY"
     */
-
     }
 }
-

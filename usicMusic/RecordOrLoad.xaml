@@ -6,7 +6,7 @@
         ShowInTaskbar="False"
         xmlns:local="clr-namespace:usicMusic"
         mc:Ignorable="d"
-        Title="usicMusic" Width="400" Height="200"
+        Title="usicMusic" Width="650" Height="200"
         WindowStyle="None" ResizeMode="NoResize"
         AllowsTransparency="True" Background="Transparent"
         WindowStartupLocation="CenterScreen">
@@ -20,7 +20,11 @@
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
-        <Button x:Name="btnRecord" Content="녹음하기" HorizontalAlignment="Left" Height="40" Margin="75,60,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16" Click="btnRecord_Click" />
-        <Button x:Name="btnLoad" Content="불러오기" HorizontalAlignment="Left" Height="40" Margin="75,110,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16" Click="btnLoad_Click" />
+        <Image x:Name="btnRecord" Source="Resource/Buttons/RecordButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="125" Margin="75,41,0,0" Opacity="0.95" MouseEnter="btnRecord_MouseEnter" MouseLeave="btnRecord_MouseLeave" MouseLeftButtonDown="btnRecord_MouseLeftButtonDown" MouseLeftButtonUp="btnRecord_MouseLeftButtonUp" />
+        <Button x:Name="btnLoad" Content="" HorizontalAlignment="Left" Height="125" Margin="325,41,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Foreground="{x:Null}" FontSize="16" Click="btnLoad_Click" BorderBrush="{x:Null}" >
+            <Button.Background>
+                <ImageBrush ImageSource="Resource/Buttons/LoadButton.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
