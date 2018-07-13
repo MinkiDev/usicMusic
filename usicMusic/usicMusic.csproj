@@ -76,6 +76,7 @@
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoopStationCode.cs" />
+    <Compile Include="LoopThread.cs" />
     <Compile Include="Recorder.xaml.cs">
       <DependentUpon>Recorder.xaml</DependentUpon>
     </Compile>

@@ -32,15 +32,15 @@
         <Image x:Name="btnC4" HorizontalAlignment="Left" Height="142" Margin="980,425,0,0" VerticalAlignment="Top" Width="140" Source="Resource/Buttons/c4.png" MouseEnter="btnC4_MouseEnter" MouseLeave="btnC4_MouseLeave" MouseLeftButtonDown="btnC4_MouseLeftButtonDown" MouseLeftButtonUp="btnC4_MouseLeftButtonUp"/>
         <Image x:Name="btnC5" HorizontalAlignment="Left" Height="142" Margin="1230,425,0,0" VerticalAlignment="Top" Width="140" Source="Resource/Buttons/c5.png" MouseEnter="btnC5_MouseEnter" MouseLeave="btnC5_MouseLeave" MouseLeftButtonDown="btnC5_MouseLeftButtonDown" MouseLeftButtonUp="btnC5_MouseLeftButtonUp"/>
         <Label x:Name="loopDelayLabel_1" Content="" HorizontalAlignment="Left" Margin="277,597,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="loopDelayCheckBox_1" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="208,572,0,0" VerticalAlignment="Top" Width="92"/>
+        <CheckBox x:Name="loopDelayCheckBox_1" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="208,572,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_1_Checked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_1" HorizontalAlignment="Left" Margin="305,572,0,0" VerticalAlignment="Top" Width="70"/>
-        <CheckBox x:Name="loopDelayCheckBox_2" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="470,572,0,0" VerticalAlignment="Top" Width="92"/>
+        <CheckBox x:Name="loopDelayCheckBox_2" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="470,572,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_2_Checked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_2" HorizontalAlignment="Left" Margin="567,572,0,0" VerticalAlignment="Top" Width="70"/>
-        <CheckBox x:Name="loopDelayCheckBox_3" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="719,572,0,0" VerticalAlignment="Top" Width="92"/>
+        <CheckBox x:Name="loopDelayCheckBox_3" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="719,572,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_3_Checked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_3" HorizontalAlignment="Left" Margin="816,572,0,0" VerticalAlignment="Top" Width="70"/>
-        <CheckBox x:Name="loopDelayCheckBox_4" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="976,567,0,0" VerticalAlignment="Top" Width="92"/>
+        <CheckBox x:Name="loopDelayCheckBox_4" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="976,567,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_4_Checked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_4" HorizontalAlignment="Left" Margin="1073,567,0,0" VerticalAlignment="Top" Width="70"/>
-        <CheckBox x:Name="loopDelayCheckBox_5" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="1223,567,0,0" VerticalAlignment="Top" Width="92"/>
+        <CheckBox x:Name="loopDelayCheckBox_5" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="1223,567,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_5_Checked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_5" HorizontalAlignment="Left" Margin="1320,567,0,0" VerticalAlignment="Top" Width="70"/>
     </Grid>
 </Window>

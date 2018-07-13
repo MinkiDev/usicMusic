@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,16 +16,11 @@ namespace usicMusic
     {
         StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
         private bool[] isLoop = new bool[5];
-        private int[] loopSec = new int[5];
         RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
 
+
         public LoopStationCode()
-        {
-
-        }
-
-        public void Loop(object sender)
         {
 
         }

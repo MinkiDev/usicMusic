@@ -10,6 +10,7 @@ namespace usicMusic
     public partial class LoopStation : Window
     {
         private LoopStationCode lsc = new LoopStationCode();
+        LoopThread lt = new LoopThread();
 
         public LoopStation()
         {
@@ -17,11 +18,11 @@ namespace usicMusic
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
             for (int i = 1; i <= 10; i++)
             {
-                loopDelaySecSelectionBox_1.Items.Add(i.ToString());
-                loopDelaySecSelectionBox_2.Items.Add(i.ToString());
-                loopDelaySecSelectionBox_3.Items.Add(i.ToString());
-                loopDelaySecSelectionBox_4.Items.Add(i.ToString());
-                loopDelaySecSelectionBox_5.Items.Add(i.ToString());
+                loopDelaySecSelectionBox_1.Items.Add(i);
+                loopDelaySecSelectionBox_2.Items.Add(i);
+                loopDelaySecSelectionBox_3.Items.Add(i);
+                loopDelaySecSelectionBox_4.Items.Add(i);
+                loopDelaySecSelectionBox_5.Items.Add(i);
             }
             loopDelaySecSelectionBox_1.SelectedIndex = 0;
             loopDelaySecSelectionBox_2.SelectedIndex = 0;
@@ -234,16 +235,55 @@ namespace usicMusic
             lsc.BtnStartClick();
         }
 
-        private void loopDelayBox_1_TextChanged(object sender, TextChangedEventArgs e)
+        private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
         {
-            //for (int i = 0; i < e.Source.ToString().ToCharArray().Length-1; i++)
-            //{
-            //    var tmpChar = e.Source.ToString().ToCharArray()[i];
-            //    if (!(tmpChar >= 48 && tmpChar <= 57))
-            //    {
-            //        e
-            //    }
-            //}
+            lt.LoopStart(1, Int32.Parse(loopDelaySecSelectionBox_1.Text));
+            MessageBox.Show(loopDelaySecSelectionBox_1.Text);
+        }
+
+        private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStart(2, Int32.Parse(loopDelaySecSelectionBox_2.Text));
+        }
+
+        private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStart(3, Int32.Parse(loopDelaySecSelectionBox_3.Text));
+        }
+
+        private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStart(4, Int32.Parse(loopDelaySecSelectionBox_4.Text));
+        }
+
+        private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStart(5, Int32.Parse(loopDelaySecSelectionBox_5.Text));
+        }
+
+        private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStop(1);
+        }
+
+        private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStop(2);
+        }
+
+        private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStop(3);
+        }
+
+        private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStop(4);
+        }
+
+        private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lt.LoopStop(5);
         }
     }
 }

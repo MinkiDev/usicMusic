@@ -20,11 +20,6 @@ namespace usicMusic
             OutputDevice = new WaveOutEvent();
         }
 
-        public void IsLoop(string str) //반복재생?
-        {
-
-        }
-
         public void MusicStop()
         {
             OutputDevice.Stop();
