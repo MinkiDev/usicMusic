@@ -41,7 +41,6 @@ namespace usicMusic.Connection
                 {
                     result = rdr.ReadToEnd();
                 }
-                MessageBox.Show(result);
                 var jsonResult = JObject.Parse(result);
 
                 if (jsonResult["status"].ToString() == "200")
@@ -56,11 +55,5 @@ namespace usicMusic.Connection
                 return false;
             }
         }
-
-        /* {
-                "status": 200,
-                "message": "로그인 되었습니다",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQ0NTVhZGJmOTMyNzA1OWMyZGZhNzEiLCJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTUzMTM3MDk1NiwiZXhwIjoxNTMxOTc1NzU2LCJpc3MiOiJ1c2ljbXVzaWMuY29tIiwic3ViIjoidXNlckluZm8ifQ.g37yazmQQbWj7EU0-A3PWCUcggq_DFitxYpaVvCv5tY"
-    */
     }
 }
