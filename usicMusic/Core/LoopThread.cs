@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace usicMusic.Core
 {
@@ -21,10 +22,6 @@ namespace usicMusic.Core
             loop[2] = new Thread(new ThreadStart(MusicLoop2));
             loop[3] = new Thread(new ThreadStart(MusicLoop3));
             loop[4] = new Thread(new ThreadStart(MusicLoop4));
-            startMusic[1] = new StartAndStopMusic(2);
-            startMusic[2] = new StartAndStopMusic(3);
-            startMusic[3] = new StartAndStopMusic(4);
-            startMusic[4] = new StartAndStopMusic(5);
         }
 
         public void LoopStart(int loopNum, int delaySec)
