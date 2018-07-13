@@ -70,31 +70,31 @@
     <Compile Include="Core\Converter.cs" />
     <Compile Include="Connection\HttpConnection.cs" />
     <Compile Include="Core\IsExist.cs" />
-    <Compile Include="LoadMusic.xaml.cs">
+    <Compile Include="View\LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoopStation.xaml.cs">
+    <Compile Include="View\LoopStation.xaml.cs">
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\LoopStationCode.cs" />
     <Compile Include="Core\LoopThread.cs" />
-    <Compile Include="Recorder.xaml.cs">
+    <Compile Include="View\Recorder.xaml.cs">
       <DependentUpon>Recorder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecordOrLoad.xaml.cs">
+    <Compile Include="View\RecordOrLoad.xaml.cs">
       <DependentUpon>RecordOrLoad.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\RecordWithWaveIn.cs" />
     <Compile Include="Core\StartAndStopMusic.cs" />
-    <Page Include="LoadMusic.xaml">
+    <Page Include="View\LoadMusic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoopStation.xaml">
+    <Page Include="View\LoopStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -102,15 +102,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Recorder.xaml">
+    <Page Include="View\Recorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RecordOrLoad.xaml">
+    <Page Include="View\RecordOrLoad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

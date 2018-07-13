@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using usicMusic.Connection;
 
-namespace usicMusic
+namespace usicMusic.View
 {
     public partial class MainWindow : Window
     {

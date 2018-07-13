@@ -1,43 +1,36 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
+using usicMusic.View;
 
 // x누를때 노래 다 스탑 해야됨
 
 namespace usicMusic.Core
 {
-    class LoopStationCode
+    internal class LoopStationCode
     {
-        StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
+        private StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
         private bool[] isLoop = new bool[5];
-        RecordWithWaveIn wave = new RecordWithWaveIn();
+        private RecordWithWaveIn wave = new RecordWithWaveIn();
         private Boolean state = false;
-
 
         public LoopStationCode()
         {
-
         }
 
         public void BtnNumClick(int musicNum)
         {
             if (!state)
             {
-                Button(musicNum+1); //파일은 1부터니까
+                Button(musicNum + 1); //파일은 1부터니까
             }
             else
             {
-                if(startMusic[musicNum] != null)
+                if (startMusic[musicNum] != null)
                 {
                     Stop(musicNum);
                 }
-                startMusic[musicNum] = new StartAndStopMusic(musicNum+1);
+                startMusic[musicNum] = new StartAndStopMusic(musicNum + 1);
                 startMusic[musicNum].MusicStart();
             }
         }
@@ -82,7 +75,7 @@ namespace usicMusic.Core
 
         private void Stop(int i)
         {
-            if(startMusic[i] != null)
+            if (startMusic[i] != null)
             {
                 startMusic[i].MusicStop();
                 return;

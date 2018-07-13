@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using usicMusic.Core;
 
-namespace usicMusic
+namespace usicMusic.View
 {
     public partial class LoadMusic : Window
     {

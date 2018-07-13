@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\MINKIJU\Source\Repos\usicMusic\usicMusic\App.xaml
-51068850924
+5-300363168
 
-161004471233
+16-978253390
 18-537466539
-LoadMusic.xaml;LoopStation.xaml;MainWindow.xaml;Recorder.xaml;RecordOrLoad.xaml;
+View\LoadMusic.xaml;View\LoopStation.xaml;View\MainWindow.xaml;View\Recorder.xaml;View\RecordOrLoad.xaml;
 
 False
 
