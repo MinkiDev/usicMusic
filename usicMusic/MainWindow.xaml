@@ -11,13 +11,15 @@
         WindowStartupLocation="CenterScreen">
     <Grid DataContext="{Binding ElementName=root}">
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
-            <Border BorderBrush="Transparent" CornerRadius="10" Margin="20">
+            <Border BorderBrush="Transparent" CornerRadius="10" Margin="20" RenderTransformOrigin="0.5,0.5">
                 <Border.Background>
                     <ImageBrush ImageSource="Resource/intro.png" />
                 </Border.Background>
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
+                <PasswordBox x:Name="pwTextBox" Background="Transparent" HorizontalAlignment="Right" Height="91" Margin="0,0,463,244" VerticalAlignment="Bottom" Width="611" FontSize="60"/>
+
             </Border>
         </Border>
         <Image x:Name="btnExitBack" Source="Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
@@ -25,5 +27,7 @@
         <Image Name="btnMinimizeBack" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
         <Image Name="btnMinimize" Source="Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
         <Image x:Name="btnLetsFeel" HorizontalAlignment="Center" Margin="0,675,0,0" VerticalAlignment="Top" Source="Resource/Buttons/Let's Feel_btn.png" Width="300" Height="100" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
+        <TextBox x:Name="idTextBox" Background="Transparent" Margin="0,0,483,431" TextWrapping="Wrap" FontSize="60" Height="91" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="611"/>
+
     </Grid>
 </Window>

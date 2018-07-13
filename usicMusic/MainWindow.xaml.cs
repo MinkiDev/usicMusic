@@ -108,22 +108,22 @@ namespace usicMusic
         {
             btnLetsFeel.Opacity = 1;
 
-            LoopStation ls = new LoopStation();
-            ls.Show();
-            //HttpConnection http = new HttpConnection();
-            //string username = idTextBox.Text;
-            //string password = pwTextBox.Password;
-            //var json = new JObject();
-            //json.Add("username", username);
-            //json.Add("password", password);
-            //if (http.HttpLogin(json.ToString()))
-            //{
-            //    MessageBox.Show(username + "님 환영합니다!");
-            //    LoopStation ls = new LoopStation();
-            //    ls.ShowDialog();
-            //}
-            //MessageBox.Show("로그인에 실패하였습니다.");
-            //return;
+            HttpConnection http = new HttpConnection();
+            string username = idTextBox.Text;
+            string password = pwTextBox.Password;
+            var json = new JObject();
+            json.Add("username", username);
+            json.Add("password", password);
+            pwTextBox.Password = "";
+            if (http.HttpLogin(json.ToString()))
+            {
+                MessageBox.Show(username + "님 환영합니다!");
+                LoopStation ls = new LoopStation();
+                ls.ShowDialog();
+                return;
+            }
+            MessageBox.Show("로그인에 실패하였습니다.");
+            return;
         }
     }
 }
