@@ -1,27 +1,22 @@
 ﻿using NAudio.Wave;
 using NLayer.NAudioSupport;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace usicMusic
 {
-    class Convert
+    internal class Convert
     {
-        string InPath = "";
-        string OutPath = "";
+        private string InPath = "";
+        private string OutPath = "";
+
         public Convert(string InPath)
         {
             this.InPath = InPath;
             OutPath = Path.GetDirectoryName(InPath) + "\\" + Path.GetFileNameWithoutExtension(InPath) + ".wav";
             // Path.GetDirectoryName(filepath) 경로만 갖고오는거 + "\" + Path.GetFileNameWithoutExtension(filepath) 파일명만 갖고옴 + ".wav"
         }
-        
+
         public void WavtoMp3()
         {
             FileExist();

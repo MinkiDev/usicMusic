@@ -72,7 +72,7 @@ namespace usicMusic
 
         private void btnExit_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
+            Close();
         }
 
         private Boolean isStart = true;
