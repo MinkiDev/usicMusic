@@ -47,7 +47,6 @@ namespace usicMusic.Core
                     return null;
                 }
                 state = !state;
-                wave.StartRecord(6);
                 return "stop";
             }
             else
