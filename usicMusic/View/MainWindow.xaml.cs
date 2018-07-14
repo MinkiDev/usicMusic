@@ -122,6 +122,7 @@ namespace usicMusic.View
 
         private bool DoLogin()
         {
+            /* 이건 완료됐을때 풀면되는 주석 (로그인 귀찮아ㅠㅠㅠ)
             HttpConnection http = new HttpConnection();
             string username = idTextBox.Text;
             string password = pwTextBox.Password;
@@ -138,6 +139,13 @@ namespace usicMusic.View
             }
             MessageBox.Show("로그인에 실패하였습니다.");
             return false;
+            */
+
+            // -----------------------
+            LoopStation ls = new LoopStation();
+            ls.ShowDialog();
+            return true;
+            // ---------------------- 임시 코드
         }
     }
 }
