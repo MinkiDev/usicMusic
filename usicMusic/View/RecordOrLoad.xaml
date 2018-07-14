@@ -21,10 +21,6 @@
         <Image x:Name="btnExitBack" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Image x:Name="btnRecord" Source="/Resource/Buttons/RecordButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="125" Margin="75,41,0,0" Opacity="0.95" MouseEnter="btnRecord_MouseEnter" MouseLeave="btnRecord_MouseLeave" MouseLeftButtonDown="btnRecord_MouseLeftButtonDown" MouseLeftButtonUp="btnRecord_MouseLeftButtonUp" />
-        <Button x:Name="btnLoad" Content="" HorizontalAlignment="Left" Height="125" Margin="325,41,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Foreground="{x:Null}" FontSize="16" BorderBrush="{x:Null}" MouseEnter="btnLoad_MouseEnter" MouseLeave="btnLoad_MouseLeave" MouseLeftButtonDown="btnLoad_MouseLeftButtonDown" MouseLeftButtonUp="btnLoad_MouseLeftButtonUp" >
-            <Button.Background>
-                <ImageBrush ImageSource="/Resource/Buttons/LoadButton.png"/>
-            </Button.Background>
-        </Button>
+        <Image x:Name="btnLoad" Source="/Resource/Buttons/LoadButton.png" HorizontalAlignment="Left" Height="125" Margin="325,41,0,0" VerticalAlignment="Top" Width="250" MouseEnter="btnLoad_MouseEnter" MouseLeave="btnLoad_MouseLeave" MouseLeftButtonDown="btnLoad_MouseLeftButtonDown" MouseLeftButtonUp="btnLoad_MouseLeftButtonUp" />
     </Grid>
 </Window>
