@@ -13,27 +13,46 @@ namespace usicMusic.Core
         Thread[] loop = new Thread[5];
         int[] delaySec = new int[5];
         StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
-        bool[] flag = new bool[5];
 
         public LoopThread()
         {
-            loop[0] = new Thread(new ThreadStart(MusicLoop0));
-            loop[1] = new Thread(new ThreadStart(MusicLoop1));
-            loop[2] = new Thread(new ThreadStart(MusicLoop2));
-            loop[3] = new Thread(new ThreadStart(MusicLoop3));
-            loop[4] = new Thread(new ThreadStart(MusicLoop4));
+            //loop[0] = new Thread(new ThreadStart(MusicLoop0));
+            //loop[1] = new Thread(new ThreadStart(MusicLoop1));
+            //loop[2] = new Thread(new ThreadStart(MusicLoop2));
+            //loop[3] = new Thread(new ThreadStart(MusicLoop3));
+            //loop[4] = new Thread(new ThreadStart(MusicLoop4));
         }
 
         public void LoopStart(int loopNum, int delaySec)
         {
+            if (loopNum == 1)
+            {
+                loop[0] = new Thread(new ThreadStart(MusicLoop0));
+            }
+            else if (loopNum == 2)
+            {
+                loop[1] = new Thread(new ThreadStart(MusicLoop1));
+            }
+            else if (loopNum == 3)
+            {
+                loop[2] = new Thread(new ThreadStart(MusicLoop2));
+            }
+            else if (loopNum == 4)
+            {
+                loop[3] = new Thread(new ThreadStart(MusicLoop3));
+            }
+            else if (loopNum == 5)
+            {
+                loop[4] = new Thread(new ThreadStart(MusicLoop4));
+            }
             this.delaySec[loopNum - 1] = delaySec;
             loop[loopNum - 1].Start();
-            flag[loopNum - 1] = true;
         }
 
         public void LoopStop(int loopNum)
         {
-            flag[loopNum - 1] = false;
+            startMusic[loopNum -1].MusicStop();
+            loop[loopNum - 1].Abort();
         }
 
         private void MusicLoop0()
@@ -42,12 +61,8 @@ namespace usicMusic.Core
             {
                 startMusic[0] = new StartAndStopMusic(1);
                 startMusic[0].MusicStart();
-                Thread.Sleep(delaySec[0] * 1000);
+                Thread.Sleep(delaySec[0] * 100);
                 startMusic[0].MusicStop();
-                if(!flag[0])
-                {
-                    return;
-                }
             }
         }
 
@@ -57,14 +72,8 @@ namespace usicMusic.Core
             {
                 startMusic[1] = new StartAndStopMusic(2);
                 startMusic[1].MusicStart();
-                Console.WriteLine("hi");
-                Thread.Sleep(delaySec[1] * 1000);
-                Console.WriteLine("bi");
+                Thread.Sleep(delaySec[1] * 100);
                 startMusic[1].MusicStop();
-                if (!flag[1])
-                {
-                    break;
-                }
             }
         }
 
@@ -74,12 +83,8 @@ namespace usicMusic.Core
             {
                 startMusic[2] = new StartAndStopMusic(3);
                 startMusic[2].MusicStart();
-                Thread.Sleep(delaySec[2] * 1000);
+                Thread.Sleep(delaySec[2] * 100);
                 startMusic[2].MusicStop();
-                if (!flag[2])
-                {
-                    return;
-                }
             }
         }
 
@@ -89,12 +94,8 @@ namespace usicMusic.Core
             {
                 startMusic[3] = new StartAndStopMusic(4);
                 startMusic[3].MusicStart();
-                Thread.Sleep(delaySec[3] * 1000);
+                Thread.Sleep(delaySec[3] * 100);
                 startMusic[3].MusicStop();
-                if (!flag[3])
-                {
-                    return;
-                }
             }
         }
 
@@ -104,12 +105,8 @@ namespace usicMusic.Core
             {
                 startMusic[4] = new StartAndStopMusic(5);
                 startMusic[4].MusicStart();
-                Thread.Sleep(delaySec[4] * 1000);
+                Thread.Sleep(delaySec[4] * 100);
                 startMusic[4].MusicStop();
-                if (!flag[4])
-                {
-                    return;
-                }
             }
         }
 
