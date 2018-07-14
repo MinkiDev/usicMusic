@@ -69,14 +69,6 @@ namespace usicMusic.View
             InitializeComponent();
         }
 
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
-        {
-            var myWindow = Window.GetWindow(this);
-            myWindow.Close(); // 현재 창 닫기
-            LoadMusic loadMusic = new LoadMusic(musicNum);
-            loadMusic.Show();
-        }
-
         private void btnRecord_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             btnRecord.Opacity = 0.8;
@@ -101,6 +93,31 @@ namespace usicMusic.View
             myWindow.Close(); // 현재 창 닫기
             Recorder rcer = new Recorder(musicNum);
             rcer.Show();
+        }
+
+        private void btnLoad_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnLoad.Opacity = 0.8;
+        }
+
+        private void btnLoad_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnLoad.Opacity = 1;
+        }
+
+        private void btnLoad_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnLoad.Opacity = 0.5;
+        }
+
+        private void btnLoad_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            btnLoad.Opacity = 1;
+
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close(); // 현재 창 닫기
+            LoadMusic loadMusic = new LoadMusic(musicNum);
+            loadMusic.Show();
         }
     }
 }
