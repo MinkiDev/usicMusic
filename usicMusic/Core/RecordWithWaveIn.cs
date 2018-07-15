@@ -35,10 +35,9 @@ namespace usicMusic.Core
 
             waveSource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
             waveSource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
-            string path = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\temp";
+            Directory.CreateDirectory(Path.GetTempPath() + "musicTemp");
+            string savePath = Path.GetTempPath() + "musicTemp/temp" + musicNum + ".wav";
 
-            string savePath =  @path + musicNum + ".wav";
-            MessageBox.Show("path\n" + savePath);
             FileExist(savePath);
             waveFile = new WaveFileWriter(savePath, waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
             waveSource.StartRecording();

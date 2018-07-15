@@ -1,5 +1,6 @@
 ﻿using NAudio.Wave;
 using System;
+using System.IO;
 
 namespace usicMusic.Core
 {
@@ -10,7 +11,7 @@ namespace usicMusic.Core
 
         public StartAndStopMusic(int musicNum)
         {
-            string path = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\temp";
+            string path = Path.GetTempPath() + "musicTemp/temp";
             AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }

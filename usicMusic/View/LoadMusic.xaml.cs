@@ -26,10 +26,9 @@ namespace usicMusic.View
             ofd.InitialDirectory = "C:\\";
             ofd.ShowDialog();
             string loadFile = ofd.FileName;
-
-            string sourceFile = @loadFile;
+            
             string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
-            string destinationFile = Environment.CurrentDirectory + @"\..\..\Resource\musicTemp\" + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
+            string destinationFile = Path.GetTempPath() + "musicTemp/" + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 
             //MainWindow.FileExist(destinationFile);
             string tempFile = Path.GetDirectoryName(destinationFile) + "\\temp" + musicNum + Path.GetExtension(destinationFile);
@@ -38,7 +37,7 @@ namespace usicMusic.View
             try
             {
                 converter.FileExist(destinationFile);
-                System.IO.File.Copy(sourceFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
+                System.IO.File.Copy(loadFile, destinationFile); // sourceFile -> destinationFile로 copy&paste
             }
             catch (Exception exception)
             {
@@ -131,7 +130,5 @@ namespace usicMusic.View
         {
             Close();
         }
-
-
     }
 }

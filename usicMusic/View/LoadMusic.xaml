@@ -20,7 +20,7 @@
         </Border>
         <Image x:Name="btnExitBack" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
-        <Button x:Name="LoadComputer" Content="컴퓨터에서 불러오기" HorizontalAlignment="Left" Height="40" Margin="75,110,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16"/>
+        <Button x:Name="LoadComputer" Content="컴퓨터에서 불러오기" HorizontalAlignment="Left" Height="40" Margin="75,110,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16" Click="LoadComputer_Click"/>
         <Button x:Name="LoadOnline" Content="온라인에서 불러오기" HorizontalAlignment="Left" Height="40" Margin="75,60,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" Background="{x:Null}" Foreground="#FF00AEFF" FontSize="16" Click="LoadOnline_Click"/>
     </Grid>
 </Window>

@@ -176,9 +176,7 @@
   <ItemGroup>
     <Resource Include="Resource\Buttons\Let%27s Feel_btn.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resource\musicTemp\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resource\intro.png" />
   </ItemGroup>

@@ -51,6 +51,7 @@ namespace usicMusic.Core
 
         public void LoopStop(int loopNum)
         {
+            // 여기뭐지/
             startMusic[loopNum -1].MusicStop();
             loop[loopNum - 1].Abort();
         }

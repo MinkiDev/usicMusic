@@ -235,27 +235,114 @@ namespace usicMusic.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            lsc.BtnStartClick();
+            if ((string)startAndStopButton.Content == "stop")
+            {
+                loopDelayCheckBox_1.IsChecked = false;
+                loopDelayCheckBox_2.IsChecked = false;
+                loopDelayCheckBox_3.IsChecked = false;
+                loopDelayCheckBox_4.IsChecked = false;
+                loopDelayCheckBox_5.IsChecked = false;
+            }
+            string btnContent = lsc.BtnStartClick();
+            startAndStopButton.Content = btnContent;
+
         }
 
-        private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e) => lt.LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
+        private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
+        {
+            if((string)startAndStopButton.Content == "start") //맨처음에 여기 들어감
+            {
+                loopDelayCheckBox_1.IsChecked = false;
+                return;
+            }
+            lt.LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
+        }
 
-        private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e) => lt.LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
+        private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                loopDelayCheckBox_2.IsChecked = false;
+                return;
+            }
+            lt.LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
+        }
 
-        private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e) => lt.LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
+        private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                loopDelayCheckBox_3.IsChecked = false;
+                return;
+            }
+            lt.LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
+        }
 
-        private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e) => lt.LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
+        private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                loopDelayCheckBox_4.IsChecked = false;
+                return;
+            }
+            lt.LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
+        }
 
-        private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e) => lt.LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
+        private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                loopDelayCheckBox_5.IsChecked = false;
+                return;
+            }
+            lt.LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
+        }
 
-        private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e) => lt.LoopStop(1);
+        private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                MessageBox.Show("aaaa");
+                return;
+            }
+            MessageBox.Show("bb");
+            lt.LoopStop(1);
+        }
 
-        private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e) => lt.LoopStop(2);
+        private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                return;
+            }
+            lt.LoopStop(2);
+        }
 
-        private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e) => lt.LoopStop(3);
+        private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                return;
+            }
+            lt.LoopStop(3);
+        }
 
-        private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e) => lt.LoopStop(4);
+        private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                return;
+            }
+            lt.LoopStop(4);
+        }
 
-        private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e) => lt.LoopStop(5);
+        private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((string)startAndStopButton.Content == "start")
+            {
+                return;
+            }
+            lt.LoopStop(5);
+        }
     }
 }
