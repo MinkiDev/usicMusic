@@ -69,11 +69,6 @@ namespace usicMusic.View
                     return;
                 }
             }
-
-            //만약 .wav 가 아니라면 변경
-            /*
-                https://github.com/naudio/NAudio/blob/master/Docs/ConvertMp3ToWav.md
-             */
         }
 
         private void LoadOnline_Click(object sender, RoutedEventArgs e)

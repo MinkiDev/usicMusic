@@ -9,7 +9,7 @@
         WindowStyle="None" ResizeMode="NoResize"
         AllowsTransparency="True" Background="Transparent"
         WindowStartupLocation="CenterScreen">
-    <Grid DataContext="{Binding ElementName=root}">
+    <Grid x:Name="AppGrid" DataContext="{Binding ElementName=root}">
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
             <Border BorderBrush="Transparent" CornerRadius="10" Margin="20">
                 <Border.Background>
@@ -42,5 +42,6 @@
         <ComboBox x:Name="loopDelaySecSelectionBox_4" HorizontalAlignment="Left" Margin="1073,567,0,0" VerticalAlignment="Top" Width="70"/>
         <CheckBox x:Name="loopDelayCheckBox_5" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="1223,567,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_5_Checked" Unchecked="loopDelayCheckBox_5_Unchecked"/>
         <ComboBox x:Name="loopDelaySecSelectionBox_5" HorizontalAlignment="Left" Margin="1320,567,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="testButton" Content="Button" HorizontalAlignment="Left" Height="111" Margin="138,745,0,0" VerticalAlignment="Top" Width="356" Click="testButton_Click"/>
     </Grid>
 </Window>

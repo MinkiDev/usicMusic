@@ -18,9 +18,9 @@ namespace usicMusic.View
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
             int i = 0;
-            while (i<=100)
+            while (i <= 100)
             {
-                loopDelaySecSelectionBox_1.Items.Add((double)i/10);
+                loopDelaySecSelectionBox_1.Items.Add((double)i / 10);
                 loopDelaySecSelectionBox_2.Items.Add((double)i / 10);
                 loopDelaySecSelectionBox_3.Items.Add((double)i / 10);
                 loopDelaySecSelectionBox_4.Items.Add((double)i / 10);
@@ -126,9 +126,6 @@ namespace usicMusic.View
         private void btnC1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC1.Opacity = 1;
-            ChangeSource(btnC1, (ImageSource)new ImageSourceConverter()
-               .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c1_down.png")),
-               new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
             lsc.BtnNumClick(0); // 0부터시작이니까
         }
@@ -151,9 +148,6 @@ namespace usicMusic.View
         private void btnC2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC2.Opacity = 1;
-            ChangeSource(btnC2, (ImageSource)new ImageSourceConverter()
-               .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c2_down.png")),
-               new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
             lsc.BtnNumClick(1); // 0부터시작이니까
         }
@@ -176,9 +170,6 @@ namespace usicMusic.View
         private void btnC3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC3.Opacity = 1;
-            ChangeSource(btnC3, (ImageSource)new ImageSourceConverter()
-               .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c3_down.png")),
-               new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
             lsc.BtnNumClick(2); // 0부터시작이니까
         }
@@ -201,9 +192,6 @@ namespace usicMusic.View
         private void btnC4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC4.Opacity = 1;
-            ChangeSource(btnC4, (ImageSource)new ImageSourceConverter()
-               .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c4_down.png")),
-               new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
             lsc.BtnNumClick(3); // 0부터시작이니까
         }
@@ -226,9 +214,6 @@ namespace usicMusic.View
         private void btnC5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC5.Opacity = 1;
-            ChangeSource(btnC5, (ImageSource)new ImageSourceConverter()
-               .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/c5_down.png")),
-               new TimeSpan(0, 0, 0, 0, 100), new TimeSpan(0, 0, 0, 0, 100));
 
             lsc.BtnNumClick(4); // 0부터시작이니까
         }
@@ -245,12 +230,11 @@ namespace usicMusic.View
             }
             string btnContent = lsc.BtnStartClick();
             startAndStopButton.Content = btnContent;
-
         }
 
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
         {
-            if((string)startAndStopButton.Content == "start") //맨처음에 여기 들어감
+            if ((string)startAndStopButton.Content == "start") //맨처음에 여기 들어감
             {
                 loopDelayCheckBox_1.IsChecked = false;
                 return;
@@ -302,10 +286,10 @@ namespace usicMusic.View
         {
             if ((string)startAndStopButton.Content == "start")
             {
-                MessageBox.Show("aaaa");
+                System.Windows.MessageBox.Show("aaaa");
                 return;
             }
-            MessageBox.Show("bb");
+            System.Windows.MessageBox.Show("bb");
             lt.LoopStop(1);
         }
 
@@ -343,6 +327,14 @@ namespace usicMusic.View
                 return;
             }
             lt.LoopStop(5);
+        }
+
+        private void testButton_Click(object sender, RoutedEventArgs e)
+        {
+            TranslateTransform transform = new TranslateTransform();
+            transform.X = 100;
+            transform.Y = 100;
+            testButton.RenderTransform = transform;
         }
     }
 }
