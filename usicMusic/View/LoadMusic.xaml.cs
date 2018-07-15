@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using usicMusic.Connection;
 using usicMusic.Core;
 
 namespace usicMusic.View
@@ -76,8 +77,10 @@ namespace usicMusic.View
              */
         }
 
-        private void LoadOnlie_Click(object sender, RoutedEventArgs e) //온라인에서 불러오기
+        private void LoadOnline_Click(object sender, RoutedEventArgs e)
         {
+            HttpConnection http = new HttpConnection();
+            http.getMusicList(musicNum);
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -128,5 +131,7 @@ namespace usicMusic.View
         {
             Close();
         }
+
+
     }
 }

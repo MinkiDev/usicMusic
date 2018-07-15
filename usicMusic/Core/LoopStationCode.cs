@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
-using NAudio.Wave;
 using System;
-using System.Threading;
+using System.IO;
 using System.Windows;
 using usicMusic.View;
 
@@ -39,7 +38,7 @@ namespace usicMusic.Core
 
         public string BtnStartClick()
         {
-            LoopbackRecorder lr = new LoopbackRecorder();
+            LoopbackRecorder recorder = new LoopbackRecorder();
             if (!state) //false일때
             {
                 IsExist Exist = new IsExist();
@@ -50,13 +49,13 @@ namespace usicMusic.Core
                     return null;
                 }
                 MessageBox.Show("aa");
-                lr.StartCapture();
+                recorder.StartRecording(Path.GetTempPath() + "um_export_tmp.wav");
                 state = !state;
                 return "stop";
             }
             else
             {
-                lr.StopCapture();
+                recorder.StopRecording();
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.FileName = DateTime.Now.ToShortDateString() + " "
                     + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
@@ -64,7 +63,7 @@ namespace usicMusic.Core
                 sfd.ShowDialog();
                 string savePath = sfd.FileName;
 
-                // 여기서 경로 바꾸고 이름 변경 해야됨.
+                File.Move(Path.GetTempPath() + "um_export_tmp.wav", savePath);
 
                 state = !state;
                 return "start";

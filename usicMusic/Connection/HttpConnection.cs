@@ -1,9 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Windows;
+using System.Xml;
+using usicMusic.View;
 
 namespace usicMusic.Connection
 {
@@ -18,7 +24,6 @@ namespace usicMusic.Connection
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(loginUrl); request.KeepAlive = false;
             request.ProtocolVersion = HttpVersion.Version10;
             request.Method = "POST";
-
             // turn our request string into a byte stream
             byte[] postBytes = Encoding.UTF8.GetBytes(json);
 
@@ -54,6 +59,42 @@ namespace usicMusic.Connection
             {
                 return false;
             }
+        }
+
+        public void getMusicList(int musicNum)
+        {
+            var client = new RestClient(url + @"/api/music");
+            // client.Authenticator = new HttpBasicAuthenticator(username, password);
+
+            var request = new RestRequest(Method.GET);
+
+            request.AddHeader("x-access-token", token);
+
+            // execute the request
+            IRestResponse response = client.Execute(request);
+            var content = response.Content; // raw content as string
+
+            // or automatically deserialize result
+            // return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+            IRestResponse response2 = client.Execute(request);
+
+            MusicList ml = new MusicList(response2.Content, musicNum);
+            ml.Show();
+
+            //var name = response2.Data.Name;
+
+            //// easy async support
+            //client.ExecuteAsync(request, response => {
+            //    Console.WriteLine(response.Content);
+            //});
+
+            //// async with deserialization
+            //var asyncHandle = client.ExecuteAsync<Person>(request, response => {
+            //    Console.WriteLine(response.Data.Name);
+            //});
+
+            //// abort the request on demand
+            //asyncHandle.Abort();
         }
     }
 }

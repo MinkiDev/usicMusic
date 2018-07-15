@@ -1,0 +1,23 @@
+﻿<Window x:Class="usicMusic.View.MusicList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:usicMusic.View"
+        mc:Ignorable="d"
+        Title="MusicList" Height="450" Width="800">
+    <Grid>
+        <ListView x:Name="musicListView" HorizontalAlignment="Center" Height="400" VerticalAlignment="Top" Width="800">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="title" Width="250" DisplayMemberBinding="{Binding title}"/>
+                    <GridViewColumn Header="music" Width="200" DisplayMemberBinding="{Binding music}"/>
+                    <GridViewColumn Header="rate" Width="40" DisplayMemberBinding="{Binding rate}"/>
+                    <GridViewColumn Header="date" Width="250" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="선택" Width="52" DisplayMemberBinding="{Binding bnt}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
