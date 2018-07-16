@@ -19,6 +19,17 @@ namespace usicMusic.Core
         public void MusicStop()
         {
             OutputDevice.Stop();
+            if (OutputDevice != null)
+            {
+                OutputDevice.Dispose();
+                OutputDevice = null;
+            }
+
+            if (AudioFile != null)
+            {
+                AudioFile.Dispose();
+                AudioFile = null;
+            }
         }
 
         public void MusicStart()

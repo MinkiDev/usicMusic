@@ -96,5 +96,10 @@ namespace usicMusic.Connection
             //// abort the request on demand
             //asyncHandle.Abort();
         }
+
+        public void UploadFile(string path)
+        {
+
+        }
     }
 }

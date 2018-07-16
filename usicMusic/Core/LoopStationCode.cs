@@ -50,7 +50,7 @@ namespace usicMusic.Core
                 }
                 recorder.StartRecording(Path.GetTempPath() + "um_export_tmp.wav");
                 state = !state;
-                return "stop";
+                return "STOP";
             }
             else
             {
@@ -62,10 +62,14 @@ namespace usicMusic.Core
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
                 string savePath = sfd.FileName;
+                //if (File.Exists()
+                //{
+                //    File.Delete()
+                //}
                 File.Move(Path.GetTempPath() + "um_export_tmp.wav", savePath);
                 File.Delete(Path.GetTempPath() + "um_export_tmp.wav");
                 state = !state;
-                return "start";
+                return "START";
             }
         }
 

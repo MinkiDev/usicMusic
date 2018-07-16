@@ -177,7 +177,9 @@
   <ItemGroup>
     <Resource Include="Resource\Buttons\Let%27s Feel_btn.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\express.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\intro.png" />
   </ItemGroup>

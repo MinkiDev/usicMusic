@@ -119,7 +119,7 @@ namespace usicMusic.View
                 DoLogin();
             }
         }
-
+        //string username = idTextBox.Text;
         private bool DoLogin()
         {
             /* 이건 완료됐을때 풀면되는 주석 (로그인 귀찮아ㅠㅠㅠ)
@@ -143,9 +143,27 @@ namespace usicMusic.View
 
             // -----------------------
             LoopStation ls = new LoopStation();
-            ls.ShowDialog();
+            try
+            {
+                ls.ShowDialog();
+            } catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             return true;
             // ---------------------- 임시 코드
         }
+
+        //private void GO(bool isLogin)
+        //{
+        //    if (isLogin)
+        //    {
+        //        MessageBox.Show(username + "님 환영합니다!");
+        //        LoopStation ls = new LoopStation();
+        //        ls.ShowDialog();
+        //    }
+        //    MessageBox.Show("로그인에 실패하였습니다.");
+        //}
     }
 }

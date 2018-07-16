@@ -16,6 +16,7 @@ namespace usicMusic.View
         public LoopStation()
         {
             InitializeComponent();
+            //FormLoad();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
             int i = 0;
             while (i <= 100)
@@ -126,8 +127,6 @@ namespace usicMusic.View
         private void btnC1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC1.Opacity = 1;
-
-            lsc.BtnNumClick(0); // 0부터시작이니까
         }
 
         private void btnC2_MouseEnter(object sender, MouseEventArgs e)
@@ -148,8 +147,6 @@ namespace usicMusic.View
         private void btnC2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC2.Opacity = 1;
-
-            lsc.BtnNumClick(1); // 0부터시작이니까
         }
 
         private void btnC3_MouseEnter(object sender, MouseEventArgs e)
@@ -170,8 +167,6 @@ namespace usicMusic.View
         private void btnC3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC3.Opacity = 1;
-
-            lsc.BtnNumClick(2); // 0부터시작이니까
         }
 
         private void btnC4_MouseEnter(object sender, MouseEventArgs e)
@@ -192,8 +187,6 @@ namespace usicMusic.View
         private void btnC4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC4.Opacity = 1;
-
-            lsc.BtnNumClick(3); // 0부터시작이니까
         }
 
         private void btnC5_MouseEnter(object sender, MouseEventArgs e)
@@ -214,13 +207,11 @@ namespace usicMusic.View
         private void btnC5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC5.Opacity = 1;
-
-            lsc.BtnNumClick(4); // 0부터시작이니까
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "stop")
+            if ((string)startAndStopButton.Content == "STOP")
             {
                 loopDelayCheckBox_1.IsChecked = false;
                 loopDelayCheckBox_2.IsChecked = false;
@@ -234,7 +225,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start") //맨처음에 여기 들어감
+            if ((string)startAndStopButton.Content == "START") //맨처음에 여기 들어감
             {
                 loopDelayCheckBox_1.IsChecked = false;
                 return;
@@ -244,7 +235,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
+            if ((string)startAndStopButton.Content == "START")
             {
                 loopDelayCheckBox_2.IsChecked = false;
                 return;
@@ -254,7 +245,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
+            if ((string)startAndStopButton.Content == "START")
             {
                 loopDelayCheckBox_3.IsChecked = false;
                 return;
@@ -264,7 +255,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
+            if ((string)startAndStopButton.Content == "START")
             {
                 loopDelayCheckBox_4.IsChecked = false;
                 return;
@@ -274,7 +265,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
+            if ((string)startAndStopButton.Content == "START")
             {
                 loopDelayCheckBox_5.IsChecked = false;
                 return;
@@ -284,57 +275,87 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
-            {
-                System.Windows.MessageBox.Show("aaaa");
-                return;
-            }
-            System.Windows.MessageBox.Show("bb");
             lt.LoopStop(1);
         }
 
         private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
-            {
-                return;
-            }
             lt.LoopStop(2);
         }
 
         private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
-            {
-                return;
-            }
             lt.LoopStop(3);
         }
 
         private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
-            {
-                return;
-            }
             lt.LoopStop(4);
         }
 
         private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "start")
-            {
-                return;
-            }
             lt.LoopStop(5);
         }
-
-        private void testButton_Click(object sender, RoutedEventArgs e)
+        private void bar1_Click(object sender, RoutedEventArgs e)
         {
-            TranslateTransform transform = new TranslateTransform();
-            transform.X = 100;
-            transform.Y = 100;
-            testButton.RenderTransform = transform;
+            var relCurPos = Mouse.GetPosition(Application.Current.MainWindow);
+            Thickness btnMargin = new Thickness(relCurPos.X - 20, 552, 0, 0);
+
+            if (btnMargin.Left < 285)
+            {
+                btnMargin.Left = 285;
+            }
+            if (btnMargin.Left > 1375)
+            {
+                btnMargin.Left = 1375;
+            }
+
+            Button newBtn = new Button();
+            newBtn.Width = 60;
+            newBtn.Height = 50;
+            newBtn.Name = "DynamicButton";
+            newBtn.Content = "Nyaa";
+            newBtn.HorizontalAlignment = HorizontalAlignment.Left;
+            newBtn.VerticalAlignment = VerticalAlignment.Top;
+            newBtn.Background = Brushes.Fuchsia;
+            newBtn.Margin = btnMargin;
+
+            newBtn.MouseMove += NewBtn_MouseMove;
+
+            AppGrid.Children.Add(newBtn);
+        }
+
+        private void NewBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.GetPosition(this);
+            double pX = position.X;
+            double pY = position.Y;
+        }
+
+        private void btnC1_TouchUp(object sender, TouchEventArgs e)
+        {
+            lsc.BtnNumClick(0); // 0부터시작이니까
+        }
+
+        private void btnC2_TouchUp(object sender, TouchEventArgs e)
+        {
+            lsc.BtnNumClick(1); // 0부터시작이니까
+        }
+
+        private void btnC3_TouchUp(object sender, TouchEventArgs e)
+        {
+            lsc.BtnNumClick(2); // 0부터시작이니까
+        }
+
+        private void btnC4_TouchUp(object sender, TouchEventArgs e)
+        {
+            lsc.BtnNumClick(3); // 0부터시작이니까
+        }
+
+        private void btnC5_TouchUp(object sender, TouchEventArgs e)
+        {
+            lsc.BtnNumClick(4); // 0부터시작이니까
         }
     }
 }

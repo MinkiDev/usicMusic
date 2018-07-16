@@ -24,7 +24,7 @@ namespace usicMusic.Core
         {
             if (File.Exists(FilePath))  
             {
-                File.Delete(FilePath);
+                //File.Delete(FilePath);
             }
         }
 

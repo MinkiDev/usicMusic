@@ -22,8 +22,8 @@
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Button x:Name="startOrStop" Content="start" HorizontalAlignment="Left" Height="32" Margin="405,95,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click" />
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="32" Margin="50,95,0,0" VerticalAlignment="Top" Width="350" />
-        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="16" Margin="50,79,0,0" VerticalAlignment="Top" Width="409" Background="{x:Null}" Foreground="Red" BorderBrush="{x:Null}" />
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="32" Margin="50,95,0,0" VerticalAlignment="Top" Width="350" Background="{x:Null}" Foreground="Red" BorderBrush="{x:Null}" />
         <Label Content="Label" HorizontalAlignment="Left" Height="0" Margin="463,36,0,0" VerticalAlignment="Top" Width="65" />
-        <Label HorizontalContentAlignment="Right" x:Name="textbox" Content="00.00% peak" HorizontalAlignment="Left" Height="26" Margin="358,69,0,0" VerticalAlignment="Top" Width="101" />
+        <Label HorizontalContentAlignment="Right" x:Name="textbox" Content="00.00%" HorizontalAlignment="Left" Height="26" Margin="358,69,0,0" VerticalAlignment="Top" Width="101" />
     </Grid>
 </Window>
