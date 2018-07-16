@@ -12,11 +12,12 @@ namespace usicMusic.View
     {
         private LoopStationCode lsc = new LoopStationCode();
         private LoopThread lt = new LoopThread();
+        globalKeyboardHook gkh = new globalKeyboardHook();
 
         public LoopStation()
         {
             InitializeComponent();
-            //FormLoad();
+            FormLoad();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
             int i = 0;
             while (i <= 100)
@@ -33,6 +34,22 @@ namespace usicMusic.View
             loopDelaySecSelectionBox_3.SelectedIndex = 0;
             loopDelaySecSelectionBox_4.SelectedIndex = 0;
             loopDelaySecSelectionBox_5.SelectedIndex = 0;
+        }
+
+        private void FormLoad()
+        {
+            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D1);
+            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D2);
+            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D3);
+            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D4);
+            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D5);
+            gkh.KeyUp += new System.Windows.Forms.KeyEventHandler(gkh_KeyUp);
+        }
+
+        void gkh_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            System.Windows.MessageBox.Show(e.KeyCode.ToString());
+            e.Handled = true;
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)

@@ -80,6 +80,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\Converter.cs" />
     <Compile Include="Connection\HttpConnection.cs" />
+    <Compile Include="Core\globalKeyboardHook.cs" />
     <Compile Include="Core\IsExist.cs" />
     <Compile Include="Core\WaveRecorder.cs" />
     <Compile Include="View\LoadMusic.xaml.cs">
