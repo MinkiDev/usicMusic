@@ -146,7 +146,7 @@ namespace usicMusic.View
             try
             {
                 ls.ShowDialog();
-            } catch (Exception e)
+            } catch (NullReferenceException e)
             {
                 MessageBox.Show(e.Message);
             }

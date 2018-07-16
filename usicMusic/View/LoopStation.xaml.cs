@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMUtils.KeyboardHook;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,12 +13,13 @@ namespace usicMusic.View
     {
         private LoopStationCode lsc = new LoopStationCode();
         private LoopThread lt = new LoopThread();
-        globalKeyboardHook gkh = new globalKeyboardHook();
-
+        Hook KeyboardHook = new Hook("Global Action Hook");
         public LoopStation()
         {
             InitializeComponent();
-            FormLoad();
+            
+            KeyboardHook.KeyUpEvent += KeyUp;
+            //KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
             int i = 0;
             while (i <= 100)
@@ -36,20 +38,41 @@ namespace usicMusic.View
             loopDelaySecSelectionBox_5.SelectedIndex = 0;
         }
 
-        private void FormLoad()
+        private void KListener_KeyUp(object sender, RawKeyEventArgs args)
         {
-            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D1);
-            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D2);
-            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D3);
-            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D4);
-            gkh.HookedKeys.Add(System.Windows.Forms.Keys.D5);
-            gkh.KeyUp += new System.Windows.Forms.KeyEventHandler(gkh_KeyUp);
+            Console.WriteLine(args.Key.ToString());
         }
 
-        void gkh_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        // Also: KeyboardHook.KeyUpEvent += KeyUp;
+
+        private new void KeyUp(KeyboardHookEventArgs e)
         {
-            System.Windows.MessageBox.Show(e.KeyCode.ToString());
-            e.Handled = true;
+            // handle keydown event here
+            // Such as by checking if e (KeyboardHookEventArgs) matches the key you're interested in
+
+            if (e.Key == System.Windows.Forms.Keys.D1)
+            {
+                lsc.BtnNumClick(0);
+            }
+            else if (e.Key == System.Windows.Forms.Keys.D2)
+            {
+                lsc.BtnNumClick(1);
+            }
+            else if (e.Key == System.Windows.Forms.Keys.D3)
+            {
+                lsc.BtnNumClick(2);
+            }
+            else if (e.Key == System.Windows.Forms.Keys.D4)
+            {
+                lsc.BtnNumClick(3);
+            }
+            else if (e.Key == System.Windows.Forms.Keys.D5)
+            {
+                lsc.BtnNumClick(4);
+            }
+            KeyboardHook.isPaused = true;
+            KeyboardHook.isPaused = false;
+
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -144,6 +167,7 @@ namespace usicMusic.View
         private void btnC1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC1.Opacity = 1;
+            lsc.BtnNumClick(0);
         }
 
         private void btnC2_MouseEnter(object sender, MouseEventArgs e)
@@ -164,6 +188,7 @@ namespace usicMusic.View
         private void btnC2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC2.Opacity = 1;
+            lsc.BtnNumClick(1);
         }
 
         private void btnC3_MouseEnter(object sender, MouseEventArgs e)
@@ -184,6 +209,7 @@ namespace usicMusic.View
         private void btnC3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC3.Opacity = 1;
+            lsc.BtnNumClick(2);
         }
 
         private void btnC4_MouseEnter(object sender, MouseEventArgs e)
@@ -204,6 +230,7 @@ namespace usicMusic.View
         private void btnC4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC4.Opacity = 1;
+            lsc.BtnNumClick(3);
         }
 
         private void btnC5_MouseEnter(object sender, MouseEventArgs e)
@@ -224,6 +251,7 @@ namespace usicMusic.View
         private void btnC5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC5.Opacity = 1;
+            lsc.BtnNumClick(4);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -238,6 +266,7 @@ namespace usicMusic.View
             }
             string btnContent = lsc.BtnStartClick();
             startAndStopButton.Content = btnContent;
+            StartNavCursor();
         }
 
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
@@ -314,65 +343,167 @@ namespace usicMusic.View
         {
             lt.LoopStop(5);
         }
-        private void bar1_Click(object sender, RoutedEventArgs e)
-        {
-            var relCurPos = Mouse.GetPosition(Application.Current.MainWindow);
-            Thickness btnMargin = new Thickness(relCurPos.X - 20, 552, 0, 0);
 
-            if (btnMargin.Left < 285)
+        private DoubleAnimation AnimateCursor = new DoubleAnimation();
+        private Storyboard CursorAnimation = new Storyboard();
+
+        public void StartNavCursor()
+        {
+            AnimateCursor.From = 0;
+            AnimateCursor.To = 1150;
+            AnimateCursor.Duration =
+                new Duration(TimeSpan.FromSeconds(30));
+            AnimateCursor.RepeatBehavior = RepeatBehavior.Forever;
+
+            Storyboard.SetTargetName(AnimateCursor, "timeCurLine");
+            Storyboard.SetTargetProperty(AnimateCursor,
+                new PropertyPath(Canvas.LeftProperty));
+
+            CursorAnimation.Children.Add(AnimateCursor);
+
+            CursorAnimation.Begin(timeCurLine);
+        }
+
+        private void AddBeat(int line, int time_ms)
+        {
+            switch (line)
             {
-                btnMargin.Left = 285;
+                case 1:
+                    {
+                        Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 552, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 0.0385 * time_ms,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        AppGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
+
+                case 2:
+                    {
+                        Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 608, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 0.0385 * time_ms,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        AppGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
+
+                case 3:
+                    {
+                        Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 664, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 0.0385 * time_ms,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        AppGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
+
+                case 4:
+                    {
+                        Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 720, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 0.0385 * time_ms,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        AppGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
+
+                case 5:
+                    {
+                        Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 775, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 0.0385 * time_ms,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        AppGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
             }
-            if (btnMargin.Left > 1375)
-            {
-                btnMargin.Left = 1375;
-            }
-
-            Button newBtn = new Button();
-            newBtn.Width = 60;
-            newBtn.Height = 50;
-            newBtn.Name = "DynamicButton";
-            newBtn.Content = "Nyaa";
-            newBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            newBtn.VerticalAlignment = VerticalAlignment.Top;
-            newBtn.Background = Brushes.Fuchsia;
-            newBtn.Margin = btnMargin;
-
-            newBtn.MouseMove += NewBtn_MouseMove;
-
-            AppGrid.Children.Add(newBtn);
         }
 
-        private void NewBtn_MouseMove(object sender, MouseEventArgs e)
+        private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            Point position = e.GetPosition(this);
-            double pX = position.X;
-            double pY = position.Y;
+            AddBeat(1, 200);
         }
 
-        private void btnC1_TouchUp(object sender, TouchEventArgs e)
-        {
-            lsc.BtnNumClick(0); // 0부터시작이니까
-        }
+        //private void btnC1_TouchUp(object sender, TouchEventArgs e)
+        //{
+        //    MessageBox.Show("aaa");
+        //    lsc.BtnNumClick(0); // 0부터시작이니까
+        //}
 
-        private void btnC2_TouchUp(object sender, TouchEventArgs e)
-        {
-            lsc.BtnNumClick(1); // 0부터시작이니까
-        }
+        //private void btnC2_TouchUp(object sender, TouchEventArgs e)
+        //{
+        //    lsc.BtnNumClick(1); // 0부터시작이니까
+        //}
 
-        private void btnC3_TouchUp(object sender, TouchEventArgs e)
-        {
-            lsc.BtnNumClick(2); // 0부터시작이니까
-        }
+        //private void btnC3_TouchUp(object sender, TouchEventArgs e)
+        //{
+        //    lsc.BtnNumClick(2); // 0부터시작이니까
+        //}
 
-        private void btnC4_TouchUp(object sender, TouchEventArgs e)
-        {
-            lsc.BtnNumClick(3); // 0부터시작이니까
-        }
+        //private void btnC4_TouchUp(object sender, TouchEventArgs e)
+        //{
+        //    lsc.BtnNumClick(3); // 0부터시작이니까
+        //}
 
-        private void btnC5_TouchUp(object sender, TouchEventArgs e)
-        {
-            lsc.BtnNumClick(4); // 0부터시작이니까
-        }
+        //private void btnC5_TouchUp(object sender, TouchEventArgs e)
+        //{
+        //    lsc.BtnNumClick(4); // 0부터시작이니까
+        //}
     }
 }

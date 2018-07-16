@@ -43,7 +43,7 @@ namespace usicMusic.Core
             {
                 IsExist Exist = new IsExist();
                 string isExists = Exist.FiveExists();
-                if (isExists != null) // 파일개수가 5개가 아니면.
+                if (!string.IsNullOrEmpty(isExists)) // 파일개수가 5개가 아니면.
                 {
                     MessageBox.Show(isExists);
                     return null;

@@ -37,6 +37,9 @@
     <Reference Include="CSCore, Version=1.2.1.2, Culture=neutral, PublicKeyToken=5a08f2b6f4415dea, processorArchitecture=MSIL">
       <HintPath>..\packages\CSCore.1.2.1.2\lib\net35-client\CSCore.dll</HintPath>
     </Reference>
+    <Reference Include="FMUtils.KeyboardHook, Version=1.0.140.2145, Culture=neutral, PublicKeyToken=1acd76c568cde84e, processorArchitecture=MSIL">
+      <HintPath>..\packages\FMUtils.KeyboardHook.1.0.140.2145\lib\net40-Client\FMUtils.KeyboardHook.dll</HintPath>
+    </Reference>
     <Reference Include="LoopbackRecorder">
       <HintPath>C:\Users\MINKIJU\Desktop\LoopbackRecorder.dll</HintPath>
     </Reference>
@@ -80,8 +83,8 @@
     </ApplicationDefinition>
     <Compile Include="Core\Converter.cs" />
     <Compile Include="Connection\HttpConnection.cs" />
-    <Compile Include="Core\globalKeyboardHook.cs" />
     <Compile Include="Core\IsExist.cs" />
+    <Compile Include="Core\KeyboardListener.cs" />
     <Compile Include="Core\WaveRecorder.cs" />
     <Compile Include="View\LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
