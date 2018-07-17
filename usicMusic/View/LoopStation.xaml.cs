@@ -1,5 +1,8 @@
 ﻿using FMUtils.KeyboardHook;
 using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,11 +15,21 @@ namespace usicMusic.View
     public partial class LoopStation : Window
     {
         private LoopStationCode loopStationCode = new LoopStationCode();
-        private LoopThread loopThread = new LoopThread();
         private Hook KeyboardHook = new Hook("Global Action Hook");
+        private bool[] isCheckedBool = new bool[5] { true, true, true, true, true };
 
         private DoubleAnimation AnimateCursor = new DoubleAnimation();
         private Storyboard CursorAnimation = new Storyboard();
+        private Thread[] loop = new Thread[5];
+        private int[] delaySec = new int[5];
+        private int[] musicSec = new int[5];
+        private StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
+
+        private List<int> line1 = new List<int>();
+        private List<int> line2 = new List<int>();
+        private List<int> line3 = new List<int>();
+        private List<int> line4 = new List<int>();
+        private List<int> line5 = new List<int>();
 
         public LoopStation()
         {
@@ -43,14 +56,43 @@ namespace usicMusic.View
 
             AnimateCursor.From = 0;
             AnimateCursor.To = 1150;
-            AnimateCursor.Duration =
-                new Duration(TimeSpan.FromSeconds(30));
+            AnimateCursor.Duration = new Duration(TimeSpan.FromSeconds(20));
 
             Storyboard.SetTargetName(AnimateCursor, "timeCurLine");
             Storyboard.SetTargetProperty(AnimateCursor,
                 new PropertyPath(Canvas.LeftProperty));
 
             CursorAnimation.Children.Add(AnimateCursor);
+            CursorAnimation.Completed += CursorAnimation_Completed;
+        }
+
+        private void CursorAnimation_Completed(object sender, EventArgs e)
+        {
+            StopNavCursor();
+
+            Label[] labels = { timelabel_0, timelabel_1, timelabel_2, timelabel_3, timelabel_4 };
+
+            foreach (var label in labels)
+            {
+                TimeSpan ts = new TimeSpan(0, Int32.Parse(label.Content.ToString().Split(':')[0])
+                    , Int32.Parse(label.Content.ToString().Split(':')[1])) + new TimeSpan(0, 0, 20);
+                label.Content = ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+            }
+
+            StartNavCursor();
+
+            if (!(line5.Count.Equals(0)))
+            {
+                if (line5[0] > 0)
+                {
+                    AddBeat(5);
+                    line5[0]--;
+                }
+                else
+                {
+                    line5.RemoveAt(0);
+                }
+            }
         }
 
         private void KListener_KeyUp(object sender, RawKeyEventArgs args)
@@ -108,23 +150,28 @@ namespace usicMusic.View
             { //이쪽 변경해야됨 (ctrl + 숫자)
                 if (e.Key == System.Windows.Forms.Keys.D1)
                 {
-                    loopDelayCheckBox_1.IsChecked = true;
+                    loopDelayCheckBox_1.IsChecked = isCheckedBool[0];
+                    isCheckedBool[0] = !isCheckedBool[0];
                 }
                 else if (e.Key == System.Windows.Forms.Keys.D2)
                 {
-                    loopDelayCheckBox_2.IsChecked = true;
+                    loopDelayCheckBox_2.IsChecked = isCheckedBool[1];
+                    isCheckedBool[1] = !isCheckedBool[1];
                 }
                 else if (e.Key == System.Windows.Forms.Keys.D3)
                 {
-                    loopDelayCheckBox_3.IsChecked = true;
+                    loopDelayCheckBox_3.IsChecked = isCheckedBool[2];
+                    isCheckedBool[2] = !isCheckedBool[2];
                 }
                 else if (e.Key == System.Windows.Forms.Keys.D4)
                 {
-                    loopDelayCheckBox_4.IsChecked = true;
+                    loopDelayCheckBox_4.IsChecked = isCheckedBool[3];
+                    isCheckedBool[3] = !isCheckedBool[3];
                 }
                 else if (e.Key == System.Windows.Forms.Keys.D5)
                 {
-                    loopDelayCheckBox_5.IsChecked = true;
+                    loopDelayCheckBox_5.IsChecked = isCheckedBool[4];
+                    isCheckedBool[4] = !isCheckedBool[4];
                 }
             }
             KeyboardHook.isPaused = true;
@@ -155,6 +202,8 @@ namespace usicMusic.View
             }
         }
 
+        #region 창 종료 버튼(x)
+
         private void btnExit_MouseEnter(object sender, MouseEventArgs e)
         {
             ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
@@ -180,6 +229,10 @@ namespace usicMusic.View
             Close();
         }
 
+        #endregion 창 종료 버튼(x)
+
+        #region 최소화버튼
+
         private void btnMinimize_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             ChangeSource(btnMinimize, (ImageSource)new ImageSourceConverter()
@@ -204,6 +257,8 @@ namespace usicMusic.View
         {
             WindowState = WindowState.Minimized;
         }
+
+        #endregion 최소화버튼
 
         private void btnC1_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -325,6 +380,46 @@ namespace usicMusic.View
             }
         }
 
+        #region 쓰레드
+        public void MusicLoop(int musicNum)
+        {
+            while (true)
+            {
+                startMusic[musicNum] = new StartAndStopMusic(musicNum + 1);
+                startMusic[musicNum].MusicStart();
+                Dispatcher.Invoke(() =>
+                {
+                    AddBeat(musicNum + 1, musicSec[musicNum]);
+                });
+                Thread.Sleep(delaySec[musicNum] * 100);
+                startMusic[musicNum].MusicStop();
+            }
+        }
+
+        public void LoopStart(int loopNum, int delaySec)
+        {
+            //loop[0] = new Thread(new ThreadStart(MusicLoop0));
+            Task.Factory.StartNew(() =>
+            {
+                MusicLoop(loopNum - 1);
+            });
+            this.delaySec[loopNum - 1] = delaySec;
+            //loop[loopNum - 1].Start();
+        }
+
+        public void LoopStop(int loopNum)
+        {
+            // 여기뭐지/
+            //startMusic[loopNum - 1].MusicStop();
+            if (loop[loopNum - 1].IsAlive)
+            {
+                loop[loopNum - 1].Abort();
+            }
+            startMusic[loopNum - 1].MusicStop();
+        }
+
+        #endregion 쓰레드
+
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
         {
             if ((string)startAndStopLabel.Content == "START") //맨처음에 여기 들어감
@@ -332,7 +427,8 @@ namespace usicMusic.View
                 loopDelayCheckBox_1.IsChecked = false;
                 return;
             }
-            loopThread.LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
+            //여기 쓰레드
+            LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
             //이족
         }
 
@@ -343,7 +439,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_2.IsChecked = false;
                 return;
             }
-            loopThread.LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
+            LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
         }
 
         private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
@@ -353,7 +449,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_3.IsChecked = false;
                 return;
             }
-            loopThread.LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
+            LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
         }
 
         private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
@@ -363,7 +459,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_4.IsChecked = false;
                 return;
             }
-            loopThread.LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
+            LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
         }
 
         private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
@@ -373,14 +469,15 @@ namespace usicMusic.View
                 loopDelayCheckBox_5.IsChecked = false;
                 return;
             }
-            loopThread.LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
+            LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
         }
 
         private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
         {
             if ((string)startAndStopLabel.Content == "STOP")
             {
-                loopThread.LoopStop(1);
+                MessageBox.Show("a");
+                LoopStop(1);
             }
         }
 
@@ -388,7 +485,7 @@ namespace usicMusic.View
         {
             if ((string)startAndStopLabel.Content == "STOP")
             {
-                loopThread.LoopStop(2);
+                LoopStop(2);
             }
         }
 
@@ -396,7 +493,7 @@ namespace usicMusic.View
         {
             if ((string)startAndStopLabel.Content == "STOP")
             {
-                loopThread.LoopStop(3);
+                LoopStop(3);
             }
         }
 
@@ -404,7 +501,7 @@ namespace usicMusic.View
         {
             if ((string)startAndStopLabel.Content == "STOP")
             {
-                loopThread.LoopStop(4);
+                LoopStop(4);
             }
         }
 
@@ -412,17 +509,45 @@ namespace usicMusic.View
         {
             if ((string)startAndStopLabel.Content == "STOP")
             {
-                loopThread.LoopStop(5);
+                LoopStop(5);
             }
         }
-
-        private UserControl uc;
 
         public void StartNavCursor() => CursorAnimation.Begin(timeCurLine, true);
 
         public void StopNavCursor()
         {
             CursorAnimation.Stop(timeCurLine);
+            timelineGrid.Children.Clear();
+        }
+
+        #region AddBeat
+
+        private void AddBeat(int line)
+        {
+            switch (line)
+            {
+                case 5:
+                    {
+                        Thickness btnMargin = new Thickness(200, 552, 0, 0);
+
+                        Button currentBeat = new Button
+                        {
+                            Width = 1400,
+                            Height = 50,
+                            Name = "DynamicButton",
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Foreground = Brushes.White,
+                            Background = Brushes.DarkCyan,
+                            Margin = btnMargin
+                        };
+
+                        timelineGrid.Children.Add(currentBeat);
+
+                        break;
+                    }
+            }
         }
 
         private void AddBeat(int line, int time_ms)
@@ -435,7 +560,7 @@ namespace usicMusic.View
 
                         Button currentBeat = new Button
                         {
-                            Width = 0.0385 * time_ms,
+                            Width = 0.05775 * time_ms,
                             Height = 50,
                             Name = "DynamicButton",
                             HorizontalAlignment = HorizontalAlignment.Left,
@@ -445,7 +570,7 @@ namespace usicMusic.View
                             Margin = btnMargin
                         };
 
-                        AppGrid.Children.Add(currentBeat);
+                        timelineGrid.Children.Add(currentBeat);
 
                         break;
                     }
@@ -456,7 +581,7 @@ namespace usicMusic.View
 
                         Button currentBeat = new Button
                         {
-                            Width = 0.0385 * time_ms,
+                            Width = 0.05775 * time_ms,
                             Height = 50,
                             Name = "DynamicButton",
                             HorizontalAlignment = HorizontalAlignment.Left,
@@ -466,7 +591,7 @@ namespace usicMusic.View
                             Margin = btnMargin
                         };
 
-                        AppGrid.Children.Add(currentBeat);
+                        timelineGrid.Children.Add(currentBeat);
 
                         break;
                     }
@@ -477,7 +602,7 @@ namespace usicMusic.View
 
                         Button currentBeat = new Button
                         {
-                            Width = 0.0385 * time_ms,
+                            Width = 0.05775 * time_ms,
                             Height = 50,
                             Name = "DynamicButton",
                             HorizontalAlignment = HorizontalAlignment.Left,
@@ -487,7 +612,7 @@ namespace usicMusic.View
                             Margin = btnMargin
                         };
 
-                        AppGrid.Children.Add(currentBeat);
+                        timelineGrid.Children.Add(currentBeat);
 
                         break;
                     }
@@ -498,7 +623,7 @@ namespace usicMusic.View
 
                         Button currentBeat = new Button
                         {
-                            Width = 0.0385 * time_ms,
+                            Width = 0.05775 * time_ms,
                             Height = 50,
                             Name = "DynamicButton",
                             HorizontalAlignment = HorizontalAlignment.Left,
@@ -508,7 +633,7 @@ namespace usicMusic.View
                             Margin = btnMargin
                         };
 
-                        AppGrid.Children.Add(currentBeat);
+                        timelineGrid.Children.Add(currentBeat);
 
                         break;
                     }
@@ -519,7 +644,7 @@ namespace usicMusic.View
 
                         Button currentBeat = new Button
                         {
-                            Width = 0.0385 * time_ms,
+                            Width = 0.05775 * time_ms,
                             Height = 50,
                             Name = "DynamicButton",
                             HorizontalAlignment = HorizontalAlignment.Left,
@@ -529,12 +654,20 @@ namespace usicMusic.View
                             Margin = btnMargin
                         };
 
-                        AppGrid.Children.Add(currentBeat);
+                        if ((btnMargin.Left + Width) > 1440)
+                        {
+                            line5.Add((int)currentBeat.Width / 1440);
+                            currentBeat.Width = 1440 - btnMargin.Left;
+                        }
+
+                        timelineGrid.Children.Add(currentBeat);
 
                         break;
                     }
             }
         }
+
+        #endregion AddBeat
 
         private void startAndStopButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -563,7 +696,6 @@ namespace usicMusic.View
                 loopDelayCheckBox_4.IsChecked = false;
                 loopDelayCheckBox_5.IsChecked = false;
                 StopNavCursor();
-                //여기서 이미지 초기화
             }
             else
             {
@@ -572,6 +704,13 @@ namespace usicMusic.View
             string btnContent = loopStationCode.BtnStartClick();
             if (btnContent != null)
             {
+                StartAndStopMusic startAndStopMusic = new StartAndStopMusic();
+                musicSec[0] = startAndStopMusic.GetMusicSec(1);
+                musicSec[1] = startAndStopMusic.GetMusicSec(2);
+                musicSec[2] = startAndStopMusic.GetMusicSec(3);
+                musicSec[3] = startAndStopMusic.GetMusicSec(4);
+                musicSec[4] = startAndStopMusic.GetMusicSec(5);
+                MessageBox.Show(delaySec[0].ToString() + "\n" + delaySec[1].ToString() + "\n" + delaySec[2].ToString() + "\n" + delaySec[3].ToString() + "\n" + delaySec[4].ToString() );
                 startAndStopLabel.Content = btnContent;
             }
             if ((string)startAndStopLabel.Content == "START")
@@ -580,9 +719,7 @@ namespace usicMusic.View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-        }
+        #region 터치 구현기능(현재 주석처리)
 
         //private void btnC1_TouchUp(object sender, TouchEventArgs e)
         //{
@@ -608,5 +745,7 @@ namespace usicMusic.View
         //{
         //    lsc.BtnNumClick(4); // 0부터시작이니까
         //}
+
+        #endregion 터치 구현기능(현재 주석처리)
     }
 }

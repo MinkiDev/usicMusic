@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Windows;
 
 namespace usicMusic.Core
 {
@@ -40,14 +41,20 @@ namespace usicMusic.Core
                 loop[4] = new Thread(new ThreadStart(MusicLoop4));
             }
             this.delaySec[loopNum - 1] = delaySec;
+            MessageBox.Show((loopNum-1).ToString());
             loop[loopNum - 1].Start();
         }
 
         public void LoopStop(int loopNum)
         {
             // 여기뭐지/
-            startMusic[loopNum - 1].MusicStop();
-            loop[loopNum - 1].Abort();
+            //startMusic[loopNum - 1].MusicStop();
+            if(loop[loopNum - 1].IsAlive)
+            {
+                MessageBox.Show("b");
+                loop[loopNum - 1].Abort();
+            }
+            //startMusic[loopNum - 1].MusicStop();
         }
 
         private void MusicLoop0()

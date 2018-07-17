@@ -110,6 +110,17 @@ namespace usicMusic.View
             DoLogin();
         }
 
+        #region 아이디창에서 엔터치면 로그인
+        private void idTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                DoLogin();
+            }
+        }
+        #endregion
+
+        #region 비밀번호창에서 엔터치면 로그인
         private void pwTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -117,10 +128,12 @@ namespace usicMusic.View
                 DoLogin();
             }
         }
+        #endregion
 
         //string username = idTextBox.Text;
         private bool DoLogin()
         {
+            #region 로그인코드(현재 사용 x)
             /* 이건 완료됐을때 풀면되는 주석 (로그인 귀찮아ㅠㅠㅠ)
             HttpConnection http = new HttpConnection();
             string username = idTextBox.Text;
@@ -139,8 +152,10 @@ namespace usicMusic.View
             MessageBox.Show("로그인에 실패하였습니다.");
             return false;
             */
+            #endregion
 
-            // -----------------------
+            #region 임시코드
+
             LoopStation ls = new LoopStation();
             try
             {
@@ -152,16 +167,10 @@ namespace usicMusic.View
             }
 
             return true;
-            // ---------------------- 임시 코드
+            #endregion
         }
 
-        private void idTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                DoLogin();
-            }
-        }
+
 
         //private void GO(bool isLogin)
         //{

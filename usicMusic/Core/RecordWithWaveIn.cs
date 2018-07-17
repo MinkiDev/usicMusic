@@ -18,6 +18,10 @@ namespace usicMusic.Core
         {
             if (File.Exists(FilePath))
             {
+                if (waveSource != null)
+                {
+                    waveSource.Dispose();
+                }
                 File.Delete(FilePath);
             }
         }
@@ -25,6 +29,7 @@ namespace usicMusic.Core
 
         public void StartRecord(int musicNum)
         {
+            Dispose();
             waveSource = new WaveIn();
             waveSource.WaveFormat = new WaveFormat(44100, 1);
 
@@ -33,7 +38,6 @@ namespace usicMusic.Core
             Directory.CreateDirectory(Path.GetTempPath() + "musicTemp");
             savePath = Path.GetTempPath() + "musicTemp\\temp" + musicNum + ".wav";
 
-            FileExist(savePath);
             waveFile = new WaveFileWriter(savePath, waveSource.WaveFormat); // 절대경로라서 경로설정 해줘야됨.
             waveSource.StartRecording();
         }

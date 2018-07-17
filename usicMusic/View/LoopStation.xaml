@@ -18,7 +18,6 @@
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
-                <Button Content="Button" HorizontalAlignment="Left" Height="144" Margin="10,91,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click"/>
             </Border>
         </Border>
         <Image x:Name="startAndStopButton"  Source="/Resource/Buttons/start.png" Margin="0,0,0,35" HorizontalAlignment="Center" VerticalAlignment="Center" Width="218" MouseLeftButtonUp="startAndStopButton_MouseLeftButtonUp" MouseEnter="startAndStopButton_MouseEnter" MouseLeftButtonDown="startAndStopButton_MouseLeftButtonDown" MouseLeave="startAndStopButton_MouseLeave"/>
@@ -32,6 +31,7 @@
         <Image x:Name="btnC3" HorizontalAlignment="Left" Height="142" Margin="730,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c3.png" MouseEnter="btnC3_MouseEnter" MouseLeave="btnC3_MouseLeave" MouseLeftButtonDown="btnC3_MouseLeftButtonDown" MouseLeftButtonUp="btnC3_MouseLeftButtonUp" />
         <Image x:Name="btnC4" HorizontalAlignment="Left" Height="142" Margin="980,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c4.png" MouseEnter="btnC4_MouseEnter" MouseLeave="btnC4_MouseLeave" MouseLeftButtonDown="btnC4_MouseLeftButtonDown" MouseLeftButtonUp="btnC4_MouseLeftButtonUp" />
         <Image x:Name="btnC5" HorizontalAlignment="Left" Height="142" Margin="1230,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c5.png" MouseEnter="btnC5_MouseEnter" MouseLeave="btnC5_MouseLeave" MouseLeftButtonDown="btnC5_MouseLeftButtonDown" MouseLeftButtonUp="btnC5_MouseLeftButtonUp" />
+        <MediaElement HorizontalAlignment="Left" Source="/Resource/throbber.gif" Height="100" VerticalAlignment="Top" Width="100" Margin="249,190,0,0"/>
         <CheckBox x:Name="loopDelayCheckBox_1" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="224,349,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_1_Checked" Unchecked="loopDelayCheckBox_1_Unchecked" />
         <ComboBox x:Name="loopDelaySecSelectionBox_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="321,345,0,0" VerticalAlignment="Top" Width="70" />
         <CheckBox x:Name="loopDelayCheckBox_2" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="470,349,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_2_Checked" Unchecked="loopDelayCheckBox_2_Unchecked" />
@@ -43,8 +43,14 @@
         <CheckBox x:Name="loopDelayCheckBox_5" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="1223,349,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_5_Checked" Unchecked="loopDelayCheckBox_5_Unchecked" />
         <ComboBox x:Name="loopDelaySecSelectionBox_5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="1320,345,0,0" VerticalAlignment="Top" Width="70" />
         <Canvas x:Name="timelineCanvas">
+            <Label x:Name="timelabel_0" Content="0:0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="265" Canvas.Top="517" FontSize="16" Foreground="White"/>
+            <Label x:Name="timelabel_1" Content="0:05" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="515" Canvas.Top="517" FontSize="16" Foreground="White"/>
+            <Label x:Name="timelabel_2" Content="0:10" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="800" Canvas.Top="517" FontSize="16" Foreground="White"/>
+            <Label x:Name="timelabel_3" Content="0:15" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="1115" Canvas.Top="517" FontSize="16" Foreground="White"/>
+            <Label x:Name="timelabel_4" Content="0:20" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="1400" Canvas.Top="517" FontSize="16" Foreground="White"/>
             <Rectangle x:Name="timeCurLine" Fill="Red" HorizontalAlignment="Left" Height="311" Margin="280,530,0,0" VerticalAlignment="Top" Width="5" Opacity="0.5" RadiusX="20" RadiusY="20"/>
         </Canvas>
         <Label x:Name="ExpressLabel" Content="Express" VerticalAlignment="Top" Height="86" Width="427" Margin="0,66,0,0" FontSize="48" Foreground="#FF871D1D" HorizontalAlignment="Center" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Grid Name="timelineGrid"/>
     </Grid>
 </Window>
