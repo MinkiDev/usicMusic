@@ -26,7 +26,7 @@ namespace usicMusic.View
             ofd.InitialDirectory = "C:\\";
             ofd.ShowDialog();
             string loadFile = ofd.FileName;
-            
+
             string realFileName = loadFile.Substring(loadFile.LastIndexOf("\\") + 1); // 파일이름이 저장됨 ex> hello.txt, temp1.wav
             string destinationFile = Path.GetTempPath() + "musicTemp/" + realFileName; // 붙여넣을 경로가 저장됨 ex> c:\\test\\hello.wav
 

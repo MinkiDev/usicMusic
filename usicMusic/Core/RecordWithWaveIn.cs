@@ -1,16 +1,10 @@
 ﻿using NAudio.Wave;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace usicMusic.Core
 {
-    class RecordWithWaveIn
+    internal class RecordWithWaveIn
     {
         public WaveIn waveSource = null;
         public WaveFileWriter waveFile = null;
@@ -22,7 +16,7 @@ namespace usicMusic.Core
 
         public void FileExist(string FilePath)
         {
-            if (File.Exists(FilePath))  
+            if (File.Exists(FilePath))
             {
                 //File.Delete(FilePath);
             }
@@ -43,7 +37,7 @@ namespace usicMusic.Core
             waveSource.StartRecording();
         }
 
-        void waveSource_DataAvailable(object sender, WaveInEventArgs e)
+        private void waveSource_DataAvailable(object sender, WaveInEventArgs e)
         {
             if (waveFile != null)
             {
@@ -52,7 +46,7 @@ namespace usicMusic.Core
             }
         }
 
-        void waveSource_RecordingStopped(object sender, StoppedEventArgs e)
+        private void waveSource_RecordingStopped(object sender, StoppedEventArgs e)
         {
             if (waveSource != null)
             {

@@ -11,13 +11,17 @@ namespace usicMusic.View
 {
     public partial class LoopStation : Window
     {
-        private LoopStationCode lsc = new LoopStationCode();
-        private LoopThread lt = new LoopThread();
-        Hook KeyboardHook = new Hook("Global Action Hook");
+        private LoopStationCode loopStationCode = new LoopStationCode();
+        private LoopThread loopThread = new LoopThread();
+        private Hook KeyboardHook = new Hook("Global Action Hook");
+
+        private DoubleAnimation AnimateCursor = new DoubleAnimation();
+        private Storyboard CursorAnimation = new Storyboard();
+
         public LoopStation()
         {
             InitializeComponent();
-            
+
             KeyboardHook.KeyUpEvent += KeyUp;
             //KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
@@ -36,6 +40,18 @@ namespace usicMusic.View
             loopDelaySecSelectionBox_3.SelectedIndex = 0;
             loopDelaySecSelectionBox_4.SelectedIndex = 0;
             loopDelaySecSelectionBox_5.SelectedIndex = 0;
+
+            AnimateCursor.From = 0;
+            AnimateCursor.To = 1150;
+            AnimateCursor.Duration =
+                new Duration(TimeSpan.FromSeconds(30));
+            AnimateCursor.RepeatBehavior = RepeatBehavior.Forever;
+
+            Storyboard.SetTargetName(AnimateCursor, "timeCurLine");
+            Storyboard.SetTargetProperty(AnimateCursor,
+                new PropertyPath(Canvas.LeftProperty));
+
+            CursorAnimation.Children.Add(AnimateCursor);
         }
 
         private void KListener_KeyUp(object sender, RawKeyEventArgs args)
@@ -52,27 +68,41 @@ namespace usicMusic.View
 
             if (e.Key == System.Windows.Forms.Keys.D1)
             {
-                lsc.BtnNumClick(0);
+                if (loopStationCode.BtnNumClick(0))
+                {
+                    AddBeat(1, 200);
+                }
             }
             else if (e.Key == System.Windows.Forms.Keys.D2)
             {
-                lsc.BtnNumClick(1);
+                if (loopStationCode.BtnNumClick(1))
+                {
+                    AddBeat(2, 200);
+                }
             }
             else if (e.Key == System.Windows.Forms.Keys.D3)
             {
-                lsc.BtnNumClick(2);
+                if (loopStationCode.BtnNumClick(2))
+                {
+                    AddBeat(3, 200);
+                }
             }
             else if (e.Key == System.Windows.Forms.Keys.D4)
             {
-                lsc.BtnNumClick(3);
+                if (loopStationCode.BtnNumClick(3))
+                {
+                    AddBeat(4, 200);
+                }
             }
             else if (e.Key == System.Windows.Forms.Keys.D5)
             {
-                lsc.BtnNumClick(4);
+                if (loopStationCode.BtnNumClick(4))
+                {
+                    AddBeat(5, 200);
+                }
             }
             KeyboardHook.isPaused = true;
             KeyboardHook.isPaused = false;
-
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -167,7 +197,10 @@ namespace usicMusic.View
         private void btnC1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC1.Opacity = 1;
-            lsc.BtnNumClick(0);
+            if (loopStationCode.BtnNumClick(0))
+            {
+                AddBeat(1, loopStationCode.MusicSec(0));
+            }
         }
 
         private void btnC2_MouseEnter(object sender, MouseEventArgs e)
@@ -188,7 +221,10 @@ namespace usicMusic.View
         private void btnC2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC2.Opacity = 1;
-            lsc.BtnNumClick(1);
+            if (loopStationCode.BtnNumClick(1))
+            {
+                AddBeat(2, loopStationCode.MusicSec(1));
+            }
         }
 
         private void btnC3_MouseEnter(object sender, MouseEventArgs e)
@@ -209,7 +245,10 @@ namespace usicMusic.View
         private void btnC3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC3.Opacity = 1;
-            lsc.BtnNumClick(2);
+            if (loopStationCode.BtnNumClick(2))
+            {
+                AddBeat(3, loopStationCode.MusicSec(2));
+            }
         }
 
         private void btnC4_MouseEnter(object sender, MouseEventArgs e)
@@ -230,7 +269,10 @@ namespace usicMusic.View
         private void btnC4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC4.Opacity = 1;
-            lsc.BtnNumClick(3);
+            if (loopStationCode.BtnNumClick(3))
+            {
+                AddBeat(4, loopStationCode.MusicSec(3));
+            }
         }
 
         private void btnC5_MouseEnter(object sender, MouseEventArgs e)
@@ -251,22 +293,33 @@ namespace usicMusic.View
         private void btnC5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             btnC5.Opacity = 1;
-            lsc.BtnNumClick(4);
+            if (loopStationCode.BtnNumClick(4))
+            {
+                AddBeat(5, loopStationCode.MusicSec(4));
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "STOP")
+            string btnContent = loopStationCode.BtnStartClick();
+            if (btnContent != null)
+            {
+                startAndStopButton.Content = btnContent;
+            }
+            if ((string)startAndStopButton.Content == "START")
             {
                 loopDelayCheckBox_1.IsChecked = false;
                 loopDelayCheckBox_2.IsChecked = false;
                 loopDelayCheckBox_3.IsChecked = false;
                 loopDelayCheckBox_4.IsChecked = false;
                 loopDelayCheckBox_5.IsChecked = false;
+                StopNavCursor();
             }
-            string btnContent = lsc.BtnStartClick();
-            startAndStopButton.Content = btnContent;
-            StartNavCursor();
+            else
+            {
+                StartNavCursor();
+            }
+            
         }
 
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
@@ -276,7 +329,8 @@ namespace usicMusic.View
                 loopDelayCheckBox_1.IsChecked = false;
                 return;
             }
-            lt.LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
+            loopThread.LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
+            //이족
         }
 
         private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
@@ -286,7 +340,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_2.IsChecked = false;
                 return;
             }
-            lt.LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
+            loopThread.LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
         }
 
         private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
@@ -296,7 +350,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_3.IsChecked = false;
                 return;
             }
-            lt.LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
+            loopThread.LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
         }
 
         private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
@@ -306,7 +360,7 @@ namespace usicMusic.View
                 loopDelayCheckBox_4.IsChecked = false;
                 return;
             }
-            lt.LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
+            loopThread.LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
         }
 
         private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
@@ -316,53 +370,52 @@ namespace usicMusic.View
                 loopDelayCheckBox_5.IsChecked = false;
                 return;
             }
-            lt.LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
+            loopThread.LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
         }
 
         private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
         {
-            lt.LoopStop(1);
+            if((string)startAndStopButton.Content == "STOP")
+            {
+               loopThread.LoopStop(1);
+            }
         }
 
         private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
         {
-            lt.LoopStop(2);
+            if ((string)startAndStopButton.Content == "STOP")
+            {
+                loopThread.LoopStop(2);
+            }
         }
 
         private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
         {
-            lt.LoopStop(3);
+            if ((string)startAndStopButton.Content == "STOP")
+            {
+                loopThread.LoopStop(3);
+            }
         }
 
         private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
         {
-            lt.LoopStop(4);
+            if ((string)startAndStopButton.Content == "STOP")
+            {
+                loopThread.LoopStop(4);
+            }
         }
 
         private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
         {
-            lt.LoopStop(5);
+            if ((string)startAndStopButton.Content == "STOP")
+            {
+                loopThread.LoopStop(5);
+            }
         }
 
-        private DoubleAnimation AnimateCursor = new DoubleAnimation();
-        private Storyboard CursorAnimation = new Storyboard();
+        public void StartNavCursor() => CursorAnimation.Begin(timeCurLine);
 
-        public void StartNavCursor()
-        {
-            AnimateCursor.From = 0;
-            AnimateCursor.To = 1150;
-            AnimateCursor.Duration =
-                new Duration(TimeSpan.FromSeconds(30));
-            AnimateCursor.RepeatBehavior = RepeatBehavior.Forever;
-
-            Storyboard.SetTargetName(AnimateCursor, "timeCurLine");
-            Storyboard.SetTargetProperty(AnimateCursor,
-                new PropertyPath(Canvas.LeftProperty));
-
-            CursorAnimation.Children.Add(AnimateCursor);
-
-            CursorAnimation.Begin(timeCurLine);
-        }
+        public void StopNavCursor() => CursorAnimation.Stop(timeCurLine);
 
         private void AddBeat(int line, int time_ms)
         {
@@ -477,7 +530,7 @@ namespace usicMusic.View
 
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            AddBeat(1, 200);
+            StopNavCursor();
         }
 
         //private void btnC1_TouchUp(object sender, TouchEventArgs e)

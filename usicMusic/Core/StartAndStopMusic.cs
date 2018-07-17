@@ -8,19 +8,20 @@ namespace usicMusic.Core
     {
         private WaveOutEvent OutputDevice;
         private AudioFileReader AudioFile;
+        private string path = "";
 
         public StartAndStopMusic(int musicNum)
         {
-            string path = Path.GetTempPath() + "musicTemp/temp";
+            path = Path.GetTempPath() + "musicTemp/temp";
             AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }
 
         public void MusicStop()
         {
-            OutputDevice.Stop();
             if (OutputDevice != null)
             {
+                OutputDevice.Stop();
                 OutputDevice.Dispose();
                 OutputDevice = null;
             }
@@ -30,6 +31,12 @@ namespace usicMusic.Core
                 AudioFile.Dispose();
                 AudioFile = null;
             }
+        }
+
+        public int GetMusicSec(int musicNum)
+        {
+            WaveFileReader wf = new WaveFileReader(path + musicNum + ".wav");
+            return (int)(((Double.Parse(wf.TotalTime.TotalSeconds.ToString())) * 60 / 100) * 1000);
         }
 
         public void MusicStart()

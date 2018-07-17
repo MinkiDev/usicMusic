@@ -19,11 +19,17 @@ namespace usicMusic.Core
         {
         }
 
-        public void BtnNumClick(int musicNum)
+        public int MusicSec(int musicNum)
+        {
+            return startMusic[musicNum].GetMusicSec(musicNum + 1);
+        }
+
+        public bool BtnNumClick(int musicNum)
         {
             if (!state)
             {
                 Button(musicNum + 1); //파일은 1부터니까
+                return false;
             }
             else
             {
@@ -33,6 +39,7 @@ namespace usicMusic.Core
                 }
                 startMusic[musicNum] = new StartAndStopMusic(musicNum + 1);
                 startMusic[musicNum].MusicStart();
+                return true;
             }
         }
 
@@ -62,10 +69,6 @@ namespace usicMusic.Core
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
                 string savePath = sfd.FileName;
-                //if (File.Exists()
-                //{
-                //    File.Delete()
-                //}
                 File.Move(Path.GetTempPath() + "um_export_tmp.wav", savePath);
                 File.Delete(Path.GetTempPath() + "um_export_tmp.wav");
                 state = !state;

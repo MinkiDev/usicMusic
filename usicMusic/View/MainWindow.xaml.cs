@@ -1,10 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using usicMusic.Connection;
 
 namespace usicMusic.View
 {
@@ -119,6 +117,7 @@ namespace usicMusic.View
                 DoLogin();
             }
         }
+
         //string username = idTextBox.Text;
         private bool DoLogin()
         {
@@ -146,7 +145,8 @@ namespace usicMusic.View
             try
             {
                 ls.ShowDialog();
-            } catch (NullReferenceException e)
+            }
+            catch (NullReferenceException e)
             {
                 MessageBox.Show(e.Message);
             }

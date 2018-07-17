@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Threading;
 
 namespace usicMusic.Core
 {
-    class LoopThread
+    internal class LoopThread
     {
-        Thread[] loop = new Thread[5];
-        int[] delaySec = new int[5];
-        StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
+        private Thread[] loop = new Thread[5];
+        private int[] delaySec = new int[5];
+        private StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
 
         public LoopThread()
         {
@@ -52,13 +46,13 @@ namespace usicMusic.Core
         public void LoopStop(int loopNum)
         {
             // 여기뭐지/
-            startMusic[loopNum -1].MusicStop();
+            startMusic[loopNum - 1].MusicStop();
             loop[loopNum - 1].Abort();
         }
 
         private void MusicLoop0()
         {
-            while(true)
+            while (true)
             {
                 startMusic[0] = new StartAndStopMusic(1);
                 startMusic[0].MusicStart();
@@ -110,6 +104,5 @@ namespace usicMusic.Core
                 startMusic[4].MusicStop();
             }
         }
-
     }
 }
