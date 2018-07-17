@@ -11,7 +11,7 @@ namespace usicMusic.Core
 {
     class IsExist
     {
-        private string currentPath = Path.GetTempPath() + "musicTemp/temp";
+        private string currentPath = Path.GetTempPath() + "musicTemp\\temp";
         public string FiveExists()
         {
             //string path = MainWindow.GetPath();

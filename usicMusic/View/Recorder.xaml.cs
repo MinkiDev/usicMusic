@@ -73,6 +73,7 @@ namespace usicMusic.View
 
         private void btnExit_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            rwa.Dispose();
             Close();
         }
 

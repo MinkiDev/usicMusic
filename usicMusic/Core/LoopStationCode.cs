@@ -52,7 +52,7 @@ namespace usicMusic.Core
                 string isExists = Exist.FiveExists();
                 if (!string.IsNullOrEmpty(isExists)) // 파일개수가 5개가 아니면.
                 {
-                    MessageBox.Show(isExists);
+                    new GlobalPopup(isExists).Show();
                     return null;
                 }
                 recorder.StartRecording(Path.GetTempPath() + "um_export_tmp.wav");
@@ -69,6 +69,11 @@ namespace usicMusic.Core
                 sfd.Filter = "오디오 녹음|*.wav";
                 sfd.ShowDialog();
                 string savePath = sfd.FileName;
+                //여기오류 
+                if (File.Exists(savePath))
+                {
+                    File.Delete(savePath);
+                }
                 File.Move(Path.GetTempPath() + "um_export_tmp.wav", savePath);
                 File.Delete(Path.GetTempPath() + "um_export_tmp.wav");
                 state = !state;

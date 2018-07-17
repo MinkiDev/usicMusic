@@ -86,6 +86,9 @@
     <Compile Include="Core\IsExist.cs" />
     <Compile Include="Core\KeyboardListener.cs" />
     <Compile Include="Core\WaveRecorder.cs" />
+    <Compile Include="View\GlobalPopup.xaml.cs">
+      <DependentUpon>GlobalPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
     </Compile>
     <Compile Include="Core\RecordWithWaveIn.cs" />
     <Compile Include="Core\StartAndStopMusic.cs" />
+    <Page Include="View\GlobalPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoadMusic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +219,12 @@
   <ItemGroup>
     <Resource Include="Resource\Buttons\RecordButton.png" />
     <Resource Include="Resource\Buttons\LoadButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Buttons\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Ikon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

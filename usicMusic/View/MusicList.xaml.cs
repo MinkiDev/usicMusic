@@ -15,6 +15,7 @@ namespace usicMusic.View
     {
         private string jsonData;
         private int musicNum;
+
         public MusicList(string jsonData, int musicNum)
         {
             InitializeComponent();
@@ -28,8 +29,8 @@ namespace usicMusic.View
         {
             dynamic selectedItem = musicListView.SelectedItem;
             string downloadServerPath = "http://10.80.162.221:3000" + selectedItem.music.ToString();
-            string downloadComputerPath = Path.GetTempPath() + "musicTemp/temp" + musicNum + ".mp3";
-            
+            string downloadComputerPath = Path.GetTempPath() + "musicTemp\\temp" + musicNum + ".mp3";
+
             WebClient wcToilet = new WebClient();
 
             Directory.CreateDirectory(Path.GetTempPath() + "musicTemp");

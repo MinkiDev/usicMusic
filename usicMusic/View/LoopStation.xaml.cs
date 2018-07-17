@@ -25,7 +25,7 @@ namespace usicMusic.View
             KeyboardHook.KeyUpEvent += KeyUp;
             //KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
-            int i = 0;
+            int i = 1;
             while (i <= 100)
             {
                 loopDelaySecSelectionBox_1.Items.Add((double)i / 10);
@@ -35,17 +35,16 @@ namespace usicMusic.View
                 loopDelaySecSelectionBox_5.Items.Add((double)i / 10);
                 i += 1;
             }
-            loopDelaySecSelectionBox_1.SelectedIndex = 0;
-            loopDelaySecSelectionBox_2.SelectedIndex = 0;
-            loopDelaySecSelectionBox_3.SelectedIndex = 0;
-            loopDelaySecSelectionBox_4.SelectedIndex = 0;
-            loopDelaySecSelectionBox_5.SelectedIndex = 0;
+            loopDelaySecSelectionBox_1.SelectedIndex = 9;
+            loopDelaySecSelectionBox_2.SelectedIndex = 9;
+            loopDelaySecSelectionBox_3.SelectedIndex = 9;
+            loopDelaySecSelectionBox_4.SelectedIndex = 9;
+            loopDelaySecSelectionBox_5.SelectedIndex = 9;
 
             AnimateCursor.From = 0;
             AnimateCursor.To = 1150;
             AnimateCursor.Duration =
                 new Duration(TimeSpan.FromSeconds(30));
-            AnimateCursor.RepeatBehavior = RepeatBehavior.Forever;
 
             Storyboard.SetTargetName(AnimateCursor, "timeCurLine");
             Storyboard.SetTargetProperty(AnimateCursor,
@@ -63,42 +62,69 @@ namespace usicMusic.View
 
         private new void KeyUp(KeyboardHookEventArgs e)
         {
-            // handle keydown event here
-            // Such as by checking if e (KeyboardHookEventArgs) matches the key you're interested in
-
-            if (e.Key == System.Windows.Forms.Keys.D1)
+            if (e.Key == System.Windows.Forms.Keys.Space)
             {
-                if (loopStationCode.BtnNumClick(0))
+                //?? button_click 호출해야됨
+            }
+            else if (!e.isCtrlPressed) //그냥 숫자만
+            {
+                if (e.Key == System.Windows.Forms.Keys.D1)
                 {
-                    AddBeat(1, 200);
+                    if (loopStationCode.BtnNumClick(0))
+                    {
+                        AddBeat(1, loopStationCode.MusicSec(0));
+                    }
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D2)
+                {
+                    if (loopStationCode.BtnNumClick(1))
+                    {
+                        AddBeat(2, loopStationCode.MusicSec(1));
+                    }
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D3)
+                {
+                    if (loopStationCode.BtnNumClick(2))
+                    {
+                        AddBeat(3, loopStationCode.MusicSec(2));
+                    }
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D4)
+                {
+                    if (loopStationCode.BtnNumClick(3))
+                    {
+                        AddBeat(4, loopStationCode.MusicSec(3));
+                    }
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D5)
+                {
+                    if (loopStationCode.BtnNumClick(4))
+                    {
+                        AddBeat(5, loopStationCode.MusicSec(4));
+                    }
                 }
             }
-            else if (e.Key == System.Windows.Forms.Keys.D2)
-            {
-                if (loopStationCode.BtnNumClick(1))
+            else
+            { //이쪽 변경해야됨 (ctrl + 숫자)
+                if (e.Key == System.Windows.Forms.Keys.D1)
                 {
-                    AddBeat(2, 200);
+                    loopDelayCheckBox_1.IsChecked = true;
                 }
-            }
-            else if (e.Key == System.Windows.Forms.Keys.D3)
-            {
-                if (loopStationCode.BtnNumClick(2))
+                else if (e.Key == System.Windows.Forms.Keys.D2)
                 {
-                    AddBeat(3, 200);
+                    loopDelayCheckBox_2.IsChecked = true;
                 }
-            }
-            else if (e.Key == System.Windows.Forms.Keys.D4)
-            {
-                if (loopStationCode.BtnNumClick(3))
+                else if (e.Key == System.Windows.Forms.Keys.D3)
                 {
-                    AddBeat(4, 200);
+                    loopDelayCheckBox_3.IsChecked = true;
                 }
-            }
-            else if (e.Key == System.Windows.Forms.Keys.D5)
-            {
-                if (loopStationCode.BtnNumClick(4))
+                else if (e.Key == System.Windows.Forms.Keys.D4)
                 {
-                    AddBeat(5, 200);
+                    loopDelayCheckBox_4.IsChecked = true;
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D5)
+                {
+                    loopDelayCheckBox_5.IsChecked = true;
                 }
             }
             KeyboardHook.isPaused = true;
@@ -299,32 +325,9 @@ namespace usicMusic.View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string btnContent = loopStationCode.BtnStartClick();
-            if (btnContent != null)
-            {
-                startAndStopButton.Content = btnContent;
-            }
-            if ((string)startAndStopButton.Content == "START")
-            {
-                loopDelayCheckBox_1.IsChecked = false;
-                loopDelayCheckBox_2.IsChecked = false;
-                loopDelayCheckBox_3.IsChecked = false;
-                loopDelayCheckBox_4.IsChecked = false;
-                loopDelayCheckBox_5.IsChecked = false;
-                StopNavCursor();
-            }
-            else
-            {
-                StartNavCursor();
-            }
-            
-        }
-
         private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "START") //맨처음에 여기 들어감
+            if ((string)startAndStopLabel.Content == "START") //맨처음에 여기 들어감
             {
                 loopDelayCheckBox_1.IsChecked = false;
                 return;
@@ -335,7 +338,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "START")
+            if ((string)startAndStopLabel.Content == "START")
             {
                 loopDelayCheckBox_2.IsChecked = false;
                 return;
@@ -345,7 +348,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "START")
+            if ((string)startAndStopLabel.Content == "START")
             {
                 loopDelayCheckBox_3.IsChecked = false;
                 return;
@@ -355,7 +358,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "START")
+            if ((string)startAndStopLabel.Content == "START")
             {
                 loopDelayCheckBox_4.IsChecked = false;
                 return;
@@ -365,7 +368,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "START")
+            if ((string)startAndStopLabel.Content == "START")
             {
                 loopDelayCheckBox_5.IsChecked = false;
                 return;
@@ -375,15 +378,15 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
         {
-            if((string)startAndStopButton.Content == "STOP")
+            if ((string)startAndStopLabel.Content == "STOP")
             {
-               loopThread.LoopStop(1);
+                loopThread.LoopStop(1);
             }
         }
 
         private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "STOP")
+            if ((string)startAndStopLabel.Content == "STOP")
             {
                 loopThread.LoopStop(2);
             }
@@ -391,7 +394,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "STOP")
+            if ((string)startAndStopLabel.Content == "STOP")
             {
                 loopThread.LoopStop(3);
             }
@@ -399,7 +402,7 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "STOP")
+            if ((string)startAndStopLabel.Content == "STOP")
             {
                 loopThread.LoopStop(4);
             }
@@ -407,15 +410,20 @@ namespace usicMusic.View
 
         private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
         {
-            if ((string)startAndStopButton.Content == "STOP")
+            if ((string)startAndStopLabel.Content == "STOP")
             {
                 loopThread.LoopStop(5);
             }
         }
 
-        public void StartNavCursor() => CursorAnimation.Begin(timeCurLine);
+        private UserControl uc;
 
-        public void StopNavCursor() => CursorAnimation.Stop(timeCurLine);
+        public void StartNavCursor() => CursorAnimation.Begin(timeCurLine, true);
+
+        public void StopNavCursor()
+        {
+            CursorAnimation.Stop(timeCurLine);
+        }
 
         private void AddBeat(int line, int time_ms)
         {
@@ -528,14 +536,56 @@ namespace usicMusic.View
             }
         }
 
-        private void btnTest_Click(object sender, RoutedEventArgs e)
+        private void startAndStopButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            StopNavCursor();
+            startAndStopButton.Opacity = 0.8;
+        }
+
+        private void startAndStopButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            startAndStopButton.Opacity = 1;
+        }
+
+        private void startAndStopButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            startAndStopButton.Opacity = 0.5;
+        }
+
+        private void startAndStopButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            startAndStopButton.Opacity = 1;
+
+            if ((string)startAndStopLabel.Content == "STOP")
+            {
+                loopDelayCheckBox_1.IsChecked = false;
+                loopDelayCheckBox_2.IsChecked = false;
+                loopDelayCheckBox_3.IsChecked = false;
+                loopDelayCheckBox_4.IsChecked = false;
+                loopDelayCheckBox_5.IsChecked = false;
+                StopNavCursor();
+                //여기서 이미지 초기화
+            }
+            else
+            {
+                StartNavCursor();
+            }
+            string btnContent = loopStationCode.BtnStartClick();
+            if (btnContent != null)
+            {
+                startAndStopLabel.Content = btnContent;
+            }
+            if ((string)startAndStopLabel.Content == "START")
+            {
+                StopNavCursor();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
 
         //private void btnC1_TouchUp(object sender, TouchEventArgs e)
         //{
-        //    MessageBox.Show("aaa");
         //    lsc.BtnNumClick(0); // 0부터시작이니까
         //}
 

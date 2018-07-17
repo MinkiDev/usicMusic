@@ -12,7 +12,7 @@ namespace usicMusic.Core
 
         public StartAndStopMusic(int musicNum)
         {
-            path = Path.GetTempPath() + "musicTemp/temp";
+            path = Path.GetTempPath() + "musicTemp\\temp";
             AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }
@@ -21,7 +21,6 @@ namespace usicMusic.Core
         {
             if (OutputDevice != null)
             {
-                OutputDevice.Stop();
                 OutputDevice.Dispose();
                 OutputDevice = null;
             }
@@ -31,6 +30,7 @@ namespace usicMusic.Core
                 AudioFile.Dispose();
                 AudioFile = null;
             }
+            //OutputDevice.Stop();
         }
 
         public int GetMusicSec(int musicNum)

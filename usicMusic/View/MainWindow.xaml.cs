@@ -155,6 +155,14 @@ namespace usicMusic.View
             // ---------------------- 임시 코드
         }
 
+        private void idTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                DoLogin();
+            }
+        }
+
         //private void GO(bool isLogin)
         //{
         //    if (isLogin)

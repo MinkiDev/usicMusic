@@ -18,9 +18,11 @@
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
                 </Border.BitmapEffect>
-                <Button x:Name="btnTest" Content="Button" HorizontalAlignment="Left" Height="135" Margin="10,573,0,0" VerticalAlignment="Top" Width="81" Click="btnTest_Click" />
+                <Button Content="Button" HorizontalAlignment="Left" Height="144" Margin="10,91,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click"/>
             </Border>
         </Border>
+        <Image x:Name="startAndStopButton"  Source="/Resource/Buttons/start.png" Margin="0,0,0,35" HorizontalAlignment="Center" VerticalAlignment="Center" Width="218" MouseLeftButtonUp="startAndStopButton_MouseLeftButtonUp" MouseEnter="startAndStopButton_MouseEnter" MouseLeftButtonDown="startAndStopButton_MouseLeftButtonDown" MouseLeave="startAndStopButton_MouseLeave"/>
+        <Label x:Name="startAndStopLabel" Content="START" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,35" FontSize="36" Foreground="Red" MouseLeftButtonUp="startAndStopButton_MouseLeftButtonUp" MouseEnter="startAndStopButton_MouseEnter" MouseLeave="startAndStopButton_MouseLeave" MouseLeftButtonDown="startAndStopButton_MouseLeftButtonDown"></Label>
         <Image x:Name="btnExitBack" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Image Name="btnMinimizeBack" Source="/Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
@@ -40,10 +42,9 @@
         <ComboBox x:Name="loopDelaySecSelectionBox_4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="1073,345,0,0" VerticalAlignment="Top" Width="70" />
         <CheckBox x:Name="loopDelayCheckBox_5" Content="반복여부" HorizontalAlignment="Left" Height="29" Margin="1223,349,0,0" VerticalAlignment="Top" Width="92" Checked="loopDelayCheckBox_5_Checked" Unchecked="loopDelayCheckBox_5_Unchecked" />
         <ComboBox x:Name="loopDelaySecSelectionBox_5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="1320,345,0,0" VerticalAlignment="Top" Width="70" />
-        <Button x:Name="startAndStopButton" Content="START" HorizontalAlignment="Left" Height="40" Margin="160,410,0,0" VerticalAlignment="Top" Width="200" Click="Button_Click" FontSize="18" BorderThickness="0" />
         <Canvas x:Name="timelineCanvas">
-            <Rectangle x:Name="timeCurLine" Fill="White" HorizontalAlignment="Left" Height="311" Margin="280,530,0,0" VerticalAlignment="Top" Width="5" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+            <Rectangle x:Name="timeCurLine" Fill="Red" HorizontalAlignment="Left" Height="311" Margin="280,530,0,0" VerticalAlignment="Top" Width="5" Opacity="0.5" RadiusX="20" RadiusY="20"/>
         </Canvas>
-        <Label x:Name="ExpressLabel" HorizontalContentAlignment="Center" Content="Express" VerticalAlignment="Top" Height="86" Width="427" Margin="0,66,0,0" FontSize="72" Foreground="#FF871D1D"/>
+        <Label x:Name="ExpressLabel" Content="Express" VerticalAlignment="Top" Height="86" Width="427" Margin="0,66,0,0" FontSize="48" Foreground="#FF871D1D" HorizontalAlignment="Center" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>
