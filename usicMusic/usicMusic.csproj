@@ -40,11 +40,11 @@
     <Reference Include="FMUtils.KeyboardHook, Version=1.0.140.2145, Culture=neutral, PublicKeyToken=1acd76c568cde84e, processorArchitecture=MSIL">
       <HintPath>..\packages\FMUtils.KeyboardHook.1.0.140.2145\lib\net40-Client\FMUtils.KeyboardHook.dll</HintPath>
     </Reference>
-    <Reference Include="LoopbackRecorder">
-      <HintPath>C:\Users\MINKIJU\Desktop\LoopbackRecorder.dll</HintPath>
-    </Reference>
     <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Lame, Version=1.0.5.27653, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Lame.1.0.6\lib\net20\NAudio.Lame.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -88,6 +88,7 @@
     <Compile Include="Connection\HttpConnection.cs" />
     <Compile Include="Core\IsExist.cs" />
     <Compile Include="Core\KeyboardListener.cs" />
+    <Compile Include="Core\LoopbackRecorder.cs" />
     <Compile Include="Core\WaveRecorder.cs" />
     <Compile Include="View\GlobalPopup.xaml.cs">
       <DependentUpon>GlobalPopup.xaml</DependentUpon>
@@ -111,6 +112,9 @@
     </Compile>
     <Compile Include="Core\RecordWithWaveIn.cs" />
     <Compile Include="Core\StartAndStopMusic.cs" />
+    <Compile Include="View\UploadOrSave.xaml.cs">
+      <DependentUpon>UploadOrSave.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\GlobalPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecordOrLoad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UploadOrSave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +239,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\throbber.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libmp3lame.32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libmp3lame.64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

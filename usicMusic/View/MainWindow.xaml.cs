@@ -8,7 +8,7 @@ namespace usicMusic.View
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+      public MainWindow()
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };

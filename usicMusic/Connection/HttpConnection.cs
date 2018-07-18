@@ -1,14 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections.Specialized;
 using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Windows;
-using System.Xml;
 using usicMusic.View;
 
 namespace usicMusic.Connection
@@ -97,9 +92,18 @@ namespace usicMusic.Connection
             //asyncHandle.Abort();
         }
 
-        public void UploadFile(string path)
+        public void UploadMultipart(string filepath, string filename, string contentType)
         {
-
+            var webClient = new WebClient();
+            string boundary = "------------------------" + DateTime.Now.Ticks.ToString("x");
+            webClient.Headers.Add("Content-Type", "multipart/form-data; boundary=" + boundary);
+            Byte[] file = null;
+            try { file = File.ReadAllBytes(filepath); }
+            catch { }
+            var fileData = webClient.Encoding.GetString(file);
+            var package = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n{3}\r\n--{0}--\r\n", boundary, filename, contentType, fileData);
+            var nfile = webClient.Encoding.GetBytes(package);
+            byte[] resp = webClient.UploadData(url + @"/api/music", "POST", nfile);
         }
     }
 }

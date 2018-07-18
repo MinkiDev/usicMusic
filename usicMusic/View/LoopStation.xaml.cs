@@ -1,6 +1,7 @@
 ﻿using FMUtils.KeyboardHook;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,7 @@ namespace usicMusic.View
         private int[] delaySec = new int[5];
         private int[] musicSec = new int[5];
         private StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
+        private bool keyUpFlag = true;
 
         private List<int> line1 = new List<int>();
         private List<int> line2 = new List<int>();
@@ -38,21 +40,13 @@ namespace usicMusic.View
             KeyboardHook.KeyUpEvent += KeyUp;
             //KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
-            int i = 1;
-            while (i <= 100)
-            {
-                loopDelaySecSelectionBox_1.Items.Add((double)i / 10);
-                loopDelaySecSelectionBox_2.Items.Add((double)i / 10);
-                loopDelaySecSelectionBox_3.Items.Add((double)i / 10);
-                loopDelaySecSelectionBox_4.Items.Add((double)i / 10);
-                loopDelaySecSelectionBox_5.Items.Add((double)i / 10);
-                i += 1;
-            }
-            loopDelaySecSelectionBox_1.SelectedIndex = 9;
-            loopDelaySecSelectionBox_2.SelectedIndex = 9;
-            loopDelaySecSelectionBox_3.SelectedIndex = 9;
-            loopDelaySecSelectionBox_4.SelectedIndex = 9;
-            loopDelaySecSelectionBox_5.SelectedIndex = 9;
+
+            loopDelaySecTextBox_1.Focusable = false;
+            loopDelaySecTextBox_2.Focusable = false;
+            loopDelaySecTextBox_3.Focusable = false;
+            loopDelaySecTextBox_4.Focusable = false;
+            loopDelaySecTextBox_5.Focusable = false;
+
 
             AnimateCursor.From = 0;
             AnimateCursor.To = 1150;
@@ -101,11 +95,81 @@ namespace usicMusic.View
 
         private new void KeyUp(KeyboardHookEventArgs e)
         {
+            if ((string)startAndStopLabel.Content == "STOP")
+            {
+                if (e.Key == System.Windows.Forms.Keys.F1)
+                {
+                    MessageBox.Show("aaa");
+                    delaySec[0] = (int)((double.Parse(loopDelaySecTextBox_1.Text)) * 10);
+                    Loop(0);
+                }
+                else if (e.Key == System.Windows.Forms.Keys.F2)
+                {
+                    delaySec[1] = (int)((double.Parse(loopDelaySecTextBox_2.Text)) * 10);
+                    Loop(1);
+                }
+                else if (e.Key == System.Windows.Forms.Keys.F3)
+                {
+                    delaySec[2] = (int)((double.Parse(loopDelaySecTextBox_3.Text)) * 10);
+                    Loop(2);
+                }
+                else if (e.Key == System.Windows.Forms.Keys.F4)
+                {
+                    delaySec[3] = (int)((double.Parse(loopDelaySecTextBox_4.Text)) * 10);
+                    Loop(3);
+                }
+                else if (e.Key == System.Windows.Forms.Keys.F5)
+                {
+                    delaySec[4] = (int)((double.Parse(loopDelaySecTextBox_5.Text)) * 10);
+                    Loop(4);
+                    //isCheckedBool[4] = !isCheckedBool[4];
+                }
+            }
+
             if (e.Key == System.Windows.Forms.Keys.Space)
             {
                 //?? button_click 호출해야됨
             }
-            else if (!e.isCtrlPressed) //그냥 숫자만
+            else if (e.Key == System.Windows.Forms.Keys.S && e.isCtrlPressed)
+            {
+                //저장하기
+                SaveButtonEvent();
+            }
+            else if (e.isAltPressed)
+            { // (Alt + ?) 루프 시간 지정
+                if (e.Key == System.Windows.Forms.Keys.D1)
+                {
+                    loopDelaySecTextBox_1.Focusable = true;
+                    keyUpFlag = false;
+                    loopDelaySecTextBox_1.Focus();
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D2)
+                {
+                    loopDelaySecTextBox_2.Focusable = true;
+                    keyUpFlag = false;
+                    loopDelaySecTextBox_2.Focus();
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D3)
+                {
+                    loopDelaySecTextBox_3.Focusable = true;
+                    keyUpFlag = false;
+                    loopDelaySecTextBox_3.Focus();
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D4)
+                {
+                    loopDelaySecTextBox_4.Focusable = true;
+                    keyUpFlag = false;
+                    loopDelaySecTextBox_4.Focus();
+                }
+                else if (e.Key == System.Windows.Forms.Keys.D5)
+                {
+                    loopDelaySecTextBox_5.Focusable = true;
+                    keyUpFlag = false;
+                    loopDelaySecTextBox_5.Focus();
+                    //isCheckedBool[4] = !isCheckedBool[4];
+                }
+            } 
+            else if(keyUpFlag) //그냥 숫자만
             {
                 if (e.Key == System.Windows.Forms.Keys.D1)
                 {
@@ -143,35 +207,10 @@ namespace usicMusic.View
                     }
                 }
             }
-            else
-            { // (ctrl + 숫자)
-                if ((string)startAndStopLabel.Content != "START")
-                {
-                    if (e.Key == System.Windows.Forms.Keys.D1)
-                    {
-                        Loop(0);
-                    }
-                    else if (e.Key == System.Windows.Forms.Keys.D2)
-                    {
-                        Loop(1);
-                    }
-                    else if (e.Key == System.Windows.Forms.Keys.D3)
-                    {
-                        Loop(2);
-                    }
-                    else if (e.Key == System.Windows.Forms.Keys.D4)
-                    {
-                        Loop(3);
-                    }
-                    else if (e.Key == System.Windows.Forms.Keys.D5)
-                    {
-                        Loop(4);
-                        //isCheckedBool[4] = !isCheckedBool[4];
-                    }
-                }
-            }
-            KeyboardHook.isPaused = true;
-            KeyboardHook.isPaused = false;
+
+            
+            KeyboardHook.isPaused = true; // 끄기
+            KeyboardHook.isPaused = false; // 켜기
         }
 
         #region invoke
@@ -184,7 +223,6 @@ namespace usicMusic.View
                 startMusic[musicNum].MusicStart();
                 Dispatcher.Invoke(() =>
                 {
-                    ExpressLabel.Content = isCheckedBool[musicNum].ToString();
                     AddBeat(musicNum + 1, musicSec[musicNum]);
                 });
                 Thread.Sleep(delaySec[musicNum] * 100);
@@ -201,31 +239,12 @@ namespace usicMusic.View
             isCheckedBool[loopNum] = !isCheckedBool[loopNum];
             if (!isCheckedBool[loopNum])
             {
-                switch (loopNum){
-                    case 0:
-                        delaySec[loopNum] = (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10);
-                        break;
-                    case 1:
-                        delaySec[loopNum] = (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10);
-                        break;
-                    case 2:
-                        delaySec[loopNum] = (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10);
-                        break;
-                    case 3:
-                        delaySec[loopNum] = (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10);
-                        break;
-                    case 4:
-                        delaySec[loopNum] = (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10);
-                        break;
-                }
                 LoopStart(loopNum);
             }
-
         }
 
         public void LoopStart(int loopNum)
         {
-            //this.delaySec[loopNum] = delaySec;
             Task.Factory.StartNew(() =>
             {
                 MusicLoop(loopNum);
@@ -725,8 +744,6 @@ namespace usicMusic.View
 
         #endregion AddBeat
 
-        
-
         private void startAndStopButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             startAndStopButton.Opacity = 1;
@@ -734,6 +751,13 @@ namespace usicMusic.View
             if ((string)startAndStopLabel.Content == "STOP")
             {
                 StopNavCursor();
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!isCheckedBool[i])
+                    {
+                        Loop(i);
+                    }
+                }
             }
             else
             {
@@ -753,16 +777,14 @@ namespace usicMusic.View
             else if (btnContent == "START")
             {
                 StopNavCursor();
-                for(int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     if (!isCheckedBool[i])
                     {
-                        MessageBox.Show(i.ToString());
                         Loop(i);
                     }
                 }
             }
-
         }
 
         #region 터치 구현기능(현재 주석처리)
@@ -793,5 +815,136 @@ namespace usicMusic.View
         //}
 
         #endregion 터치 구현기능(현재 주석처리)
+
+        private void SaveButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            SaveButtonEvent();
+        }
+
+        private void SaveButtonEvent()
+        {
+            SaveButton.Opacity = 1;
+
+            if (!File.Exists(Path.GetTempPath() + "um_export_tmp.wav"))
+            {
+                GlobalPopup globalPopup = new GlobalPopup("제작된 음악이 없습니다.");
+                globalPopup.Show();
+            }
+            else
+            {
+                UploadOrSave uploadOrSave = new UploadOrSave();
+                uploadOrSave.ShowDialog();
+            }
+        }
+
+        private void SaveButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            SaveButton.Opacity = 0.8;
+        }
+
+        private void SaveButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            SaveButton.Opacity = 1;
+        }
+
+        private void SaveButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SaveButton.Opacity = 0.5;
+        }
+
+        private void loopDelaySecTextBox_1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                try
+                {
+                    delaySec[0] = (int)((double.Parse(loopDelaySecTextBox_1.Text))*10);
+                } catch
+                {
+                    loopDelaySecTextBox_1.Text = "1.0";
+                    delaySec[0] = 10;
+                }
+                keyUpFlag = true;
+                loopDelaySecTextBox_1.Focusable = false;
+            }
+        }
+
+        private void loopDelaySecTextBox_2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                try
+                {
+                    delaySec[1] = (int)((double.Parse(loopDelaySecTextBox_2.Text)) * 10);
+                }
+                catch
+                {
+                    loopDelaySecTextBox_1.Text = "1.0";
+                    delaySec[1] = 10;
+                }
+                keyUpFlag = true;
+                loopDelaySecTextBox_2.Focusable = false;
+            }
+        }
+
+        private void loopDelaySecTextBox_3_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                try
+                {
+                    delaySec[2] = (int)((double.Parse(loopDelaySecTextBox_3.Text)) * 10);
+                }
+                catch
+                {
+                    loopDelaySecTextBox_1.Text = "1.0";
+                    delaySec[2] = 10;
+                }
+                keyUpFlag = true;
+                loopDelaySecTextBox_3.Focusable = false;
+            }
+        }
+
+        private void loopDelaySecTextBox_4_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                try
+                {
+                    delaySec[3] = (int)((double.Parse(loopDelaySecTextBox_4.Text)) * 10);
+                }
+                catch
+                {
+                    loopDelaySecTextBox_1.Text = "1.0";
+                    delaySec[3] = 10;
+                }
+                keyUpFlag = true;
+                loopDelaySecTextBox_4.Focusable = false;
+            }
+        }
+
+        private void loopDelaySecTextBox_5_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                try
+                {
+                    delaySec[4] = (int)((double.Parse(loopDelaySecTextBox_5.Text)) * 10);
+                }
+                catch
+                {
+                    loopDelaySecTextBox_5.Text = "1.0";
+                    delaySec[4] = 10;
+                }
+                keyUpFlag = true;
+                loopDelaySecTextBox_1.Focusable = false;
+                //keyUpFlag = true;
+            }
+        }
+
+        private void loopDelaySecTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            keyUpFlag = false;
+        }
     }
 }

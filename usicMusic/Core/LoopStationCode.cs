@@ -63,19 +63,7 @@ namespace usicMusic.Core
             {
                 Stop(0); Stop(1); Stop(2); Stop(3); Stop(4);
                 recorder.StopRecording();
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.FileName = DateTime.Now.ToShortDateString() + " "
-                    + DateTime.Now.ToShortTimeString().Replace(":", "시 ") + "분";
-                sfd.Filter = "오디오 녹음|*.wav";
-                sfd.ShowDialog();
-                string savePath = sfd.FileName;
-                //여기오류 
-                if (File.Exists(savePath))
-                {
-                    File.Delete(savePath);
-                }
-                File.Move(Path.GetTempPath() + "um_export_tmp.wav", savePath);
-                File.Delete(Path.GetTempPath() + "um_export_tmp.wav");
+                
                 state = !state;
                 return "START";
             }
