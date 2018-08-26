@@ -135,8 +135,8 @@ namespace usicMusic.View
         //string username = idTextBox.Text;
         private bool DoLogin()
         {
-            //new LoopStation().ShowDialog();
-            //return false;
+            new LoopStation().ShowDialog();
+            return false;
             HttpConnection http = new HttpConnection();
             string username = idTextBox.Text;
             string password = pwTextBox.Password;

@@ -23,6 +23,7 @@ namespace usicMusic.View
         private bool[] isCheckedBool = new bool[5] { true, true, true, true, true };
 
         private DoubleAnimation AnimateCursor = new DoubleAnimation();
+
         private Storyboard CursorAnimation = new Storyboard();
         private Thread[] loop = new Thread[5];
         private int[] delaySec = new int[5];
@@ -751,9 +752,9 @@ namespace usicMusic.View
 
         private void ChangeSpinnerVisibility(int index, bool IsVisible) // true : 보임, false : 안보임 0~4
         {
-            Image[] spinners = new Image[] { spinner_1, spinner_2, spinner_3, spinner_4, spinner_5 };
-            if (IsVisible) spinners[index].Visibility = Visibility.Visible;
-            else spinners[index].Visibility = Visibility.Hidden;
+            //Image[] spinners = new Image[] { spinner_1, spinner_2, spinner_3, spinner_4, spinner_5 };
+            //if (IsVisible) spinners[index].Visibility = Visibility.Visible;
+            //else spinners[index].Visibility = Visibility.Hidden;
         }
 
         #endregion ChangeSpinnerVisibility

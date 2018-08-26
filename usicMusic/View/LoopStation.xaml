@@ -29,11 +29,131 @@
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Image Name="btnMinimizeBack" Source="/Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
         <Image Name="btnMinimize" Source="/Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
-        <Image x:Name="spinner_1" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="215,165,0,0" Visibility="Hidden" />
-        <Image x:Name="spinner_2" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="465,165,0,0" Visibility="Hidden" />
-        <Image x:Name="spinner_3" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="715,165,0,0" Visibility="Hidden" />
-        <Image x:Name="spinner_4" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="965,165,0,0" Visibility="Hidden" />
-        <Image x:Name="spinner_5" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="1215,165,0,0" Visibility="Hidden" />
+        <Image x:Name="spinner_1" RenderTransformOrigin="0.5,0.5" Source="/usicMusic;component/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="215,165,0,0" Visibility="Hidden">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="spinner_1" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+                                <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image x:Name="spinner_2" RenderTransformOrigin="0.5,0.5" Source="/usicMusic;component/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="465,165,0,0" Visibility="Hidden">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="spinner_2" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+                                <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image x:Name="spinner_3" RenderTransformOrigin="0.5,0.5" Source="/usicMusic;component/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="715,165,0,0" Visibility="Hidden">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="spinner_3" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+                                <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image x:Name="spinner_4" RenderTransformOrigin="0.5,0.5" Source="/usicMusic;component/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="965,165,0,0" Visibility="Hidden">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="spinner_4" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+                                <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image x:Name="spinner_5" RenderTransformOrigin="0.5,0.5" Source="/usicMusic;component/Resource/spinner.gif" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="180" Margin="1215,165,0,0" Visibility="Hidden">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="spinner_5" Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
+                                <DoubleAnimation From="0" To="360" BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
         <Image x:Name="btnC1" HorizontalAlignment="Left" Height="142" Margin="230,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c1.png" MouseEnter="btnC1_MouseEnter" MouseLeave="btnC1_MouseLeave" MouseLeftButtonDown="btnC1_MouseLeftButtonDown" MouseLeftButtonUp="btnC1_MouseLeftButtonUp" />
         <Image x:Name="btnC2" HorizontalAlignment="Left" Height="142" Margin="480,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c2.png" MouseEnter="btnC2_MouseEnter" MouseLeave="btnC2_MouseLeave" MouseLeftButtonDown="btnC2_MouseLeftButtonDown" MouseLeftButtonUp="btnC2_MouseLeftButtonUp" />
         <Image x:Name="btnC3" HorizontalAlignment="Left" Height="142" Margin="730,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c3.png" MouseEnter="btnC3_MouseEnter" MouseLeave="btnC3_MouseLeave" MouseLeftButtonDown="btnC3_MouseLeftButtonDown" MouseLeftButtonUp="btnC3_MouseLeftButtonUp" />
@@ -55,6 +175,6 @@
         <TextBox x:Name="loopDelaySecTextBox_4" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="1.0" VerticalAlignment="Center" Width="75" Margin="1018,350,0,526" KeyUp="loopDelaySecTextBox_4_KeyUp" GotFocus="loopDelaySecTextBox_GotFocus" />
         <TextBox x:Name="loopDelaySecTextBox_5" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="1.0" VerticalAlignment="Center" Width="75" Margin="1268,350,0,526" KeyUp="loopDelaySecTextBox_5_KeyUp" GotFocus="loopDelaySecTextBox_GotFocus" />
         <Image x:Name="UploadImage"  Source="/usicMusic;component/Resource/Buttons/start.png" Margin="700,0,0,37" HorizontalAlignment="Center" VerticalAlignment="Center" Width="218" MouseLeftButtonUp="UploadImage_MouseLeftButtonUp" MouseEnter="UploadImage_MouseEnter" MouseLeftButtonDown="UploadImage_MouseLeftButtonDown" MouseLeave="UploadImage_MouseLeave" />
-        <Label x:Name="UploadLabel" Content="UPLOAD" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1075,404,375,438" FontSize="36" Foreground="Red" MouseLeftButtonUp="UploadImage_MouseLeftButtonUp" MouseEnter="UploadImage_MouseEnter" MouseLeave="UploadImage_MouseLeave" MouseLeftButtonDown="UploadImage_MouseLeftButtonDown"/>
+        <Label x:Name="UploadLabel" Content="UPLOAD" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1075,404,375,438" FontSize="36" Foreground="Red" MouseLeftButtonUp="UploadImage_MouseLeftButtonUp" MouseEnter="UploadImage_MouseEnter" MouseLeave="UploadImage_MouseLeave" MouseLeftButtonDown="UploadImage_MouseLeftButtonDown" />
     </Grid>
 </Window>
