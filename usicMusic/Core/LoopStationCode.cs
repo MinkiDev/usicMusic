@@ -53,7 +53,7 @@ namespace usicMusic.Core
                 if (!string.IsNullOrEmpty(isExists)) // 파일개수가 5개가 아니면.
                 {
                     new GlobalPopup(isExists).Show();
-                    return null;
+                    return "START";
                 }
                 recorder.StartRecording(Path.GetTempPath() + "musicTemp\\" + "um_export_tmp.wav");
                 state = !state;

@@ -11,7 +11,7 @@ namespace usicMusic.Connection
 {
     internal class HttpConnection
     {
-        private static string url = "http://192.168.43.94:3000";
+        private static string url = "http://usicmusic.herokuapp.com";
         private string token = "";
 
         public bool HttpLogin(string json)

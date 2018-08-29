@@ -1020,7 +1020,7 @@ namespace usicMusic.View
             UploadImage.Opacity = 1.0;
             if ((string)startAndStopLabel.Content == "START")
             {
-                System.Diagnostics.Process.Start("http://192.168.43.94:3000/music");
+                System.Diagnostics.Process.Start("http://usicmusic.herokuapp.com/music"); //TODO: hyoseong - 나중에 주소 변경해야됨
             }
         }
     }
