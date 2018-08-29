@@ -14,7 +14,6 @@ namespace usicMusic.View
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
-            idTextBox.Focus();
         }
 
         public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
@@ -109,49 +108,10 @@ namespace usicMusic.View
         private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             btnLetsFeel.Opacity = 1;
-            DoLogin();
+            new LoopStation().ShowDialog();
         }
-
-        #region 아이디창에서 엔터치면 로그인
-        private void idTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                DoLogin();
-            }
-        }
-        #endregion
-
-        #region 비밀번호창에서 엔터치면 로그인
-        private void pwTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                DoLogin();
-            }
-        }
-        #endregion
 
         //string username = idTextBox.Text;
-        private bool DoLogin()
-        {
-            HttpConnection http = new HttpConnection();
-            string username = idTextBox.Text;
-            string password = pwTextBox.Password;
-            var json = new JObject();
-            json.Add("username", username);
-            json.Add("password", password);
-            pwTextBox.Password = "";
-            if (http.HttpLogin(json.ToString()))
-            {
-                new GlobalPopup(username + "님 환영합니다!").ShowDialog();
-                LoopStation ls = new LoopStation();
-                ls.ShowDialog();
-                return true;
-            }
-            new GlobalPopup("로그인에 실패하였습니다.").ShowDialog();
-            return false;
-        }
 
     }
 }

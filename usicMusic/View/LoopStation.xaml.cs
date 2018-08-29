@@ -4,6 +4,7 @@ using NAudio.Lame;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,12 +49,6 @@ namespace usicMusic.View
             //KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
 
-            loopDelaySecTextBox_1.Focusable = false;
-            loopDelaySecTextBox_2.Focusable = false;
-            loopDelaySecTextBox_3.Focusable = false;
-            loopDelaySecTextBox_4.Focusable = false;
-            loopDelaySecTextBox_5.Focusable = false;
-
             AnimateCursor.From = 0;
             AnimateCursor.To = 1150;
             AnimateCursor.Duration = new Duration(TimeSpan.FromSeconds(20));
@@ -82,19 +77,6 @@ namespace usicMusic.View
             }
 
             StartNavCursor();
-
-            //if (!(line5.Count.Equals(0)))
-            //{
-            //    if (line5[0] > 0)
-            //    {
-            //        AddBeat(5);
-            //        line5[0]--;
-            //    }
-            //    else
-            //    {
-            //        line5.RemoveAt(0);
-            //    }
-            //}
         }
 
         #endregion CursonAnimation_Completed
@@ -230,16 +212,12 @@ namespace usicMusic.View
                 });
                 Thread.Sleep(delaySec[musicNum] * 100);
                 startMusic[musicNum].MusicStop();
-                //if (isCheckedBool[musicNum])
-                //{
-                //    return;
-                //}
             }
         }
 
         public void Loop(int loopNum)
         {
-            isCheckedBool[loopNum] = !isCheckedBool[loopNum]; // false   true
+            isCheckedBool[loopNum] = !isCheckedBool[loopNum];
             ChangeSpinnerVisibility(loopNum, !isCheckedBool[loopNum]);
             if (!isCheckedBool[loopNum]) //false
             {
@@ -322,7 +300,7 @@ namespace usicMusic.View
 
         private void btnExit_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            Application.Current.Shutdown();
         }
 
         #endregion 창 종료 버튼(x)
@@ -450,147 +428,17 @@ namespace usicMusic.View
 
         #endregion MouseEvenHandler
 
-        private void btnC1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void BtnImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            btnC1.Opacity = 1;
-            if (loopStationCode.BtnNumClick(0))
+            Image image = sender as Image;
+            image.Opacity = 1;
+            int tag = Int32.Parse(image.Tag.ToString());
+            if (loopStationCode.BtnNumClick(tag-1))
             {
-                AddBeat(1, loopStationCode.MusicSec(0));
+                AddBeat(tag, loopStationCode.MusicSec(tag-1));
             }
         }
-
-        private void btnC2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            btnC2.Opacity = 1;
-            if (loopStationCode.BtnNumClick(1))
-            {
-                AddBeat(2, loopStationCode.MusicSec(1));
-            }
-        }
-
-        private void btnC3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            btnC3.Opacity = 1;
-            if (loopStationCode.BtnNumClick(2))
-            {
-                AddBeat(3, loopStationCode.MusicSec(2));
-            }
-        }
-
-        private void btnC4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            btnC4.Opacity = 1;
-            if (loopStationCode.BtnNumClick(3))
-            {
-                AddBeat(4, loopStationCode.MusicSec(3));
-            }
-        }
-
-        private void btnC5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            btnC5.Opacity = 1;
-            if (loopStationCode.BtnNumClick(4))
-            {
-                AddBeat(5, loopStationCode.MusicSec(4));
-            }
-        }
-
-        #region CheckBox(지금 사용 x)
-
-        //private void loopDelayCheckBox_1_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "START") //맨처음에 여기 들어감
-        //    {
-        //        loopDelayCheckBox_1.IsChecked = false;
-        //        return;
-        //    }
-        //    //여기 쓰레드
-        //    LoopStart(1, (int)(Double.Parse(loopDelaySecSelectionBox_1.Text) * 10));
-        //    //이족
-        //}
-
-        //private void loopDelayCheckBox_2_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "START")
-        //    {
-        //        loopDelayCheckBox_2.IsChecked = false;
-        //        return;
-        //    }
-        //    LoopStart(2, (int)(Double.Parse(loopDelaySecSelectionBox_2.Text) * 10));
-        //}
-
-        //private void loopDelayCheckBox_3_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "START")
-        //    {
-        //        loopDelayCheckBox_3.IsChecked = false;
-        //        return;
-        //    }
-        //    LoopStart(3, (int)(Double.Parse(loopDelaySecSelectionBox_3.Text) * 10));
-        //}
-
-        //private void loopDelayCheckBox_4_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "START")
-        //    {
-        //        loopDelayCheckBox_4.IsChecked = false;
-        //        return;
-        //    }
-        //    LoopStart(4, (int)(Double.Parse(loopDelaySecSelectionBox_4.Text) * 10));
-        //}
-
-        //private void loopDelayCheckBox_5_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "START")
-        //    {
-        //        loopDelayCheckBox_5.IsChecked = false;
-        //        return;
-        //    }
-        //    LoopStart(5, (int)(Double.Parse(loopDelaySecSelectionBox_5.Text) * 10));
-        //}
-
-        //private void loopDelayCheckBox_1_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "STOP")
-        //    {
-        //        //LoopStop(1);
-        //    }
-        //}
-
-        //private void loopDelayCheckBox_2_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "STOP")
-        //    {
-        //        //LoopStop(2);
-        //    }
-        //}
-
-        //private void loopDelayCheckBox_3_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "STOP")
-        //    {
-        //        //LoopStop(3);
-        //    }
-        //}
-
-        //private void loopDelayCheckBox_4_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "STOP")
-        //    {
-        //        //LoopStop(4);
-        //    }
-        //}
-
-        //private void loopDelayCheckBox_5_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    if ((string)startAndStopLabel.Content == "STOP")
-        //    {
-        //        //LoopStop(5);
-        //    }
-        //}
-
-        #endregion CheckBox(지금 사용 x)
-
+       
         public void StartNavCursor() => CursorAnimation.Begin(timeCurLine, true);
 
         public void StopNavCursor()
@@ -752,9 +600,9 @@ namespace usicMusic.View
 
         private void ChangeSpinnerVisibility(int index, bool IsVisible) // true : 보임, false : 안보임 0~4
         {
-            //Image[] spinners = new Image[] { spinner_1, spinner_2, spinner_3, spinner_4, spinner_5 };
-            //if (IsVisible) spinners[index].Visibility = Visibility.Visible;
-            //else spinners[index].Visibility = Visibility.Hidden;
+            Image[] spinners = new Image[] { spinner_1, spinner_2, spinner_3, spinner_4, spinner_5 };
+            if (IsVisible) spinners[index].Visibility = Visibility.Visible;
+            else spinners[index].Visibility = Visibility.Hidden;
         }
 
         #endregion ChangeSpinnerVisibility
