@@ -336,80 +336,24 @@ namespace usicMusic.View
 
         #region MouseEvenHandler
 
-        private void btnC1_MouseEnter(object sender, MouseEventArgs e)
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
         {
-            btnC1.Opacity = 0.8;
+            Image image = sender as Image;
+            image.Opacity = 0.8;
         }
 
-        private void btnC1_MouseLeave(object sender, MouseEventArgs e)
+        private void Btn_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnC1.Opacity = 1;
+            Image image = sender as Image;
+            image.Opacity = 1;
         }
 
-        private void btnC1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Btn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            btnC1.Opacity = 0.5;
+            Image image = sender as Image;
+            image.Opacity = 0.5;
         }
 
-        private void btnC2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnC2.Opacity = 0.8;
-        }
-
-        private void btnC2_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnC2.Opacity = 1;
-        }
-
-        private void btnC2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            btnC2.Opacity = 0.5;
-        }
-
-        private void btnC3_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnC3.Opacity = 0.8;
-        }
-
-        private void btnC3_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnC3.Opacity = 1;
-        }
-
-        private void btnC3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            btnC3.Opacity = 0.5;
-        }
-
-        private void btnC4_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnC4.Opacity = 0.8;
-        }
-
-        private void btnC4_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnC4.Opacity = 1;
-        }
-
-        private void btnC4_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            btnC4.Opacity = 0.5;
-        }
-
-        private void btnC5_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnC5.Opacity = 0.8;
-        }
-
-        private void btnC5_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnC5.Opacity = 1;
-        }
-
-        private void btnC5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            btnC5.Opacity = 0.5;
-        }
 
         private void startAndStopButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -449,35 +393,6 @@ namespace usicMusic.View
 
         #region AddBeat
 
-        /*
-        private void AddBeat(int line)
-        {
-            switch (line)
-            {
-                case 5:
-                    {
-                        Thickness btnMargin = new Thickness(200, 552, 0, 0);
-
-                        Button currentBeat = new Button
-                        {
-                            Width = 1400,
-                            Height = 50,
-                            Name = "DynamicButton",
-                            HorizontalAlignment = HorizontalAlignment.Left,
-                            VerticalAlignment = VerticalAlignment.Top,
-                            Foreground = Brushes.White,
-                            Background = Brushes.DarkCyan,
-                            Margin = btnMargin
-                        };
-
-                        timelineGrid.Children.Add(currentBeat);
-
-                        break;
-                    }
-            }
-        }
-        */
-
         private void AddBeat(int line, int time_ms)
         {
             switch (line)
@@ -504,7 +419,6 @@ namespace usicMusic.View
 
                 case 2:
                     {
-                        //여기오류
                         Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 608, 0, 0);
 
                         Button currentBeat = new Button
@@ -544,7 +458,7 @@ namespace usicMusic.View
 
                         break;
                     }
-
+                    
                 case 4:
                     {
                         Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 720, 0, 0);
@@ -752,94 +666,23 @@ namespace usicMusic.View
             SaveButton.Opacity = 0.5;
         }
 
-        private void loopDelaySecTextBox_1_KeyUp(object sender, KeyEventArgs e)
+        private void LoopDelaySecTextBox_KeyUp(object sender, KeyEventArgs e)
         {
+            TextBox textBox = sender as TextBox;
+            int tag = Int32.Parse(textBox.Tag.ToString());
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 try
                 {
-                    delaySec[0] = (int)((double.Parse(loopDelaySecTextBox_1.Text)) * 10);
+                    delaySec[tag] = (int)((double.Parse(textBox.Text)) * 10);
                 }
                 catch
                 {
-                    loopDelaySecTextBox_1.Text = "1.0";
-                    delaySec[0] = 10;
+                    textBox.Text = "1.0";
+                    delaySec[tag] = 10;
                 }
                 keyUpFlag = true;
                 loopDelaySecTextBox_1.Focusable = false;
-            }
-        }
-
-        private void loopDelaySecTextBox_2_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                try
-                {
-                    delaySec[1] = (int)((double.Parse(loopDelaySecTextBox_2.Text)) * 10);
-                }
-                catch
-                {
-                    loopDelaySecTextBox_1.Text = "1.0";
-                    delaySec[1] = 10;
-                }
-                keyUpFlag = true;
-                loopDelaySecTextBox_2.Focusable = false;
-            }
-        }
-
-        private void loopDelaySecTextBox_3_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                try
-                {
-                    delaySec[2] = (int)((double.Parse(loopDelaySecTextBox_3.Text)) * 10);
-                }
-                catch
-                {
-                    loopDelaySecTextBox_1.Text = "1.0";
-                    delaySec[2] = 10;
-                }
-                keyUpFlag = true;
-                loopDelaySecTextBox_3.Focusable = false;
-            }
-        }
-
-        private void loopDelaySecTextBox_4_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                try
-                {
-                    delaySec[3] = (int)((double.Parse(loopDelaySecTextBox_4.Text)) * 10);
-                }
-                catch
-                {
-                    loopDelaySecTextBox_1.Text = "1.0";
-                    delaySec[3] = 10;
-                }
-                keyUpFlag = true;
-                loopDelaySecTextBox_4.Focusable = false;
-            }
-        }
-
-        private void loopDelaySecTextBox_5_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                try
-                {
-                    delaySec[4] = (int)((double.Parse(loopDelaySecTextBox_5.Text)) * 10);
-                }
-                catch
-                {
-                    loopDelaySecTextBox_5.Text = "1.0";
-                    delaySec[4] = 10;
-                }
-                keyUpFlag = true;
-                loopDelaySecTextBox_1.Focusable = false;
-                //keyUpFlag = true;
             }
         }
 
@@ -868,7 +711,7 @@ namespace usicMusic.View
             UploadImage.Opacity = 1.0;
             if ((string)startAndStopLabel.Content == "START")
             {
-                System.Diagnostics.Process.Start("http://usicmusic.herokuapp.com/music"); //TODO: hyoseong - 나중에 주소 변경해야됨
+                System.Diagnostics.Process.Start("http://115.68.22.74/music"); //TODO: hyoseong - 나중에 주소 변경해야됨
             }
         }
     }
