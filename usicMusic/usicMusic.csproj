@@ -197,9 +197,6 @@
     <Resource Include="Resource\express.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\intro.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\template.png" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +235,7 @@
     <Content Include="libmp3lame.64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resource\intro.jpg" />
     <Resource Include="Resource\spinner.gif" />
     <Resource Include="Resource\Buttons\spinner.gif" />
   </ItemGroup>
