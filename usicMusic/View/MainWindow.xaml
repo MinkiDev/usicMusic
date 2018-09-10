@@ -13,7 +13,7 @@
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
             <Border BorderBrush="Transparent" CornerRadius="10" Margin="20" RenderTransformOrigin="0.5,0.5">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Resource/intro.jpg" />
+                    <ImageBrush ImageSource="/Resource/intro.png" />
                 </Border.Background>
                 <Border.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="1" Softness="1" />
