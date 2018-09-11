@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -60,21 +61,31 @@ namespace usicMusic.View
         {
             dynamic raw = JsonConvert.DeserializeObject(jsonData);
             List<musicItem> miList = new List<musicItem>();
-
-            for (int i = 0; i < raw.music.Count; i++)
+            try
             {
-                Button button = new Button();
-                button.Text = "선택";
-                button.Width = 52;
-                miList.Add(new musicItem()
+                for (int i = 0; i < raw.music.Count; i++)
                 {
-                    title = raw.music[i].title.ToString(),
-                    music = raw.music[i].music.ToString(),
-                    rate = raw.music[i].rate.Count,
-                    date = raw.music[i].date.ToString()
-                });
-            };
-            musicListView.ItemsSource = miList;
+                    Console.WriteLine(raw.music[i].isMusic.ToString());
+                    if (raw.music[i].isMusic.ToString() == "True")
+                    {
+                        continue;
+                    }
+                    Button button = new Button();
+                    button.Text = "선택";
+                    button.Width = 52;
+                    miList.Add(new musicItem()
+                    {
+                        title = raw.music[i].title.ToString(),
+                        music = raw.music[i].music.ToString(),
+                        rate = raw.music[i].rate.Count,
+                        date = raw.music[i].date.ToString()
+                    });
+                };
+                musicListView.ItemsSource = miList;
+            } catch
+            {
+                new GlobalPopup("온라인에 등록된 소스가 없습니다.").ShowDialog();
+            }
             //string dashboardStr = raw.result.statDataList[1].ToString();
             //var b = a["music"]["__v"][0];
             //MessageBox.Show(b.ToString());

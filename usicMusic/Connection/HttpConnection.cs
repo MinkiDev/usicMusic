@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -73,7 +74,7 @@ namespace usicMusic.Connection
             // or automatically deserialize result
             // return content type is sniffed but can be explicitly set via RestClient.AddHandler();
             IRestResponse response2 = client.Execute(request);
-
+            Debug.WriteLine(response2.Content.ToString());
             MusicList ml = new MusicList(response2.Content, musicNum);
             ml.Show();
 
