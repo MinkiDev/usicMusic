@@ -1,7 +1,5 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.IO;
-using System.Windows;
 using usicMusic.View;
 
 // x누를때 노래 다 스탑 해야됨

@@ -4,7 +4,6 @@ using NAudio.Lame;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -354,7 +353,6 @@ namespace usicMusic.View
             image.Opacity = 0.5;
         }
 
-
         private void startAndStopButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             startAndStopButton.Opacity = 0.8;
@@ -377,12 +375,12 @@ namespace usicMusic.View
             Image image = sender as Image;
             image.Opacity = 1;
             int tag = Int32.Parse(image.Tag.ToString());
-            if (loopStationCode.BtnNumClick(tag-1))
+            if (loopStationCode.BtnNumClick(tag - 1))
             {
-                AddBeat(tag, loopStationCode.MusicSec(tag-1));
+                AddBeat(tag, loopStationCode.MusicSec(tag - 1));
             }
         }
-       
+
         public void StartNavCursor() => CursorAnimation.Begin(timeCurLine, true);
 
         public void StopNavCursor()
@@ -458,7 +456,7 @@ namespace usicMusic.View
 
                         break;
                     }
-                    
+
                 case 4:
                     {
                         Thickness btnMargin = new Thickness(timeCurLine.PointToScreen(new Point(0, 0)).X - PointToScreen(new Point(0, 0)).X, 720, 0, 0);

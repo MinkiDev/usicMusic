@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Windows.Forms;
 using usicMusic.View;
 
 namespace usicMusic.Connection
@@ -61,7 +60,6 @@ namespace usicMusic.Connection
         public void getMusicList(int musicNum)
         {
             var client = new RestClient(url + @"/api/music");
-            // client.Authenticator = new HttpBasicAuthenticator(username, password);
 
             var request = new RestRequest(Method.GET);
 
@@ -77,21 +75,6 @@ namespace usicMusic.Connection
             Debug.WriteLine(response2.Content.ToString());
             MusicList ml = new MusicList(response2.Content, musicNum);
             ml.Show();
-
-            //var name = response2.Data.Name;
-
-            //// easy async support
-            //client.ExecuteAsync(request, response => {
-            //    Console.WriteLine(response.Content);
-            //});
-
-            //// async with deserialization
-            //var asyncHandle = client.ExecuteAsync<Person>(request, response => {
-            //    Console.WriteLine(response.Data.Name);
-            //});
-
-            //// abort the request on demand
-            //asyncHandle.Abort();
         }
     }
 }
