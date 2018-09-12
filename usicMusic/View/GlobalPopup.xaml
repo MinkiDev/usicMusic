@@ -20,6 +20,6 @@
         </Border>
         <Image x:Name="btnExitBack" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
         <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
-        <Label Name="PopupContent" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <Label Name="PopupContent" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" />
     </Grid>
 </Window>

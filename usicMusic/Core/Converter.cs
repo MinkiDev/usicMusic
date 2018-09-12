@@ -14,7 +14,6 @@ namespace usicMusic.Core
         {
             this.InPath = InPath;
             OutPath = Path.GetDirectoryName(InPath) + "\\" + Path.GetFileNameWithoutExtension(InPath) + ".wav";
-            // Path.GetDirectoryName(filepath) 경로만 갖고오는거 + "\" + Path.GetFileNameWithoutExtension(filepath) 파일명만 갖고옴 + ".wav"
         }
 
         public void WavtoMp3()
@@ -24,6 +23,7 @@ namespace usicMusic.Core
             {
                 WaveFileWriter.CreateWaveFile(OutPath, reader);
             }
+            //이전파일 삭제
             DeleteBeforeFile();
         }
 

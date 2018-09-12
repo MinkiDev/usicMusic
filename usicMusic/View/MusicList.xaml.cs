@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -31,9 +30,8 @@ namespace usicMusic.View
         {
             try
             {
-
                 dynamic selectedItem = musicListView.SelectedItem;
-                string downloadServerPath = "http://192.168.43.94:3000" + selectedItem.music.ToString();
+                string downloadServerPath = "http://115.68.22.74" + selectedItem.music.ToString();
                 string downloadComputerPath = Path.GetTempPath() + "musicTemp\\temp" + musicNum + ".mp3";
 
                 WebClient wcToilet = new WebClient();
@@ -48,12 +46,10 @@ namespace usicMusic.View
                 myWindow.Close(); // 현재 창 닫기
 
                 new GlobalPopup("완료").ShowDialog();
-
             }
             catch (Exception e1)
             {
                 new GlobalPopup(e1.Message).ShowDialog();
-
             }
         }
 
@@ -82,14 +78,11 @@ namespace usicMusic.View
                     });
                 };
                 musicListView.ItemsSource = miList;
-            } catch
+            }
+            catch
             {
                 new GlobalPopup("온라인에 등록된 소스가 없습니다.").ShowDialog();
             }
-            //string dashboardStr = raw.result.statDataList[1].ToString();
-            //var b = a["music"]["__v"][0];
-            //MessageBox.Show(b.ToString());
-            //musicListView.Items.Add(b.ToString());
         }
     }
 }
@@ -101,11 +94,3 @@ public class musicItem
     public int rate { get; set; }
     public string date { get; set; }
 }
-
-/*
-foreach(JObject fElement in jFriends)
-{
-    var fName = fElement["name"] ?? "<NULL>";
-Console.WriteLine(fName);
-}
-*/

@@ -15,9 +15,9 @@ namespace usicMusic.Core
             AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }
+
         public StartAndStopMusic()
         {
-
         }
 
         public void MusicStop()
@@ -30,11 +30,9 @@ namespace usicMusic.Core
 
             if (AudioFile != null)
             {
-
                 AudioFile.Dispose();
                 AudioFile = null;
             }
-            //OutputDevice.Stop();
         }
 
         public int GetMusicSec(int musicNum)

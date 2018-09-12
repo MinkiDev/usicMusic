@@ -1,16 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using usicMusic.Connection;
 
 namespace usicMusic.View
 {
     public partial class MainWindow : Window
     {
-      public MainWindow()
+        public MainWindow()
         {
             InitializeComponent();
             ApplicationBorder.MouseLeftButtonDown += delegate { DragMove(); };
@@ -112,6 +110,5 @@ namespace usicMusic.View
         }
 
         //string username = idTextBox.Text;
-
     }
 }

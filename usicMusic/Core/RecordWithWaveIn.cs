@@ -25,7 +25,8 @@ namespace usicMusic.Core
                 File.Delete(FilePath);
             }
         }
-        string savePath = "";
+
+        private string savePath = "";
 
         public void StartRecord(int musicNum)
         {
@@ -68,7 +69,6 @@ namespace usicMusic.Core
                     File.Delete(savePath);
                 }
             }
-
         }
 
         private void waveSource_RecordingStopped(object sender, StoppedEventArgs e)

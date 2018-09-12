@@ -8,15 +8,6 @@ namespace usicMusic.Core
         private int[] delaySec = new int[5];
         private StartAndStopMusic[] startMusic = new StartAndStopMusic[5];
 
-        public LoopThread()
-        {
-            //loop[0] = new Thread(new ThreadStart(MusicLoop0));
-            //loop[1] = new Thread(new ThreadStart(MusicLoop1));
-            //loop[2] = new Thread(new ThreadStart(MusicLoop2));
-            //loop[3] = new Thread(new ThreadStart(MusicLoop3));
-            //loop[4] = new Thread(new ThreadStart(MusicLoop4));
-        }
-
         public void LoopStart(int loopNum, int delaySec)
         {
             if (loopNum == 1)
