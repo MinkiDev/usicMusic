@@ -10,14 +10,13 @@
         <ListView x:Name="musicListView" HorizontalAlignment="Center" Height="400" VerticalAlignment="Top" Width="800">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="title" Width="250" DisplayMemberBinding="{Binding title}"/>
-                    <GridViewColumn Header="music" Width="200" DisplayMemberBinding="{Binding music}"/>
-                    <GridViewColumn Header="rate" Width="40" DisplayMemberBinding="{Binding rate}"/>
-                    <GridViewColumn Header="date" Width="250" DisplayMemberBinding="{Binding date}"/>
-                    <GridViewColumn Header="선택" Width="52" DisplayMemberBinding="{Binding bnt}"/>
+                    <GridViewColumn Header="title" Width="250" DisplayMemberBinding="{Binding title}" />
+                    <GridViewColumn Header="music" Width="200" DisplayMemberBinding="{Binding music}" />
+                    <GridViewColumn Header="rate" Width="40" DisplayMemberBinding="{Binding rate}" />
+                    <GridViewColumn Header="date" Width="250" DisplayMemberBinding="{Binding date}" />
+                    <GridViewColumn Header="선택" Width="52" DisplayMemberBinding="{Binding bnt}" />
                 </GridView>
             </ListView.View>
         </ListView>
-
     </Grid>
 </Window>
