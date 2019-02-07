@@ -16,10 +16,6 @@ namespace usicMusic.Core
             OutputDevice = new WaveOutEvent();
         }
 
-        public StartAndStopMusic()
-        {
-        }
-
         public void MusicStop()
         {
             if (OutputDevice != null)

@@ -69,8 +69,6 @@ namespace usicMusic.Connection
             IRestResponse response = client.Execute(request);
             var content = response.Content; // raw content as string
 
-            // or automatically deserialize result
-            // return content type is sniffed but can be explicitly set via RestClient.AddHandler();
             IRestResponse response2 = client.Execute(request);
             Debug.WriteLine(response2.Content.ToString());
             MusicList ml = new MusicList(response2.Content, musicNum);
