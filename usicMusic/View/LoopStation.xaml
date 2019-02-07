@@ -17,6 +17,10 @@
             <Setter Property="Height" Value="142" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="Width" Value="140" />
+            <EventSetter Event="MouseEnter" Handler="Btn_MouseEnter" />
+            <EventSetter Event="MouseLeave" Handler="Btn_MouseLeave" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Btn_MouseLeftButtonDown" />
+            <EventSetter Event="MouseLeftButtonUp" Handler="BtnImage_MouseLeftButtonUp" />
         </Style>
 
     </Window.Resources>
@@ -164,11 +168,11 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Image x:Name="btnC1" Tag="1" Style="{StaticResource btnNumStyle}" Margin="230,190,0,0" Source="/Resource/Buttons/c1.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC2" Tag="2" Style="{StaticResource btnNumStyle}" Margin="480,190,0,0" Source="/Resource/Buttons/c2.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC3" Tag="3" Style="{StaticResource btnNumStyle}" Margin="730,190,0,0" Source="/Resource/Buttons/c3.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC4" Tag="4" Style="{StaticResource btnNumStyle}" Margin="980,190,0,0" Source="/Resource/Buttons/c4.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC5" Tag="5" Style="{StaticResource btnNumStyle}" Margin="1230,190,0,0" Source="/Resource/Buttons/c5.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC1" Tag="1" Style="{StaticResource btnNumStyle}" Margin="230,190,0,0" Source="/Resource/Buttons/c1.png" />
+        <Image x:Name="btnC2" Tag="2" Style="{StaticResource btnNumStyle}" Margin="480,190,0,0" Source="/Resource/Buttons/c2.png" />
+        <Image x:Name="btnC3" Tag="3" Style="{StaticResource btnNumStyle}" Margin="730,190,0,0" Source="/Resource/Buttons/c3.png" />
+        <Image x:Name="btnC4" Tag="4" Style="{StaticResource btnNumStyle}" Margin="980,190,0,0" Source="/Resource/Buttons/c4.png" />
+        <Image x:Name="btnC5" Tag="5" Style="{StaticResource btnNumStyle}" Margin="1230,190,0,0" Source="/Resource/Buttons/c5.png" />
         <Canvas x:Name="timelineCanvas">
             <Label x:Name="timelabel_0" Content="0:0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="265" Canvas.Top="517" FontSize="16" Foreground="White" />
             <Label x:Name="timelabel_1" Content="0:05" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="515" Canvas.Top="517" FontSize="16" Foreground="White" />
