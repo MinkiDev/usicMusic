@@ -226,15 +226,13 @@
     <Resource Include="Resource\Buttons\start.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Ikon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="libmp3lame.32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="libmp3lame.64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resource\icon.png" />
     <Resource Include="Resource\intro.png" />
     <Resource Include="Resource\spinner.gif" />
     <Resource Include="Resource\Buttons\spinner.gif" />
