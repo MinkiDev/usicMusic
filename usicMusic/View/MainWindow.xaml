@@ -9,6 +9,15 @@
         WindowStyle="None" ResizeMode="NoResize"
         AllowsTransparency="True" Background="Transparent"
         WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/Resource/icon.png">
+    <Window.Resources>
+        <Style x:Key="ImageBtnStyle" TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Opacity" Value="0.95"/>
+        </Style>
+    </Window.Resources>
     <Grid DataContext="{Binding ElementName=root}">
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}">
             <Border BorderBrush="Transparent" CornerRadius="10" Margin="20" RenderTransformOrigin="0.5,0.5">
@@ -20,10 +29,10 @@
                 </Border.BitmapEffect>
             </Border>
         </Border>
-        <Image x:Name="btnExitBack" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" />
-        <Image Name="btnExit" Source="/Resource/Buttons/ExitButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="36,32,0,0" Opacity="0.95" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
-        <Image Name="btnMinimizeBack" Source="/Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" />
-        <Image Name="btnMinimize" Source="/Resource/Buttons/MinButton.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="72,32,0,0" Opacity="0.95" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
-        <Image x:Name="btnLetsFeel" HorizontalAlignment="Center" Margin="640,495,660,0" VerticalAlignment="Top" Source="/Resource/Buttons/Let's Feel_btn.png" Width="300" Height="100" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
+        <Image x:Name="btnExitBack" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/ExitButton.png" Margin="36,32,0,0" />
+        <Image x:Name="btnExit" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/ExitButton.png" Margin="36,32,0,0" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
+        <Image x:Name="btnMinimizeBack" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/MinButton.png" Margin="72,32,0,0" />
+        <Image x:Name="btnMinimize" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/MinButton.png" Margin="72,32,0,0" MouseEnter="btnMinimize_MouseEnter" MouseLeave="btnMinimize_MouseLeave" MouseLeftButtonDown="btnMinimize_MouseLeftButtonDown" MouseLeftButtonUp="btnMinimize_MouseLeftButtonUp" />
+        <Image x:Name="btnLetsFeel" Width="300" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,200,0,0" Source="/Resource/Buttons/Let's Feel_btn.png" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
     </Grid>
 </Window>
