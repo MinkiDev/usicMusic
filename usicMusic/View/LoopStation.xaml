@@ -10,6 +10,16 @@
         WindowStyle="None" ResizeMode="NoResize"
         AllowsTransparency="True" Background="Transparent"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+        <Style TargetType="Image" x:Key="btnNumStyle">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Height" Value="142" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Width" Value="140" />
+        </Style>
+
+    </Window.Resources>
     <Grid x:Name="AppGrid" DataContext="{Binding ElementName=root}">
         <Border x:Name="ApplicationBorder" Background="Transparent" Visibility="{Binding Visibility}" Grid.RowSpan="3">
             <Border BorderBrush="Transparent" CornerRadius="10" Margin="20,20,0,20" HorizontalAlignment="Left" Width="1560">
@@ -154,11 +164,11 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Image x:Name="btnC1" Tag="1" HorizontalAlignment="Left" Height="142" Margin="230,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c1.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC2" Tag="2" HorizontalAlignment="Left" Height="142" Margin="480,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c2.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC3" Tag="3" HorizontalAlignment="Left" Height="142" Margin="730,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c3.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC4" Tag="4" HorizontalAlignment="Left" Height="142" Margin="980,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c4.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
-        <Image x:Name="btnC5" Tag="5" HorizontalAlignment="Left" Height="142" Margin="1230,190,0,0" VerticalAlignment="Top" Width="140" Source="/Resource/Buttons/c5.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC1" Tag="1" Style="{StaticResource btnNumStyle}" Margin="230,190,0,0" Source="/Resource/Buttons/c1.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC2" Tag="2" Style="{StaticResource btnNumStyle}" Margin="480,190,0,0" Source="/Resource/Buttons/c2.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC3" Tag="3" Style="{StaticResource btnNumStyle}" Margin="730,190,0,0" Source="/Resource/Buttons/c3.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC4" Tag="4" Style="{StaticResource btnNumStyle}" Margin="980,190,0,0" Source="/Resource/Buttons/c4.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
+        <Image x:Name="btnC5" Tag="5" Style="{StaticResource btnNumStyle}" Margin="1230,190,0,0" Source="/Resource/Buttons/c5.png" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" MouseLeftButtonDown="Btn_MouseLeftButtonDown" MouseLeftButtonUp="BtnImage_MouseLeftButtonUp" />
         <Canvas x:Name="timelineCanvas">
             <Label x:Name="timelabel_0" Content="0:0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="265" Canvas.Top="517" FontSize="16" Foreground="White" />
             <Label x:Name="timelabel_1" Content="0:05" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="515" Canvas.Top="517" FontSize="16" Foreground="White" />
