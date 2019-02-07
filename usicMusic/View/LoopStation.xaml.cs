@@ -4,6 +4,7 @@ using NAudio.Lame;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -82,6 +83,7 @@ namespace usicMusic.View
 
         private new void KeyUp(KeyboardHookEventArgs e)
         {
+            Debug.WriteLine(e.Key);
             if ((string)startAndStopLabel.Content == "STOP")
             {
                 if (e.Key == System.Windows.Forms.Keys.F1)
@@ -230,63 +232,22 @@ namespace usicMusic.View
             {
                 MusicLoop(loopNum);
             });
-
-            //loop[loopNum - 1].Start();
         }
-
-        //public void LoopStop(int loopNum)
-        //{
-        //    // 여기뭐지/
-        //    //startMusic[loopNum - 1].MusicStop();
-        //    if (loop[loopNum - 1].IsAlive)
-        //    {
-        //        loop[loopNum - 1].Abort();
-        //    }
-        //    startMusic[loopNum - 1].MusicStop();
-        //}
 
         #endregion invoke
-
-        #region ChangeSource
-
-        public static void ChangeSource(Image image, ImageSource source, TimeSpan fadeOutTime, TimeSpan fadeInTime)
-        {
-            var fadeInAnimation = new DoubleAnimation(1d, fadeInTime);
-
-            if (image.Source != null)
-            {
-                var fadeOutAnimation = new DoubleAnimation(0d, fadeOutTime);
-
-                fadeOutAnimation.Completed += (o, e) =>
-                {
-                    image.Source = source;
-                    image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);
-                };
-
-                image.BeginAnimation(Image.OpacityProperty, fadeOutAnimation);
-            }
-            else
-            {
-                image.Opacity = 0d;
-                image.Source = source;
-                image.BeginAnimation(Image.OpacityProperty, fadeInAnimation);
-            }
-        }
-
-        #endregion ChangeSource
 
         #region 창 종료 버튼(x)
 
         private void btnExit_MouseEnter(object sender, MouseEventArgs e)
         {
-            ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
+            MainWindow.ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
                 .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/ExitButtonHover.png")),
                 new TimeSpan(0), new TimeSpan(0, 0, 0, 0, 150));
         }
 
         private void btnExit_MouseLeave(object sender, MouseEventArgs e)
         {
-            ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
+			MainWindow.ChangeSource(btnExit, (ImageSource)new ImageSourceConverter()
                 .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/ExitButton.png")),
                 new TimeSpan(0, 0, 0, 0, 150), new TimeSpan(0));
         }
@@ -308,14 +269,14 @@ namespace usicMusic.View
 
         private void btnMinimize_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            ChangeSource(btnMinimize, (ImageSource)new ImageSourceConverter()
+			MainWindow.ChangeSource(btnMinimize, (ImageSource)new ImageSourceConverter()
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/MinButtonHover.png")),
                new TimeSpan(0), new TimeSpan(0, 0, 0, 0, 150));
         }
 
         private void btnMinimize_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            ChangeSource(btnMinimize, (ImageSource)new ImageSourceConverter()
+			MainWindow.ChangeSource(btnMinimize, (ImageSource)new ImageSourceConverter()
                .ConvertFrom(new Uri(@"pack://application:,,,/Resource/Buttons/MinButton.png")),
                new TimeSpan(0, 0, 0, 0, 150), new TimeSpan(0));
         }
