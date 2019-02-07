@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
-        <Style TargetType="Image" x:Key="btnNumStyle">
+        <Style x:Key="btnNumStyle" TargetType="Image">
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Height" Value="142" />
             <Setter Property="VerticalAlignment" Value="Top" />
@@ -21,6 +21,16 @@
             <EventSetter Event="MouseLeave" Handler="Btn_MouseLeave" />
             <EventSetter Event="MouseLeftButtonDown" Handler="Btn_MouseLeftButtonDown" />
             <EventSetter Event="MouseLeftButtonUp" Handler="BtnImage_MouseLeftButtonUp" />
+        </Style>
+
+        <Style x:Key="timeLabelStyle" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Canvas.Top" Value="517" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="White" />
         </Style>
 
     </Window.Resources>
@@ -174,12 +184,12 @@
         <Image x:Name="btnC4" Tag="4" Style="{StaticResource btnNumStyle}" Margin="980,190,0,0" Source="/Resource/Buttons/c4.png" />
         <Image x:Name="btnC5" Tag="5" Style="{StaticResource btnNumStyle}" Margin="1230,190,0,0" Source="/Resource/Buttons/c5.png" />
         <Canvas x:Name="timelineCanvas">
-            <Label x:Name="timelabel_0" Content="0:0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="265" Canvas.Top="517" FontSize="16" Foreground="White" />
-            <Label x:Name="timelabel_1" Content="0:05" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="515" Canvas.Top="517" FontSize="16" Foreground="White" />
-            <Label x:Name="timelabel_2" Content="0:10" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="800" Canvas.Top="517" FontSize="16" Foreground="White" />
-            <Label x:Name="timelabel_3" Content="0:15" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="1115" Canvas.Top="517" FontSize="16" Foreground="White" />
-            <Label x:Name="timelabel_4" Content="0:20" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" Canvas.Left="1400" Canvas.Top="517" FontSize="16" Foreground="White" />
-            <Rectangle x:Name="timeCurLine" Fill="Red" HorizontalAlignment="Left" Height="311" Margin="280,530,0,0" VerticalAlignment="Top" Width="5" Opacity="0.5" RadiusX="20" RadiusY="20" />
+            <Label x:Name="timelabel_0" Content="0:0" Style="{StaticResource timeLabelStyle}" Canvas.Left="265" />
+            <Label x:Name="timelabel_1" Content="0:05" Style="{StaticResource timeLabelStyle}" Canvas.Left="515" />
+            <Label x:Name="timelabel_2" Content="0:10" Style="{StaticResource timeLabelStyle}" Canvas.Left="800" />
+            <Label x:Name="timelabel_3" Content="0:15" Style="{StaticResource timeLabelStyle}" Canvas.Left="1115" />
+            <Label x:Name="timelabel_4" Content="0:20" Style="{StaticResource timeLabelStyle}" Canvas.Left="1400" />
+            <Rectangle x:Name="timeCurLine" Fill="Red" HorizontalAlignment="Left" Height="300" Margin="280,530,0,0" VerticalAlignment="Top" Width="5" Opacity="0.5" RadiusX="20" RadiusY="20" />
         </Canvas>
         <Label x:Name="ExpressLabel" Content="Express" VerticalAlignment="Top" Height="86" Width="427" Margin="0,66,0,0" FontSize="48" Foreground="#FF871D1D" HorizontalAlignment="Center" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
         <Grid Name="timelineGrid" />
