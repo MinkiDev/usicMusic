@@ -106,7 +106,7 @@ namespace usicMusic.View
         private void btnLetsFeel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             btnLetsFeel.Opacity = 1;
-            new LoopStation().ShowDialog();
+            //new LoopStation1().ShowDialog();
         }
 
         //string username = idTextBox.Text;

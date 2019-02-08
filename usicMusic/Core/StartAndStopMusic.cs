@@ -12,6 +12,9 @@ namespace usicMusic.Core
 
         public StartAndStopMusic(int musicNum)
         {
+			if(musicNum == -1){
+				return;
+			}
             AudioFile = new AudioFileReader(path + musicNum + ".wav");
             OutputDevice = new WaveOutEvent();
         }
