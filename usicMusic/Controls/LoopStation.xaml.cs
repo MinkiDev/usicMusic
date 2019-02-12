@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace usicMusic.View
+namespace usicMusic.Controls
 {
     /// <summary>
     /// Interaction logic for LoopStation.xaml

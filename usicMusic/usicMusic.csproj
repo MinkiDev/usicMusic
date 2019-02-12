@@ -97,7 +97,7 @@
     <Compile Include="View\LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoopStation.xaml.cs">
+    <Compile Include="Controls\LoopStation.xaml.cs">
       <DependentUpon>LoopStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoopStation1.xaml.cs">
@@ -124,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LoopStation.xaml">
+    <Page Include="Controls\LoopStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
