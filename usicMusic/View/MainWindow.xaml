@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:usicMusic"
-        xmlns:ctrl="clr-namespace:usicMusic.Controls"
         mc:Ignorable="d"
         Title="usicMusic" Width="1600" Height="900"
         WindowStyle="None" ResizeMode="NoResize"
@@ -32,8 +31,7 @@
         </Border>
         <Image x:Name="btnLetsFeel" Width="300" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,200,0,0" Source="/Resource/Buttons/Let's Feel_btn.png" MouseLeftButtonUp="btnLetsFeel_MouseLeftButtonUp" MouseEnter="btnLetsFeel_MouseEnter" MouseLeave="btnLetsFeel_MouseLeave" MouseLeftButtonDown="btnLetsFeel_MouseLeftButtonDown" />
 
-        <ctrl:LoopStation x:Name="LoopStation" Visibility="Collapsed"/>
-
+        
         <Image x:Name="btnExitBack" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/ExitButton.png" Margin="36,32,0,0" />
         <Image x:Name="btnExit" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/ExitButton.png" Margin="36,32,0,0" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MouseLeftButtonDown="btnExit_MouseLeftButtonDown" MouseLeftButtonUp="btnExit_MouseLeftButtonUp" />
         <Image x:Name="btnMinimizeBack" Style="{StaticResource ImageBtnStyle}" Source="/Resource/Buttons/MinButton.png" Margin="72,32,0,0" />

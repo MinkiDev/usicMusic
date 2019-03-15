@@ -97,9 +97,6 @@
     <Compile Include="View\LoadMusic.xaml.cs">
       <DependentUpon>LoadMusic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LoopStation.xaml.cs">
-      <DependentUpon>LoopStation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LoopStation1.xaml.cs">
       <DependentUpon>LoopStation1.xaml</DependentUpon>
     </Compile>
@@ -121,10 +118,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoadMusic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\LoopStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +236,9 @@
     <Resource Include="Resource\intro.png" />
     <Resource Include="Resource\spinner.gif" />
     <Resource Include="Resource\Buttons\spinner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
