@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace usicMusic.View
 {
@@ -13,9 +14,9 @@ namespace usicMusic.View
         {
             InitializeComponent();
             PopupContent.Content = content;
-            System.Windows.Forms.Timer closingTimer = new System.Windows.Forms.Timer();
+            DispatcherTimer closingTimer = new DispatcherTimer();
             closingTimer.Tick += ClosingTimer_Tick;
-            closingTimer.Interval = 1000;
+            closingTimer.Interval = TimeSpan.FromMilliseconds(1000);
             closingTimer.Start();
         }
 
